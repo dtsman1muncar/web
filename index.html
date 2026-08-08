@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Double Track - SMAN 1 Muncar Banyuwangi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0052D4',
+                            navy: '#0F172A',
+                            amber: '#D97706',
+                            rose: '#E11D48',
+                            emerald: '#059669',
+                            cream: '#FFFBEB'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2027 100%);
+        }
+        .card-hover {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.12);
+        }
+        .tab-btn.active {
+            background-color: #0052D4;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 82, 212, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Double Track Official -->
+                <a href="#beranda" class="flex items-center space-x-3 group py-1">
+                    <img src="logo-doubletrack.jpg" alt="Logo SMA Double Track Jatim & ITS" class="h-12 w-auto object-contain group-hover:scale-105 transition duration-300">
+                    <div class="border-l border-slate-300 pl-3">
+                        <span class="text-base font-extrabold text-slate-900 tracking-tight block leading-none">SMAN 1 MUNCAR</span>
+                        <span class="text-[10px] font-bold text-blue-600 tracking-widest uppercase block mt-1">Kab. Banyuwangi</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                    <a href="#beranda" class="hover:text-blue-600 transition">Beranda</a>
+                    <a href="#tentang" class="hover:text-blue-600 transition">Tentang</a>
+                    <a href="#keahlian" class="hover:text-blue-600 transition">Bidang Keterampilan</a>
+                    <a href="#katalog" class="hover:text-blue-600 transition">Katalog Karya</a>
+                    <a href="#alur" class="hover:text-blue-600 transition">Alur Program</a>
+                    <a href="#testimoni" class="hover:text-blue-600 transition">Testimoni</a>
+                    <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20bertanya%20mengenai%20Program%20Double%20Track%20SMAN%201%20Muncar" target="_blank" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-500/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>Hubungi Kami</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" aria-label="Buka Menu Navigasi" class="lg:hidden text-slate-700 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#beranda" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Beranda</a>
+            <a href="#tentang" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Tentang</a>
+            <a href="#keahlian" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Bidang Keterampilan</a>
+            <a href="#katalog" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Katalog Karya</a>
+            <a href="#alur" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Alur Program</a>
+            <a href="#testimoni" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Testimoni</a>
+            <a href="#faq" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">FAQ</a>
+            <a href="https://wa.me/6281234567890" target="_blank" class="block text-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md mt-4">Hubungi Pengelola</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-32 pb-20 md:pt-40 md:pb-28 hero-gradient text-white relative overflow-hidden">
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-300 text-xs md:text-sm font-medium">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Program Vokasi Unggulan SMA Jatim & ITS Surabaya</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Cetak Lulusan Mandiri, <br class="hidden sm:inline"/>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200">Terampil, Siap Kerja & Wirausaha</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Membekali peserta didik SMAN 1 Muncar dengan keahlian spesifik terstandar industri: <strong>Tata Boga Kuliner Nusantara</strong> dan <strong>Tata Rias Pengantin Berhijab</strong> lengkap dengan sertifikasi ITS Surabaya.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#keahlian" class="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-900 font-extrabold rounded-xl shadow-lg shadow-amber-500/30 transition transform hover:-translate-y-0.5 text-center">
+                            Lihat 2 Bidang Keahlian <i class="fa-solid fa-arrow-down ml-2"></i>
+                        </a>
+                        <a href="#katalog" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 backdrop-blur-md transition text-center">
+                            Lihat Katalog Karya Siswa <i class="fa-solid fa-store ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Highlights -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">2 Utama</div>
+                            <div class="text-xs text-slate-400">Bidang Keterampilan</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">ITS</div>
+                            <div class="text-xs text-slate-400">Sertifikasi Resmi</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">100%</div>
+                            <div class="text-xs text-slate-400">Beasiswa Fasilitas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Featured Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-3xl shadow-2xl space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="relative rounded-2xl overflow-hidden h-36 border border-white/20 shadow">
+                                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" alt="Tata Boga" class="w-full h-full object-cover">
+                                <span class="absolute bottom-2 left-2 bg-slate-900/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">Kuliner</span>
+                            </div>
+                            <div class="relative rounded-2xl overflow-hidden h-36 border border-white/20 shadow">
+                                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=500&q=80" alt="Tata Rias" class="w-full h-full object-cover">
+                                <span class="absolute bottom-2 left-2 bg-slate-900/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">Rias Hijab</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-2xl border border-white/10 space-y-2">
+                            <div class="flex items-center justify-between text-xs font-semibold">
+                                <span class="text-amber-300"><i class="fa-solid fa-certificate mr-1.5"></i> Kerjasama ITS & Disdik Jatim</span>
+                                <span class="text-emerald-400">Gratis Modul & Alat</span>
+                            </div>
+                            <p class="text-xs text-slate-300">Siswa dilatih hingga mampu memproduksi karya bernilai jual dan siap membuka lapangan usaha mandiri.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Program Section -->
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-100">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Pelatihan Double Track SMAN 1 Muncar" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-lg border border-white">
+                            <p class="text-xs font-bold text-blue-600 uppercase tracking-widest">Sinergi Pendidikan Vokasi</p>
+                            <p class="text-slate-900 font-bold text-sm mt-1">SMAN 1 Muncar Banyuwangi × ITS Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="inline-block px-3.5 py-1.5 bg-blue-100 text-blue-800 text-xs font-extrabold rounded-lg uppercase tracking-wider">
+                        Tentang Double Track
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">
+                        Membuka Peluang Kerja & Usaha Bagi Lulusan SMA
+                    </h2>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Program Double Track SMAN 1 Muncar hadir sebagai jawaban atas tantangan masa depan. Banyak lulusan SMA yang ingin bekerja atau berwirausaha mandiri jika tidak langsung melanjutkan ke perguruan tinggi.
+                    </p>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Melalui pelatihan intensif, pendampingan instruktur profesional, dan kurikulum tersertifikasi dari <strong>ITS Surabaya</strong>, siswa dibekali kompetensi terapan tinggi di dua bidang unggulan pilihan.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80">
+                            <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center font-bold text-lg mb-2">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm">Kemampuan Terapan</h4>
+                            <p class="text-xs text-slate-500 mt-1">Praktik langsung 70% dan teori 30% sesuai standar industri.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80">
+                            <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold text-lg mb-2">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm">Kemandirian Usaha</h4>
+                            <p class="text-xs text-slate-500 mt-1">Pendampingan tata niaga digital & pembuatan produk nyata.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bidang Keahlian Section -->
+    <section id="keahlian" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 bg-amber-100 text-amber-900 text-xs font-extrabold rounded-lg uppercase tracking-wider mb-3">
+                    Spesialisasi Unggulan
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">2 Bidang Keterampilan Utama</h2>
+                <p class="text-slate-600 mt-3 text-base">Fokus penuh pada keahlian vokasi yang paling diminati pasar dan berpeluang wirausaha tinggi di Banyuwangi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                <!-- Card 1: Tata Boga Makanan Khas Indonesia -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg card-hover border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Tata Boga Makanan Khas Indonesia" class="w-full h-full object-cover">
+                            <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md">
+                                <i class="fa-solid fa-certificate mr-1"></i> Sertifikasi ITS
+                            </span>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900">Tata Boga Makanan Khas Indonesia</h3>
+                                    <span class="text-xs text-amber-600 font-semibold">Kuliner Nusantara & Inovasi Pangan Lokal</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Peserta didik mempelajari teknik pengolahan masakan autentik Indonesia, kue-kue tradisional, sanitasi & higienitas pangan, hingga kreasi inovasi olahan makanan laut khas Muncar yang higienis dan bernilai jual tinggi.
+                            </p>
+
+                            <div class="space-y-2 pt-2 border-t border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Materi Pokok Pelatihan:</h4>
+                                <ul class="text-xs text-slate-600 space-y-1.5">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pengolahan Bumbu Dasar & Kuliner Khas Nusantara</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pembuatan Jajanan Pasar & Kue Tradisional Indonesia</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Food Plating, Kemasan & Pemasaran Digital</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tata Rias Pengantin Berhijab -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg card-hover border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" alt="Tata Rias Pengantin Berhijab" class="w-full h-full object-cover">
+                            <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md">
+                                <i class="fa-solid fa-certificate mr-1"></i> Sertifikasi ITS
+                            </span>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-slate-900">Tata Rias Pengantin Berhijab</h3>
+                                    <span class="text-xs text-purple-600 font-semibold">MUA Profesional & Kreasi Hijab Pengantin</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Pembekalan khusus seni Make-Up Artist (MUA) pengantin berhijab. Mempelajari persiapan kulit, koreksi bentuk wajah, kreasi hijab pengantin modern & adat, pemasangan aksesoris, hingga manajemen jasa wisuda/pernikahan.
+                            </p>
+
+                            <div class="space-y-2 pt-2 border-t border-slate-100">
+                                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Materi Pokok Pelatihan:</h4>
+                                <ul class="text-xs text-slate-600 space-y-1.5">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Teknik Make-Up Flawless & Rias Wajah Pengantin</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Kreasi Hijab Do, Veil, & Aksesoris Pengantin</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Personal Branding & Manajemen Usaha MUA</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Produk Karya Siswa (Interactive Filter) -->
+    <section id="katalog" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-block px-3.5 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-extrabold rounded-lg uppercase tracking-wider mb-2">
+                    Etalase Karya Siswa DT
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900">Katalog Produk & Jasa Kreatif</h2>
+                <p class="text-slate-600 text-sm mt-1">Bentuk dukungan nyata bagi hasil karya produk dan jasa siswa Double Track SMAN 1 Muncar.</p>
+
+                <!-- Category Filters -->
+                <div class="mt-8 flex justify-center space-x-2">
+                    <button onclick="filterCatalog('all')" id="tab-all" class="tab-btn active px-5 py-2.5 rounded-xl text-xs font-bold transition">
+                        Semua Karya
+                    </button>
+                    <button onclick="filterCatalog('boga')" id="tab-boga" class="tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl text-xs font-bold transition">
+                        <i class="fa-solid fa-utensils mr-1.5"></i> Kuliner
+                    </button>
+                    <button onclick="filterCatalog('rias')" id="tab-rias" class="tab-btn bg-slate-100 text-slate-700 hover:bg-slate-200 px-5 py-2.5 rounded-xl text-xs font-bold transition">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Jasa Rias
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid Items -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 (Boga) -->
+                <div class="catalog-item boga bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Kue Tradisional Nusantara" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Tata Boga</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 text-lg">Paket Kue Tradisional Tampah</h4>
+                        <p class="text-xs text-slate-500 mt-1">Siswa Tata Boga SMAN 1 Muncar</p>
+                        <p class="text-slate-600 text-xs mt-3 leading-relaxed">Aneka jajanan pasar higienis khas Nusantara cocok untuk acara hajatan, rapat, dan konsumsi keluarga.</p>
+                        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                            <span class="font-extrabold text-blue-600 text-sm">Rp 75.000 / paket</span>
+                            <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Paket%20Kue%20Tradisional" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow">
+                                <i class="fa-brands fa-whatsapp"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 (Rias) -->
+                <div class="catalog-item rias bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Jasa Make Up Artist Hijab" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Tata Rias</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 text-lg">Rias Pengantin Hijab Flawless</h4>
+                        <p class="text-xs text-slate-500 mt-1">Tim MUA Siswa SMAN 1 Muncar</p>
+                        <p class="text-slate-600 text-xs mt-3 leading-relaxed">Layanan rias wajah pengantin hijab modern dengan produk halal berkategori premium & tahan lama.</p>
+                        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                            <span class="font-extrabold text-blue-600 text-sm">Tarif Khusus Siswa</span>
+                            <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20booking%20Jasa%20Rias%20Pengantin" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow">
+                                <i class="fa-brands fa-whatsapp"></i> Booking
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 (Boga) -->
+                <div class="catalog-item boga bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Kuliner khas Banyuwangi" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Tata Boga</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 text-lg">Inovasi Olahan Ikan Muncar</h4>
+                        <p class="text-xs text-slate-500 mt-1">Siswa Tata Boga SMAN 1 Muncar</p>
+                        <p class="text-slate-600 text-xs mt-3 leading-relaxed">Olahan makanan khas pesisir Muncar seperti olahan abon ikan, nuggets, dan sambal olahan laut.</p>
+                        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                            <span class="font-extrabold text-blue-600 text-sm">Rp 25.000 / botol</span>
+                            <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Olahan%20Ikan" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow">
+                                <i class="fa-brands fa-whatsapp"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 (Rias) -->
+                <div class="catalog-item rias bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
+                    <div class="relative overflow-hidden h-52">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Styling Hijab Wisuda & Event" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Tata Rias</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-slate-900 text-lg">Jasa Rias Wisuda & Hijab Event</h4>
+                        <p class="text-xs text-slate-500 mt-1">Tim MUA Siswa SMAN 1 Muncar</p>
+                        <p class="text-slate-600 text-xs mt-3 leading-relaxed">Make-up natural cantik dan kreasi hijab pashmina/segiempat untuk acara perpisahan, wisuda, & pesta.</p>
+                        <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                            <span class="font-extrabold text-blue-600 text-sm">Mulai Rp 50.000</span>
+                            <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20booking%20Rias%20Wisuda" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow">
+                                <i class="fa-brands fa-whatsapp"></i> Booking
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alur Program Section -->
+    <section id="alur" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3.5 py-1.5 bg-amber-500/20 text-amber-300 text-xs font-extrabold rounded-lg uppercase tracking-wider">Langkah Pembelajaran</span>
+                <h2 class="text-3xl font-extrabold mt-3">Alur Kegiatan Double Track</h2>
+                <p class="text-slate-400 text-sm mt-2">Sistematis, terstruktur, dan didampingi hingga lulus sertifikasi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="relative bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">1</div>
+                    <h4 class="font-bold text-lg mb-2">Pendaftaran & Seleksi</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Siswa mendaftar dan memilih salah satu dari 2 bidang keterampilan sesuai minat bakat.</p>
+                </div>
+                <div class="relative bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-10 h-10 bg-amber-500 text-slate-900 rounded-full flex items-center justify-center font-bold text-lg mb-4">2</div>
+                    <h4 class="font-bold text-lg mb-2">Pelatihan & Praktik</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Pelatihan tatap muka intensif di luar jam sekolah bersama trainer tersertifikasi.</p>
+                </div>
+                <div class="relative bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">3</div>
+                    <h4 class="font-bold text-lg mb-2">Uji Kompetensi ITS</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Ujian penilaian karya produk/jasa oleh tim penguji resmi ITS Surabaya.</p>
+                </div>
+                <div class="relative bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-10 h-10 bg-emerald-500 text-slate-900 rounded-full flex items-center justify-center font-bold text-lg mb-4">4</div>
+                    <h4 class="font-bold text-lg mb-2">Pemasaran & Expo</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Pemasaran karya produk/jasa di marketplace sekolah & pameran karya Double Track.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Siswa Section -->
+    <section id="testimoni" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3.5 py-1.5 bg-blue-100 text-blue-800 text-xs font-extrabold rounded-lg uppercase tracking-wider mb-2">
+                    Kisah Sukses Siswa
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900">Apa Kata Alumni & Peserta?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-slate-200/80 space-y-4">
+                    <div class="flex items-center space-x-1 text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed italic">
+                        "Saya mengikuti kelas Tata Rias Pengantin Berhijab. Sekarang setelah lulus, saya sudah percaya diri membuka jasa MUA wisuda dan pendamping pengantin sendiri. Sertifikat ITS sangat berguna!"
+                    </p>
+                    <div class="pt-4 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold">S</div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Siti Nurhaliza</h5>
+                            <p class="text-xs text-slate-500">Alumni Peserta Tata Rias Hijab</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-slate-200/80 space-y-4">
+                    <div class="flex items-center space-x-1 text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed italic">
+                        "Belajar Tata Boga Makanan khas Indonesia membuat saya paham resep rahasia bumbu Nusantara & pengemasan higienis. Produk usaha kuliner saya kini laris dijual online!"
+                    </p>
+                    <div class="pt-4 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold">A</div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Ahmad Fauzi</h5>
+                            <p class="text-xs text-slate-500">Peserta Tata Boga Kuliner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900">Pertanyaan Sering Diajukan (FAQ)</h2>
+                <p class="text-slate-600 text-sm mt-2">Seputar Program Double Track SMAN 1 Muncar</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-slate-50 rounded-2xl p-6 border border-slate-200 group">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center text-sm sm:text-base">
+                        Apakah siswa dikenakan biaya pendaftaran atau pelatihan?
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+                        Tidak. Seluruh rangkaian program Double Track SMAN 1 Muncar gratis (100% beasiswa dari Pemprov Jatim), termasuk bahan praktik, modul, dan sertifikasi.
+                    </p>
+                </details>
+
+                <details class="bg-slate-50 rounded-2xl p-6 border border-slate-200 group">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center text-sm sm:text-base">
+                        Kapan jadwal kegiatan pelatihan dilaksanakan?
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+                        Pelatihan dilaksanakan di luar jam pelajaran utama sekolah (setelah jam KBM reguler atau akhir pekan) sehingga tidak mengganggu jam belajar akademis.
+                    </p>
+                </details>
+
+                <details class="bg-slate-50 rounded-2xl p-6 border border-slate-200 group">
+                    <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center text-sm sm:text-base">
+                        Apakah boleh memilih kedua bidang keterampilan sekaligus?
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
+                        Setiap siswa diwajibkan memilih **1 (satu)** bidang keahlian utama per periode agar pembelajaran dan latihan dapat berjalan secara fokus dan maksimal.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-bold text-base mb-3">SMAN 1 Muncar</h4>
+                    <p class="text-xs leading-relaxed">
+                        Jl. Raya Simbar No.1, Tambakrejo, Kec. Muncar, Kabupaten Banyuwangi, Jawa Timur 68472.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-base mb-3">2 Bidang Keahlian</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><i class="fa-solid fa-angle-right text-amber-500 mr-1.5"></i> Tata Boga Makanan Khas Indonesia</li>
+                        <li><i class="fa-solid fa-angle-right text-purple-500 mr-1.5"></i> Tata Rias Pengantin Berhijab</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-base mb-3">Kontak Pengelola</h4>
+                    <p class="text-xs"><i class="fa-solid fa-envelope mr-2 text-blue-400"></i> info@sman1muncar.sch.id</p>
+                    <p class="text-xs mt-2"><i class="fa-solid fa-globe mr-2 text-emerald-400"></i> sman1muncar.sch.id</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-center text-xs">
+                <p>&copy; 2026 Program Double Track SMAN 1 Muncar Banyuwangi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Filter & Navigation -->
+    <script>
+        // Toggle Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Filter Catalog Function
+        function filterCatalog(category) {
+            const items = document.querySelectorAll('.catalog-item');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+
+            if (category === 'all') {
+                document.getElementById('tab-all').classList.add('active');
+                items.forEach(item => item.classList.remove('hidden'));
+            } else if (category === 'boga') {
+                document.getElementById('tab-boga').classList.add('active');
+                items.forEach(item => {
+                    if (item.classList.contains('boga')) item.classList.remove('hidden');
+                    else item.classList.add('hidden');
+                });
+            } else if (category === 'rias') {
+                document.getElementById('tab-rias').classList.add('active');
+                items.forEach(item => {
+                    if (item.classList.contains('rias')) item.classList.remove('hidden');
+                    else item.classList.add('hidden');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
