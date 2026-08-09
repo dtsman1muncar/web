@@ -105,7 +105,7 @@
             <!-- Filter Buttons -->
             <div class="mt-8 flex flex-wrap justify-center gap-2">
                 <button onclick="filterStories('all')" id="btn-all" class="filter-btn active px-5 py-2 rounded-xl text-xs font-bold transition bg-white/10 text-white hover:bg-white/20">
-                    Semua Cerita (6)
+                    Semua Cerita (7)
                 </button>
                 <button onclick="filterStories('alumni')" id="btn-alumni" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold transition bg-white/10 text-white hover:bg-white/20">
                     Kisah Alumni & Siswa
@@ -284,6 +284,33 @@
                     </div>
                 </article>
 
+                <!-- KARTU 7: Hampers Ramadan -->
+                <article class="story-card kegiatan bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-hampers-ramadan.jpg" alt="Kreasi Hampers Ramadan Siswa" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Kewirausahaan Ramadan</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Berburu Berkah Ramadan: Belajar Kewirausahaan Lewat Kreasi Hampers Murah Mewah
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                BANYUWANGI - Ramadan menjadi ruang belajar berharga bagi siswa SMA Double Track SMAN 1 Muncar. Lewat Festival Ramadan, mereka ditantang mengolah modal Rp50 ribu menjadi hampers bernilai jual Rp70 ribu.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="toggleModal('modal-cerita-7')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
@@ -432,6 +459,37 @@
                 </blockquote>
                 <p>Kalimat sederhana tersebut mengingatkan bahwa budaya bukan sekadar peninggalan masa lalu, melainkan identitas yang harus dijaga agar tetap hidup di tengah perubahan zaman. Kisah para siswi SMAN 1 Muncar membuktikan bahwa menjadi modern tidak berarti melupakan akar budaya sendiri. Justru generasi muda yang memahami sejarah dan tradisinya akan memiliki identitas yang lebih kuat dalam menghadapi masa depan. Di tengah dunia yang bergerak semakin cepat, mereka memilih berhenti sejenak untuk belajar dari warisan leluhur. Dari selembar kain jarit, mereka belajar tentang kesabaran. Dari setiap lipatan, mereka belajar tentang ketelitian. Dan dari proses melestarikan budaya, mereka belajar tentang pentingnya menjaga jati diri.</p>
                 <p>Karena pada akhirnya, masa depan yang kuat tidak hanya dibangun oleh teknologi dan ilmu pengetahuan, tetapi juga oleh mereka yang memahami dan menghargai warisan budayanya. Seperti lipatan-lipatan jarit yang tersusun rapi, masa depan yang baik pun dibangun dari proses yang sabar, teliti, dan penuh makna.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 7: Hampers Ramadan (ARTIKEL BARU) -->
+    <div id="modal-cerita-7" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-7')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Kewirausahaan Ramadan</span>
+            <h2 class="text-2xl font-bold text-slate-900 leading-snug">Berburu Berkah Ramadan: Belajar Kewirausahaan Lewat Kreasi Hampers Murah Mewah</h2>
+            <p class="text-xs text-slate-400 border-b border-slate-100 pb-3">Oleh: Agus Suyatno, S.Kom | SMAN 1 Muncar</p>
+            <img src="images/cerita-hampers-ramadan.jpg" alt="Hampers Ramadan Siswa" class="w-full h-80 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4 pt-2">
+                <p><strong>BANYUWANGI</strong> - Ramadan selalu punya cerita tersendiri. Bagi sebagian orang, momen ini identik dengan berburu hampers untuk keluarga, sahabat, atau rekan kerja. Namun bagi siswa Program SMA Double Track SMAN 1 Muncar, Ramadan tahun ini menjadi ruang belajar yang berbeda. Mereka tidak hanya menjadi pembeli, tetapi justru belajar menjadi pencipta produk yang memiliki nilai jual.</p>
+                <p>Di ruang praktik sekolah, suasana tampak lebih hidup dari biasanya. Beberapa siswa sibuk menyusun isi hampers, sebagian lainnya memotong pita dekorasi, sementara yang lain berdiskusi menentukan tata letak produk agar terlihat menarik. Sesekali terdengar canda ringan di sela pekerjaan. Meski santai, setiap siswa memahami bahwa mereka sedang mengerjakan sesuatu yang lebih besar dari sekadar tugas sekolah.</p>
+                <p>Melalui Festival Ramadan, para siswa ditantang membuat hampers dengan <strong>modal produksi hanya Rp50 ribu</strong>. Tantangannya bukan sekadar menghasilkan produk yang bagus, tetapi bagaimana membuatnya tetap terlihat eksklusif dan layak dijual dengan <strong>harga Rp70 ribu</strong>. Bagi sebagian orang, selisih keuntungan tersebut mungkin terlihat sederhana. Namun bagi para siswa, proses di baliknya menghadirkan pelajaran yang sangat berharga. Mereka belajar menghitung biaya produksi, memilih bahan yang tepat, menentukan harga jual, hingga memahami bagaimana sebuah produk dapat memiliki nilai lebih ketika dikemas dengan kreatif.</p>
+                <p>Yang menarik, keterbatasan modal justru melahirkan banyak ide segar. Besek bambu yang sederhana diubah menjadi kemasan elegan. Pita dekoratif yang murah disusun sedemikian rupa sehingga memberi kesan premium. Semua dilakukan dengan satu tujuan: membuat produk tampil menarik tanpa membuat biaya membengkak.</p>
+                <p>Trainer Program Double Track, <strong>Fepti Arum Sari</strong>, melihat proses itu sebagai pembelajaran kewirausahaan yang sangat nyata.</p>
+                <blockquote class="p-4 bg-emerald-50 border-l-4 border-emerald-600 text-emerald-900 italic font-semibold rounded-r-xl my-4">
+                    "Kunci dari proyek ini adalah bagaimana siswa bisa menekan biaya produksi tanpa membuat barang terlihat murahan, sehingga penggunaan material seperti besek bambu dan pita dekoratif menjadi solusi estetika yang sangat hemat biaya," — Fepti Arum Sari.
+                </blockquote>
+                <p>Pernyataan tersebut menjadi gambaran bagaimana kreativitas sebenarnya bekerja. Bukan tentang seberapa besar modal yang dimiliki, melainkan bagaimana memaksimalkan apa yang ada untuk menghasilkan sesuatu yang bernilai lebih.</p>
+                <p>Kepala SMAN 1 Muncar, <strong>Rina Kartika</strong>, menyebut proyek hampers Ramadan ini sebagai simulasi nyata dunia kerja. Menurutnya, siswa perlu merasakan langsung bagaimana proses bisnis berjalan, mulai dari merancang produk hingga menghitung keuntungan.</p>
+                <blockquote class="p-4 bg-blue-50 border-l-4 border-blue-600 text-blue-900 italic font-semibold rounded-r-xl my-4">
+                    "Kami ingin menanamkan jiwa kewirausahaan yang tangguh kepada anak-anak, di mana mereka tidak hanya belajar teori di kelas tetapi langsung praktik mengelola modal kecil menjadi keuntungan yang nyata tanpa mengurangi kualitas produk," — Rina Kartika.
+                </blockquote>
+                <p>Pendekatan seperti ini membuat pembelajaran terasa lebih dekat dengan kehidupan nyata. Para siswa tidak hanya menerima teori tentang kewirausahaan, tetapi benar-benar mempraktikkan cara berpikir seorang pelaku usaha. Mereka belajar bahwa sebuah peluang sering kali lahir dari kemampuan melihat kebutuhan pasar dan keberanian untuk mencoba.</p>
+                <p>Menjelang Hari Raya, kebutuhan hampers memang meningkat. Momentum itu dibaca dengan baik oleh para siswa. Mereka memahami bahwa produk yang relevan dengan kebutuhan masyarakat memiliki peluang lebih besar untuk diterima pasar. Dari sinilah mereka mulai belajar membaca tren dan memahami perilaku konsumen secara sederhana.</p>
+                <p>Meski proyek ini berlangsung dalam lingkungan sekolah, manfaatnya jauh lebih luas. Siswa belajar bekerja sama dalam tim, mengelola waktu produksi, menyelesaikan masalah saat proses pembuatan, hingga melatih kepercayaan diri saat menawarkan produk kepada calon pembeli. Keterampilan seperti ini menjadi bekal penting ketika mereka memasuki dunia kerja maupun membangun usaha sendiri di masa depan.</p>
+                <p>Yang paling berharga, para siswa mulai menyadari bahwa sukses tidak selalu dimulai dengan modal besar. Kadang, langkah pertama hanya membutuhkan keberanian untuk mencoba dan kemauan untuk belajar. Dari sebuah hampers Ramadan, mereka belajar tentang kreativitas. Dari modal Rp50 ribu, mereka belajar tentang nilai ekonomi. Dan dari proses yang mereka jalani bersama, mereka belajar tentang masa depan.</p>
+                <p>Inilah kekuatan Program SMA Double Track. Program ini bukan hanya mengajarkan keterampilan teknis, tetapi juga menumbuhkan pola pikir mandiri, kreatif, dan berani mengambil peluang. Dari ruang praktik sekolah, siswa belajar bahwa masa depan tidak harus ditunggu, melainkan bisa mulai dibangun hari ini. Dengan keterampilan, pengalaman, dan semangat berwirausaha yang terus diasah, Program SMA Double Track menjadi jembatan yang menghubungkan siswa menuju kemandirian, dunia kerja, bahkan lahirnya wirausaha muda yang siap menciptakan peluang bagi dirinya dan lingkungan sekitarnya.</p>
             </div>
         </div>
     </div>
