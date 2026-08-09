@@ -2,6 +2,7 @@ backend:
   name: github
   repo: dtsman1muncar/web
   branch: main
+  auth_type: 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 # Menggunakan autentikasi Token langsung tanpa OAuth popup
 
 media_folder: "images"
 public_folder: "images"
