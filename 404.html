@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Belum Tersedia - Program Double Track SMAN 1 Muncar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0052D4',
+                            navy: '#0F172A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2027 100%);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white flex flex-col min-h-screen justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Official -->
+                <a href="index.html" class="flex items-center space-x-3 group py-1">
+                    <img src="images/logo-doubletrack.png" alt="Logo SMA Double Track" class="h-12 w-auto object-contain group-hover:scale-105 transition duration-300">
+                    <div class="border-l border-slate-300 pl-3">
+                        <span class="text-base font-extrabold text-slate-900 tracking-tight block leading-none">SMAN 1 MUNCAR</span>
+                        <span class="text-[10px] font-bold text-blue-600 tracking-widest uppercase block mt-1">Kab. Banyuwangi</span>
+                    </div>
+                </a>
+
+                <!-- CTA Button -->
+                <div>
+                    <a href="index.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Ke Beranda</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Error 404 -->
+    <main class="pt-32 pb-20 hero-gradient text-white flex-grow flex items-center relative overflow-hidden">
+        <div class="absolute top-1/3 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-semibold">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Status 404 — Not Found</span>
+            </div>
+
+            <h1 class="text-6xl sm:text-8xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200">
+                404
+            </h1>
+
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">
+                Halaman Belum Tersedia
+            </h2>
+
+            <p class="text-slate-300 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+                Mohon maaf, halaman atau berkas yang Anda cari sedang dalam tahap pengembangan, telah dipindahkan, atau alamat URL yang dimasukkan salah.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="index.html" class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition transform hover:-translate-y-0.5 text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-house text-xs"></i>
+                    <span>Kembali ke Beranda Utama</span>
+                </a>
+                <a href="cerita-baik.html" class="w-full sm:w-auto px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 backdrop-blur-md transition text-sm flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-book-open text-xs"></i>
+                    <span>Baca Cerita Baik</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    c
+</body>
+</html>
