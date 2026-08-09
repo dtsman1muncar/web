@@ -36,11 +36,6 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
         }
-        .filter-btn.active {
-            background-color: #0052D4;
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 82, 212, 0.3);
-        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white">
@@ -110,7 +105,7 @@
             <!-- Loading Indicator -->
             <div id="loading" class="text-center py-12">
                 <i class="fa-solid fa-spinner fa-spin text-4xl text-blue-600 mb-3"></i>
-                <p class="text-sm font-semibold text-slate-600">Memuat artikel terbaru dari server...</p>
+                <p class="text-sm font-semibold text-slate-600">Memuat artikel terbaru...</p>
             </div>
 
             <!-- Grid Kartu Artikel -->
@@ -141,7 +136,14 @@
             if (modal) modal.classList.toggle('hidden');
         }
 
-        // 7 Artikel Awal (Statis)
+        // Fungsi mengubah teks polos menjadi Paragraf HTML yang rapi
+        function formatParagraphs(text) {
+            if (!text) return '';
+            if (text.includes('<p>')) return text; // Jika sudah berformat HTML
+            return text.split('\n\n').map(p => `<p class="mb-4 leading-relaxed">${p.trim()}</p>`).join('');
+        }
+
+        // 7 Artikel Awal (Statis Lengkap)
         const staticArticles = [
             {
                 id: 'static-1',
@@ -150,7 +152,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-ridho-pisang.jpg",
                 excerpt: "MUNCAR – Semangat berwirausaha dan keberanian memulai dari nol menjadi kunci keberhasilan Mohammad Ridho As'ari, alumni Program Double Track SMAN 1 Muncar, dalam membangun usaha kuliner Kedai Mr-A.",
-                content: `<p><strong>MUNCAR</strong> – Semangat berwirausaha dan keberanian memulai dari nol menjadi kunci keberhasilan Mohammad Ridho As'ari, alumni Program Double Track SMAN 1 Muncar, dalam membangun usaha kuliner Kedai Mr-A.</p><p>Setelah lulus dari Program Double Track SMAN 1 Muncar, Ridho memiliki tekad kuat untuk mandiri secara finansial. Ia kemudian membuka kedai Mr-A menjajakan Pisang Aroma, Sosis Kriuk, hingga Pisang Susu Keju (PSK) dengan omzet mencapai Rp1,5 juta hingga Rp2 juta per bulan.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>MUNCAR</strong> – Semangat berwirausaha dan keberanian memulai dari nol menjadi kunci keberhasilan Mohammad Ridho As'ari, alumni Program Double Track SMAN 1 Muncar, dalam membangun usaha kuliner Kedai Mr-A.</p><p class="mb-4 leading-relaxed">Setelah lulus dari Program Double Track SMAN 1 Muncar, Ridho memiliki tekad kuat untuk mandiri secara finansial. Berbekal keterampilan dan pengetahuan yang diperoleh selama mengikuti program tersebut, ia mulai mencari peluang usaha yang sesuai dengan minat dan kebutuhan pasar. Pilihannya jatuh pada bidang kuliner, sektor yang menurutnya memiliki prospek menjanjikan dan dekat dengan kehidupan masyarakat.</p><p class="mb-4 leading-relaxed">Menu andalan seperti pisang aroma, sosis kriuk, dan pisang gendut berhasil menarik perhatian pelanggan, khususnya kalangan anak muda. Usaha yang dirintis dari modal sederhana itu kini mampu menghasilkan omzet sekitar Rp1,5 juta hingga Rp2 juta per bulan.</p>`
             },
             {
                 id: 'static-2',
@@ -159,7 +161,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-cindy-mua.jpg",
                 excerpt: "BANYUWANGI - Di tengah anggapan bahwa kesuksesan harus diraih melalui pekerjaan formal, Cindy Aisyah justru membuktikan hal sebaliknya melalui jasa tata rias perpisahan sekolah.",
-                content: `<p><strong>BANYUWANGI</strong> - Di tengah anggapan bahwa kesuksesan harus diraih melalui pekerjaan formal setelah lulus sekolah, Cindy Aisyah justru membuktikan hal sebaliknya. Berbekal keterampilan tata rias yang diperoleh dari Program Double Track SMAN 1 Muncar, perempuan muda ini berhasil meraih penghasilan hingga Rp3,5 juta dalam sepekan dari jasa rias perpisahan sekolah dasar.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>BANYUWANGI</strong> - Di tengah anggapan bahwa kesuksesan harus diraih melalui pekerjaan formal setelah lulus sekolah, Cindy Aisyah justru membuktikan hal sebaliknya. Berbekal keterampilan tata rias yang diperoleh dari Program Double Track di SMAN 1 Muncar, Banyuwangi, perempuan muda ini berhasil membangun usaha sendiri dan meraih penghasilan hingga sekitar Rp3,5 juta dalam sepekan.</p>`
             },
             {
                 id: 'static-3',
@@ -168,7 +170,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-nail-art.jpg",
                 excerpt: "BANYUWANGI - Siapa bilang masa SMA hanya soal belajar di kelas? Di SMAN 1 Muncar, para siswi membekali diri dengan keterampilan hias kuku kreatif bersama praktisi DUDI.",
-                content: `<p><strong>BANYUWANGI</strong> - Siswi Program Double Track Tata Rias Pengantin Berhijab SMAN 1 Muncar mengikuti pelatihan seni menghias kuku (Nail Art) selama 2,5 jam yang dipandu langsung oleh praktisi kecantikan Afifah Irsha.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>BANYUWANGI</strong> - Siswi Program Double Track Tata Rias Pengantin Berhijab SMAN 1 Muncar mengikuti pelatihan seni menghias kuku (Nail Art) selama 2,5 jam yang dipandu langsung oleh praktisi kecantikan Afifah Irsha.</p>`
             },
             {
                 id: 'static-4',
@@ -177,7 +179,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-amelia-bucket.jpg",
                 excerpt: "BANYUWANGI - Siapa sangka, sebuah hadiah ulang tahun untuk ayah bisa menjadi awal lahirnya usaha bucket kreatif bernilai jutaan rupiah yang dikembangkan oleh Amelia.",
-                content: `<p><strong>BANYUWANGI</strong> - Berawal dari keisengan membuat kado kustom ulang tahun untuk sang ayah, Amelia Tri Lestari berhasil membangun bisnis bucket bunga, snack, dan skincare kreatif dengan keuntungan mencapai Rp1,5 juta - Rp2,5 juta per bulan.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>BANYUWANGI</strong> - Berawal dari keisengan membuat kado kustom ulang tahun untuk sang ayah, Amelia Tri Lestari berhasil membangun bisnis bucket bunga, snack, dan skincare kreatif dengan keuntungan mencapai Rp1,5 juta - Rp2,5 juta per bulan.</p>`
             },
             {
                 id: 'static-5',
@@ -186,7 +188,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-felisa-dimsum.jpg",
                 excerpt: "BANYUWANGI - Bagi sebagian siswa, waktu istirahat adalah saat membeli makanan. Namun bagi Felisa, waktu istirahat adalah kesempatan untuk berjualan dimsum olahan mandiri.",
-                content: `<p><strong>BANYUWANGI</strong> - Felisa, siswi Double Track Tata Boga SMAN 1 Muncar, rutin menyiapkan olahan dimsum di rumah sebelum sekolah. Saat istirahat, lapak dimsumnya di kantin sekolah selalu diserbu pembeli dengan omzet Rp1 juta per bulan.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>BANYUWANGI</strong> - Felisa, siswi Double Track Tata Boga SMAN 1 Muncar, rutin menyiapkan olahan dimsum di rumah sebelum sekolah. Saat istirahat, lapak dimsumnya di kantin sekolah selalu diserbu pembeli dengan omzet Rp1 juta per bulan.</p>`
             },
             {
                 id: 'static-6',
@@ -195,7 +197,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-mewiru-jarit.jpg",
                 excerpt: "BANYUWANGI - Di tengah tren digital dan konten viral, sekelompok siswi SMAN 1 Muncar justru antusias belajar mewiru kain jarit, tradisi pelipatan kain adat Jawa.",
-                content: `<p><strong>BANYUWANGI</strong> - Di tengah tren digital, para siswi SMAN 1 Muncar diajak mempelajari seni melipat tepi kain jarit (mewiru) gaya Solo dan Yogyakarta melalui kelas Tata Rias Pengantin Berhijab guna melestarikan warisan budaya Jawa.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>BANYUWANGI</strong> - Di tengah tren digital, para siswi SMAN 1 Muncar diajak mempelajari seni melipat tepi kain jarit (mewiru) gaya Solo dan Yogyakarta melalui kelas Tata Rias Pengantin Berhijab guna melestarikan warisan budaya Jawa.</p>`
             },
             {
                 id: 'static-7',
@@ -204,7 +206,7 @@
                 author: "Agus Suyatno, S.Kom",
                 image: "images/cerita-hampers-ramadan.jpg",
                 excerpt: "BANYUWANGI - Ramadan menjadi ruang belajar berharga bagi siswa SMA Double Track SMAN 1 Muncar. Lewat Festival Ramadan, mereka ditantang mengolah modal Rp50 ribu menjadi hampers bernilai jual Rp70 ribu.",
-                content: `<p><strong>BANYUWANGI</strong> - Melalui Festival Ramadan, para siswa ditantang membuat hampers dengan modal produksi Rp50 ribu dan dijual seharga Rp70 ribu menggunakan besek bambu dan pita dekoratif yang elegan.</p>`
+                content: `<p class="mb-4 leading-relaxed"><strong>BANYUWANGI</strong> - Melalui Festival Ramadan, para siswa ditantang membuat hampers dengan modal produksi Rp50 ribu dan dijual seharga Rp70 ribu menggunakan besek bambu dan pita dekoratif yang elegan.</p>`
             }
         ];
 
@@ -241,12 +243,15 @@
                 modals.innerHTML = '';
 
                 allArticles.forEach(art => {
+                    const artImg = art.image || art.thumbnail || 'images/gambardepan.jpg';
+                    const artContent = formatParagraphs(art.content || art.body || art.excerpt);
+
                     // Render Card
                     grid.innerHTML += `
                         <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
                             <div>
                                 <div class="relative h-56 overflow-hidden">
-                                    <img src="${art.image || art.thumbnail || 'images/gambardepan.jpg'}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                    <img src="${artImg}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                                     <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">${art.category || 'Berita DT'}</span>
                                 </div>
                                 <div class="p-6 space-y-3">
@@ -270,17 +275,17 @@
                         </article>
                     `;
 
-                    // Render Modal
+                    // Render Dynamic Modal
                     modals.innerHTML += `
                         <div id="modal-${art.id}" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                            <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
-                                <button onclick="toggleModal('modal-${art.id}')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+                            <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl my-auto">
+                                <button onclick="toggleModal('modal-${art.id}')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2 z-10">✕</button>
                                 <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">${art.category || 'Berita DT'}</span>
-                                <h2 class="text-2xl font-bold text-slate-900 leading-snug">${art.title}</h2>
+                                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">${art.title}</h2>
                                 <p class="text-xs text-slate-400 border-b border-slate-100 pb-3">Oleh: ${art.author || 'Agus Suyatno, S.Kom'} | SMAN 1 Muncar</p>
-                                <img src="${art.image || art.thumbnail || 'images/gambardepan.jpg'}" alt="${art.title}" class="w-full h-80 object-cover rounded-2xl">
-                                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-4 pt-2">
-                                    ${art.content || art.body || art.excerpt}
+                                <img src="${artImg}" alt="${art.title}" class="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-sm">
+                                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed pt-2">
+                                    ${artContent}
                                 </div>
                             </div>
                         </div>
