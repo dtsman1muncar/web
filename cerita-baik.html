@@ -137,15 +137,29 @@
         }
 
         // Fungsi Otomatis Mengubah Teks Polos Menjadi Paragraf HTML Rapi
-        function formatParagraphs(text) {
-            if (!text) return '';
-            if (text.includes('<p>')) return text; 
-            
-            return text.split(/\n\s*\n/).map(p => {
-                const trimmed = p.trim();
-                return trimmed ? `<p class="mb-4 leading-relaxed text-justify">${trimmed}</p>` : '';
-            }).join('');
+       // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box)
+function formatParagraphs(text) {
+    if (!text) return '';
+    if (text.includes('<p>') || text.includes('<blockquote')) return text; // Jika sudah berupa HTML
+
+    return text.split(/\n\s*\n/).map(p => {
+        const trimmed = p.trim();
+        if (!trimmed) return '';
+
+        // Deteksi jika paragraf diawali tanda kutip " atau simbol >
+        if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || trimmed.startsWith('>')) {
+            const cleanQuote = trimmed.replace(/^>+\s*/, '').replace(/^"|"$/g, '');
+            return `
+                <blockquote class="p-4 my-4 bg-purple-50 border-l-4 border-purple-600 text-purple-900 italic font-medium rounded-r-2xl shadow-sm">
+                    "${cleanQuote}"
+                </blockquote>
+            `;
         }
+
+        // Paragraf biasa
+        return `<p class="mb-4 leading-relaxed text-justify">${trimmed}</p>`;
+    }).join('');
+}
 
         // 7 ARTIKEL LAMA LENGKAP 100% NASKAH ASLI
         const staticArticles = [
