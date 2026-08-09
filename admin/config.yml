@@ -1,15 +1,17 @@
 backend:
-  name: github
-  repo: dtsman1muncar/web # Ganti dengan "Username/Nama-Repo-GitHub-Anda"
-  branch: main # Atau "master" sesuai cabang utama di GitHub Anda
+  name: git-gateway
+  branch: main # Atau 'master'
 
-media_folder: "images" # Folder tempat gambar disimpan
+# Tambahkan baris ini untuk tes tampilan lokal
+local_backend: true
+
+media_folder: "images"
 public_folder: "images"
 
 collections:
   - name: "cerita_baik"
     label: "Cerita Baik & Kegiatan"
-    folder: "content/cerita" # Folder penyimpanan file teks artikel baru
+    folder: "content/cerita"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -18,5 +20,5 @@ collections:
       - { label: "Tanggal Terbit", name: "date", widget: "datetime" }
       - { label: "Kategori", name: "category", widget: "select", options: ["Wirausaha Kuliner", "Tata Rias & MUA", "Pelatihan Vokasi", "Kreativitas Produk", "Pelestarian Budaya", "Kewirausahaan Ramadan"] }
       - { label: "Foto Utama", name: "thumbnail", widget: "image" }
-      - { label: "Ringkasan Singkat (Pratinjau Kartu)", name: "excerpt", widget: "text" }
+      - { label: "Ringkasan Singkat", name: "excerpt", widget: "text" }
       - { label: "Isi Cerita Lengkap", name: "body", widget: "markdown" }
