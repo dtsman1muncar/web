@@ -1,12 +1,158 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel - Double Track SMAN 1 Muncar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - SMAN 1 Muncar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <!-- Script Pengelola Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<body class="bg-slate-100 text-slate-800 font-sans p-4 sm:p-8">
+
+    <div class="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b pb-4 mb-6">
+            <div>
+                <h1 class="text-xl font-bold text-slate-900">Admin Panel Cerita Baik</h1>
+                <p class="text-xs text-slate-500">Program Double Track SMAN 1 Muncar</p>
+            </div>
+            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">GitHub API Mode</span>
+        </div>
+
+        <!-- Form Token GitHub (Disimpan di browser) -->
+        <div class="mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">GitHub Personal Access Token</label>
+            <div class="flex gap-2">
+                <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button onclick="saveToken()" class="px-4 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold hover:bg-slate-900 transition">Simpan</button>
+            </div>
+            <p class="text-[10px] text-slate-400 mt-1">*Token tersimpan aman hanya di browser komputer/HP Anda.</p>
+        </div>
+
+        <!-- Form Tambah Artikel -->
+        <form id="article-form" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Judul Cerita / Artikel</label>
+                <input type="text" id="title" required placeholder="Masukkan judul artikel" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kategori</label>
+                    <select id="category" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+                        <option value="Wirausaha Kuliner">Wirausaha Kuliner</option>
+                        <option value="Tata Rias & MUA">Tata Rias & MUA</option>
+                        <option value="Pelatihan Vokasi">Pelatihan Vokasi</option>
+                        <option value="Kreativitas Produk">Kreativitas Produk</option>
+                        <option value="Pelestarian Budaya">Pelestarian Budaya</option>
+                        <option value="Kewirausahaan Ramadan">Kewirausahaan Ramadan</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Penulis</label>
+                    <input type="text" id="author" value="Agus Suyatno, S.Kom" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama File Gambar (di folder images/)</label>
+                <input type="text" id="image-name" required placeholder="contoh: cerita-baru.jpg" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm font-mono">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Ringkasan Pratinjau (Eksyerg/Excerpt)</label>
+                <textarea id="excerpt" rows="2" required placeholder="2-3 kalimat rangkuman singkat..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Isi Artikel Lengkap</label>
+                <textarea id="content" rows="6" required placeholder="Tuliskan isi cerita artikel secara lengkap di sini..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-lg transition">
+                <i class="fa-solid fa-paper-plane mr-1"></i> Terbitkan Artikel Ke GitHub
+            </button>
+        </form>
+
+        <!-- Status Result -->
+        <div id="status" class="hidden mt-4 p-4 rounded-xl text-xs text-center font-bold"></div>
+    </div>
+
+    <script>
+        // Load saved token
+        document.getElementById('gh-token').value = localStorage.getItem('dt_gh_token') || '';
+
+        function saveToken() {
+            const token = document.getElementById('gh-token').value.trim();
+            localStorage.setItem('dt_gh_token', token);
+            alert('Token berhasil disimpan!');
+        }
+
+        document.getElementById('article-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const token = localStorage.getItem('dt_gh_token');
+            const statusDiv = document.getElementById('status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (!token) {
+                alert('Silakan masukkan dan simpan GitHub Token Anda terlebih dahulu!');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Mengirim ke GitHub...';
+            statusDiv.classList.add('hidden');
+
+            const title = document.getElementById('title').value;
+            const category = document.getElementById('category').value;
+            const author = document.getElementById('author').value;
+            const imageName = document.getElementById('image-name').value;
+            const excerpt = document.getElementById('excerpt').value;
+            const content = document.getElementById('content').value;
+
+            // Template JSON / Data
+            const fileName = `article-${Date.now()}.json`;
+            const fileData = {
+                title, category, author,
+                image: `images/${imageName}`,
+                excerpt, content,
+                date: new Date().toISOString()
+            };
+
+            const repo = 'dtsman1muncar/web';
+            const path = `content/cerita/${fileName}`;
+            const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `Tambah artikel: ${title}`,
+                        content: btoa(unescape(encodeURIComponent(JSON.stringify(fileData, null, 2)))),
+                        branch: 'main'
+                    })
+                });
+
+                if (response.ok) {
+                    statusDiv.className = 'mt-4 p-4 rounded-xl text-xs text-center font-bold bg-emerald-100 text-emerald-800 block';
+                    statusDiv.innerText = 'BERHASIL! Artikel baru telah diterbitkan ke GitHub.';
+                    document.getElementById('article-form').reset();
+                } else {
+                    const err = await response.json();
+                    throw new Error(err.message || 'Gagal menyimpan');
+                }
+            } catch (err) {
+                statusDiv.className = 'mt-4 p-4 rounded-xl text-xs text-center font-bold bg-rose-100 text-rose-800 block';
+                statusDiv.innerText = 'GAGAL: ' + err.message + ' (Pastikan token benar dan memiliki akses repo)';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Terbitkan Artikel Ke GitHub';
+            }
+        });
+    </script>
 </body>
 </html>
