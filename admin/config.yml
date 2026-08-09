@@ -1,8 +1,9 @@
 backend:
   name: github
-  repo: dtsman1muncar/web # Ganti dengan "Username/Nama-Repository-GitHub-Anda"
-  branch: main # Atau 'master'
-  auth_type: implicit # Menggunakan login OAuth GitHub standar
+  repo: dtsman1muncar/web
+  branch: main
+  base_url: https://decap-cms-oauth-provider.slik.dev # Gateway OAuth Gratis
+  auth_endpoint: /auth
 
 media_folder: "images"
 public_folder: "images"
