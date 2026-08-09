@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: dtaman1muncar/web # Ganti dengan "Username/Nama-Repo-GitHub-Anda"
+  repo: dtsman1muncar/web # Ganti dengan "Username/Nama-Repo-GitHub-Anda"
   branch: main # Atau "master" sesuai cabang utama di GitHub Anda
 
 media_folder: "images" # Folder tempat gambar disimpan
