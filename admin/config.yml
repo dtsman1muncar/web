@@ -1,9 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: dtsman1muncar/web # Ganti dengan "Username/Nama-Repository-GitHub-Anda"
   branch: main # Atau 'master'
-
-# Tambahkan baris ini untuk tes tampilan lokal
-local_backend: true
+  auth_type: implicit # Menggunakan login OAuth GitHub standar
 
 media_folder: "images"
 public_folder: "images"
