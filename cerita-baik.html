@@ -10,14 +10,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0052D4',
+                            navy: '#0F172A',
+                            amber: '#D97706',
+                            rose: '#E11D48',
+                            emerald: '#059669',
+                            purple: '#9333EA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .glass-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
         }
+        .filter-btn.active {
+            background-color: #0052D4;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 82, 212, 0.3);
+        }
     </style>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 antialiased">
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white">
 
     <!-- Header / Navbar -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80 transition-all duration-300">
@@ -45,7 +71,7 @@
 
                 <!-- CTA Button -->
                 <div class="hidden lg:flex items-center space-x-4">
-                    <a href="https://wa.me/6282143393357" target="_blank" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-2 hover:opacity-90 transition">
+                    <a href="https://wa.me/6282143393357?text=Halo%20Admin,%20saya%20ingin%20bertanya%20mengenai%20Program%20Double%20Track" target="_blank" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-2 hover:opacity-90 transition">
                         <i class="fa-brands fa-whatsapp text-base"></i>
                         <span>Hubungi Kami</span>
                     </a>
@@ -63,97 +89,198 @@
             <a href="index.html" class="block px-4 py-2 rounded-xl text-slate-700 font-semibold">Beranda</a>
             <a href="cerita-baik.html" class="block px-4 py-2 rounded-xl bg-blue-50 text-blue-600 font-bold">Cerita Baik</a>
             <a href="index.html#katalog" class="block px-4 py-2 rounded-xl text-slate-700 font-semibold">Katalog Karya</a>
+            <a href="https://wa.me/6282143393357" target="_blank" class="block text-center px-4 py-3 bg-blue-600 text-white font-bold rounded-xl text-sm shadow-md mt-4">Hubungi Pengelola</a>
         </div>
     </header>
 
-    <!-- Banner Header Page -->
-    <section class="pt-32 pb-12 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="px-3.5 py-1.5 bg-blue-500/20 text-blue-300 text-xs font-extrabold rounded-lg uppercase tracking-wider">Inspirasi & Publikasi</span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold mt-3">Cerita Baik Double Track</h1>
+    <!-- Banner Header Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="px-3.5 py-1.5 bg-blue-500/20 text-blue-300 text-xs font-extrabold rounded-lg uppercase tracking-wider">Publikasi & Kumpulan Artikel</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold mt-3">6 Cerita Baik Double Track</h1>
             <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-3">
-                Kisah inspiratif alumni, catatan kegiatan pelatihan, dan jejak kemandirian siswa SMAN 1 Muncar.
+                Rangkaian kisah inspiratif para alumni, karya wirausaha mandiri, dan kegiatan bermakna dari Program Double Track SMAN 1 Muncar.
             </p>
+
+            <!-- Filter Buttons -->
+            <div class="mt-8 flex flex-wrap justify-center gap-2">
+                <button onclick="filterStories('all')" id="btn-all" class="filter-btn active px-5 py-2 rounded-xl text-xs font-bold transition bg-white/10 text-white hover:bg-white/20">
+                    Semua Cerita (6)
+                </button>
+                <button onclick="filterStories('alumni')" id="btn-alumni" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold transition bg-white/10 text-white hover:bg-white/20">
+                    Kisah Alumni & Siswa
+                </button>
+                <button onclick="filterStories('kegiatan')" id="btn-kegiatan" class="filter-btn px-5 py-2 rounded-xl text-xs font-bold transition bg-white/10 text-white hover:bg-white/20">
+                    Pelatihan & Kegiatan
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- Daftar Artikel & Cerita -->
+    <!-- Daftar 6 Cerita Baik -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Artikel 1 -->
-                <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="images/wisudasekolah.jpg" alt="Kisah Alumni MUA" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase">Kisah Alumni</span>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <div class="flex items-center text-xs text-slate-400 gap-3">
-                            <span><i class="fa-regular fa-calendar mr-1"></i> 12 Agustus 2026</span>
-                            <span><i class="fa-regular fa-user mr-1"></i> Tim DT Muncar</span>
+                <!-- CERITA 1: Mohammad Ridho As'ari -->
+                <article class="story-card alumni bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-ridho-pisang.jpg" alt="Kedai Mr-A Ridho" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Wirausaha Kuliner</span>
                         </div>
-                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition">
-                            Dari Bangku Sekolah Menjadi MUA Muda Mandiri Berpenghasilan
-                        </h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Berawal dari pelatihan Tata Rias Pengantin Berhijab di SMAN 1 Muncar, Siti kini telah melayani puluhan klien rias wisuda dan pendamping pengantin di Banyuwangi.
-                        </p>
-                        <div class="pt-3 border-t border-slate-100">
-                            <span class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition">
-                                Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i>
-                            </span>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Ridho, Alumni Double Track yang Mengubah Pisang Menjadi Peluang Emas
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                Berbekal semangat pantang menyerah, Mohammad Ridho As'ari berhasil membangun Kedai Mr-A di Muncar. Menghadirkan olahan Pisang Aroma, Pisang Gendut, hingga Pisang Susu Keju (PSK) dengan omzet mencapai jutaan rupiah per bulan.
+                            </p>
                         </div>
                     </div>
-                </article>
-
-                <!-- Artikel 2 -->
-                <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="images/kripik_cumi.jpeg" alt="Olahan Ikan Muncar" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        <span class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase">Inovasi Produk</span>
-                    </div>
-                    <div class="p-6 space-y-3">
-                        <div class="flex items-center text-xs text-slate-400 gap-3">
-                            <span><i class="fa-regular fa-calendar mr-1"></i> 05 Agustus 2026</span>
-                            <span><i class="fa-regular fa-user mr-1"></i> Tim Boga</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition">
-                            Menyulap Hasil Laut Muncar Menjadi Cumi Crispy Bernilai Jual
-                        </h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Siswa kelompok Tata Boga memanfaatkan melimpahnya tangkapan nelayan Muncar menjadi produk olahan dikemas modern yang diminati wisatawan lokal.
-                        </p>
-                        <div class="pt-3 border-t border-slate-100">
-                            <span class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition">
-                                Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i>
-                            </span>
-                        </div>
+                    <div class="p-6 pt-0">
+                        <a href="#modal-cerita-1" onclick="toggleModal('modal-cerita-1')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </article>
 
-                <!-- Artikel 3 -->
-                <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group">
-                    <div class="relative h-52 overflow-hidden">
-                        <img src="images/gambardepan.jpg" alt="Uji Kompetensi ITS" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase">Kegiatan</span>
+                <!-- CERITA 2: Cindy Aisyah -->
+                <article class="story-card alumni bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-cindy-mua.jpg" alt="Cindy Aisyah MUA" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Tata Rias & MUA</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Berkah Tata Rias: Cindy Raih Rp 3,5 Juta Dalam Sepekan
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                Cindy Aisyah membuktikan bahwa usia muda bukan halangan berbisnis. Berbekal keahlian tata rias dari Double Track, ia rutin kebanjiran order rias perpisahan sekolah dasar dengan pelayanan ramah dan aman untuk kulit anak.
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-6 space-y-3">
-                        <div class="flex items-center text-xs text-slate-400 gap-3">
-                            <span><i class="fa-regular fa-calendar mr-1"></i> 28 Juli 2026</span>
-                            <span><i class="fa-regular fa-user mr-1"></i> Panitia DT</span>
+                    <div class="p-6 pt-0">
+                        <a href="#modal-cerita-2" onclick="toggleModal('modal-cerita-2')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CERITA 3: Pelatihan Nail Art -->
+                <article class="story-card kegiatan bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-nail-art.jpg" alt="Pelatihan Nail Art" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Pelatihan Vokasi</span>
                         </div>
-                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition">
-                            Antusiasme Siswa Saat Menjalani Uji Kompetensi Bersama Penguji ITS
-                        </h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Momen seru saat puluhan siswa mempresentasikan produk kuliner dan mempraktikkan rias pengantin di depan tim master trainer dari ITS Surabaya.
-                        </p>
-                        <div class="pt-3 border-t border-slate-100">
-                            <span class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition">
-                                Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i>
-                            </span>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Dari Hobi Jadi Peluang: Siswi SMAN 1 Muncar Belajar Nail Art
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                Pelatihan hias kuku kreatif (Nail Art) digelar bersama praktisi Afifah Irsha. Mengajarkan siswi teknik perawatan kuku hingga kreasi desain bernilai jual tinggi untuk menyiapkan calon beautypreneur muda.
+                            </p>
                         </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#modal-cerita-3" onclick="toggleModal('modal-cerita-3')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CERITA 4: Amelia Tri Lestari -->
+                <article class="story-card alumni bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-amelia-bucket.jpg" alt="Bisnis Bucket Amelia" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Kreativitas Produk</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Dari Iseng Bikin Kado Ayah, Amelia Raup Jutaan Rupiah Bisnis Bucket
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                Keisengan membuat kado kustom ulang tahun ayah menjadi cikal bakal bisnis bucket bunga, snack, dan skincare kreatif buatan Amelia Tri Lestari dengan omzet mencapai Rp 2,5 juta per bulan.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#modal-cerita-4" onclick="toggleModal('modal-cerita-4')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CERITA 5: Felisa Dimsum -->
+                <article class="story-card alumni bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-felisa-dimsum.jpg" alt="Usaha Dimsum Felisa" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Tata Boga Kuliner</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Dari Dapur Rumah ke Kantin Sekolah, Felisa Buktikan Dimsum Bisa Meraih Mimpi
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                Manfaatkan waktu istirahat sekolah, Felisa menjajakan dimsum buatannya di kantin. Dari usaha kecil ini, ia mampu meraih omzet Rp 1 juta per bulan dan membantu perekonomian orang tuanya.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#modal-cerita-5" onclick="toggleModal('modal-cerita-5')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CERITA 6: Mewiru Kain Jarit -->
+                <article class="story-card kegiatan bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="images/cerita-mewiru-jarit.jpg" alt="Siswa Mewiru Kain Jarit" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <span class="absolute top-3 left-3 bg-amber-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">Pelestarian Budaya</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-regular fa-user text-blue-500 mr-1"></i> Agus Suyatno, S.Kom</span>
+                                <span><i class="fa-regular fa-building text-emerald-500 mr-1"></i> SMAN 1 Muncar</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition leading-snug">
+                                Saat Generasi Z Belajar Tradisi: Menjaga Warisan Jawa Lewat Seni Mewiru Jarit
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                                Siswi SMAN 1 Muncar belajar melipat kain jarit (mewiru) gaya Solo & Yogyakarta. Melatih ketelitian, kesabaran, serta melestarikan budaya tradisional Jawa di tengah era digital.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#modal-cerita-6" onclick="toggleModal('modal-cerita-6')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
+                            Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </article>
 
@@ -161,19 +288,144 @@
         </div>
     </section>
 
+    <!-- MODAL ARTIKEL 1 -->
+    <div id="modal-cerita-1" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-1')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-amber-600 uppercase">Wirausaha Kuliner</span>
+            <h2 class="text-2xl font-bold text-slate-900">Ridho, Alumni Double Track yang Mengubah Pisang Menjadi Peluang Emas</h2>
+            <p class="text-xs text-slate-400">Oleh: Agus Suyatno, S.Kom | Lokasi: Muncar, Banyuwangi</p>
+            <img src="images/cerita-ridho-pisang.jpg" alt="Ridho Kedai Mr-A" class="w-full h-72 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                <p><strong>MUNCAR</strong> – Semangat berwirausaha dan keberanian memulai dari nol menjadi kunci keberhasilan Mohammad Ridho As'ari, alumni Program Double Track SMAN 1 Muncar, dalam membangun usaha kuliner bernama Kedai Mr-A.</p>
+                <p>Setelah lulus, Ridho berniat mandiri secara finansial. Dengan modal terbatas, ia membuka kedai kecil menjajakan Pisang Aroma, Sosis Kriuk, Pisang Gendut, hingga minuman Pisang Susu Keju (PSK), taro, dan matcha. Topping pisang kriuk buatannya menjadi daya tarik utama.</p>
+                <blockquote class="p-4 bg-blue-50 border-l-4 border-blue-600 text-blue-900 italic font-semibold rounded-r-xl">
+                    "Jangan menunggu sempurna untuk memulai. Mulailah dengan apa yang kita punya hari ini, lalu perbaiki setiap langkahnya. Kerja keras dan konsistensi akan mendekatkan kita pada mimpi." — Mohammad Ridho As'ari
+                </blockquote>
+                <p>Kini kedai sederhananya mampu menghasilkan omzet Rp 1,5 juta hingga Rp 2 juta per bulan. Lokasi usahanya berada di Jalan Sumberayu Muncar, depan Balai Desa Kedungrejo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ARTIKEL 2 -->
+    <div id="modal-cerita-2" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-2')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-purple-600 uppercase">Tata Rias & MUA</span>
+            <h2 class="text-2xl font-bold text-slate-900">Berkah Tata Rias: Cindy Raih Rp 3,5 Juta Dalam Sepekan</h2>
+            <p class="text-xs text-slate-400">Oleh: Agus Suyatno, S.Kom | Lokasi: Muncar, Banyuwangi</p>
+            <img src="images/cerita-cindy-mua.jpg" alt="Cindy MUA" class="w-full h-72 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                <p><strong>BANYUWANGI</strong> – Berbekal keterampilan tata rias dari Program Double Track SMAN 1 Muncar, Cindy Aisyah berhasil membuktikan bahwa keahlian vokasi mampu mendatangkan penghasilan hingga Rp 3,5 juta dalam sepekan.</p>
+                <p>Cindy berfokus melayani rias wajah untuk perpisahan dan wisuda anak-anak sekolah dasar. Kuncinya terletak pada kesabaran, kepramukaan ramah, serta pemakaian produk kosmetik yang aman dan natural untuk kulit sensitif anak.</p>
+                <p>Kepala SMAN 1 Muncar, Rina Kartika, mengapresiasi pencapaian Cindy sebagai bukti nyata keberhasilan pendidikan vokasi dalam mencetak generasi muda yang mandiri secara finansial.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ARTIKEL 3 -->
+    <div id="modal-cerita-3" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-3')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-blue-600 uppercase">Pelatihan Vokasi</span>
+            <h2 class="text-2xl font-bold text-slate-900">Dari Hobi Jadi Peluang: Siswi SMAN 1 Muncar Belajar Nail Art</h2>
+            <p class="text-xs text-slate-400">Oleh: Agus Suyatno, S.Kom | Lokasi: SMAN 1 Muncar</p>
+            <img src="images/cerita-nail-art.jpg" alt="Siswa Belajar Nail Art" class="w-full h-72 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                <p><strong>BANYUWANGI</strong> – Siswi Program Double Track Tata Rias Pengantin Berhijab SMAN 1 Muncar mengikuti pelatihan seni menghias kuku (Nail Art) selama 2,5 jam yang dipandu langsung oleh praktisi Afifah Irsha dari Afifa Henna & Nail Art.</p>
+                <p>Para siswi diajarkan teknik perawatan kuku, pemeliharaan warna, dan desain hias kuku kekinian. Salah satu peserta, Keysa Arum Sari, mengaku terdorong untuk membuka usaha hias kuku kecil-kecilan di masa depan.</p>
+                <blockquote class="p-4 bg-purple-50 border-l-4 border-purple-600 text-purple-900 italic font-semibold rounded-r-xl">
+                    "Potensi anak-anak muda ini sangat besar. Dengan bimbingan yang tepat, mereka bisa menjadi beautypreneur sukses." — Afifah Irsha (Praktisi DUDI)
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ARTIKEL 4 -->
+    <div id="modal-cerita-4" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-4')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-rose-600 uppercase">Kreativitas Produk</span>
+            <h2 class="text-2xl font-bold text-slate-900">Dari Iseng Bikin Kado Ayah, Amelia Raup Jutaan Rupiah Bisnis Bucket</h2>
+            <p class="text-xs text-slate-400">Oleh: Agus Suyatno, S.Kom | Lokasi: Muncar, Banyuwangi</p>
+            <img src="images/cerita-amelia-bucket.jpg" alt="Bucket Amelia" class="w-full h-72 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                <p><strong>BANYUWANGI</strong> – Berawal dari keisengan membuat hadiah ulang tahun kustom untuk sang ayah, Kasiyanto, Amelia Tri Lestari (alumni Double Track) berhasil membangun bisnis bucket kreatif bernilai jual tinggi.</p>
+                <p>Memanfaatkan modal uang saku Lebaran dan promosi media sosial Instagram, Amelia merangkai bucket bunga pastel, jajanan, hingga produk perawatan kulit dengan keuntungan mencapai Rp 1,5 juta – Rp 2,5 juta per bulan.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ARTIKEL 5 -->
+    <div id="modal-cerita-5" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-5')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-emerald-600 uppercase">Tata Boga Kuliner</span>
+            <h2 class="text-2xl font-bold text-slate-900">Dari Dapur Rumah ke Kantin Sekolah, Felisa Buktikan Dimsum Bisa Meraih Mimpi</h2>
+            <p class="text-xs text-slate-400">Oleh: Agus Suyatno, S.Kom | Lokasi: SMAN 1 Muncar</p>
+            <img src="images/cerita-felisa-dimsum.jpg" alt="Dimsum Felisa" class="w-full h-72 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                <p><strong>BANYUWANGI</strong> – Felisa, siswi Double Track Tata Boga SMAN 1 Muncar, rutin menyiapkan olahan dimsum di rumah sebelum jam sekolah. Saat waktu istirahat tiba, lapak dimsumnya di kantin sekolah selalu disabu hangat oleh teman dan para guru.</p>
+                <p>Kini ia mengantongi omzet sekitar Rp 900 ribu hingga Rp 1 juta per bulan. Hasil penjualan dimsum tersebut sangat membantu kebutuhan sehari-hari dan meringankan beban ekonomi orang tuanya.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ARTIKEL 6 -->
+    <div id="modal-cerita-6" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="toggleModal('modal-cerita-6')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">✕</button>
+            <span class="text-xs font-bold text-amber-600 uppercase">Pelestarian Budaya</span>
+            <h2 class="text-2xl font-bold text-slate-900">Saat Generasi Z Belajar Tradisi: Menjaga Warisan Jawa Lewat Seni Mewiru Jarit</h2>
+            <p class="text-xs text-slate-400">Oleh: Agus Suyatno, S.Kom | Lokasi: SMAN 1 Muncar</p>
+            <img src="images/cerita-mewiru-jarit.jpg" alt="Mewiru Jarit" class="w-full h-72 object-cover rounded-2xl">
+            <div class="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+                <p><strong>BANYUWANGI</strong> – Di tengah kesibukan era digital, para siswi SMAN 1 Muncar diajak mempelajari seni melipat tepi kain jarit (mewiru) gaya Solo dan Yogyakarta melalui kelas Tata Rias Pengantin Berhijab.</p>
+                <p>Wiji Amelia Putri, Ketua KUS Beauty Lock, menyampaikan rasa bangganya saat belajar mewiru kain batik warisan nenek dari Ibu Parwati (guru sekolah). Kegiatan ini mengajarkan ketelitian, kesabaran, dan rasa hormat terhadap identitas tradisi Jawa.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-3">
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs space-y-3">
             <p class="font-bold text-white text-sm">Program Double Track SMAN 1 Muncar Banyuwangi</p>
             <p>Jl. Raya Tapan No.1, Tapanrejo, Kec. Muncar, Kabupaten Banyuwangi, Jawa Timur 68472.</p>
             <p>&copy; 2026 SMAN 1 Muncar. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Script Navigation & Filter -->
     <script>
+        // Toggle Mobile Menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Toggle Modal
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+
+        // Filter Function
+        function filterStories(category) {
+            const cards = document.querySelectorAll('.story-card');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn => btn.classList.remove('active', 'bg-blue-600'));
+
+            if (category === 'all') {
+                document.getElementById('btn-all').classList.add('active');
+                cards.forEach(card => card.classList.remove('hidden'));
+            } else {
+                document.getElementById('btn-' + category).classList.add('active');
+                cards.forEach(card => {
+                    if (card.classList.contains(category)) card.classList.remove('hidden');
+                    else card.classList.add('hidden');
+                });
+            }
+        }
     </script>
 </body>
 </html>
