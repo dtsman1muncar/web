@@ -136,36 +136,32 @@
             if (modal) modal.classList.toggle('hidden');
         }
 
-        // Fungsi Otomatis Mengubah Teks Polos Menjadi Paragraf HTML Rapi
-       // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box)
-function formatParagraphs(text) {
-    // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box)
-function formatParagraphs(text) {
-    if (!text) return '';
-    if (text.includes('<p>') || text.includes('<blockquote')) return text;
+        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box)
+        function formatParagraphs(text) {
+            if (!text) return '';
+            if (text.includes('<p>') || text.includes('<blockquote')) return text;
 
-    return text.split(/\n\s*\n/).map(p => {
-        const trimmed = p.trim();
-        if (!trimmed) return '';
+            return text.split(/\n\s*\n/).map(p => {
+                const trimmed = p.trim();
+                if (!trimmed) return '';
 
-        // Deteksi jika diawali bintang (*), tanda petik ("), atau simbol >
-        if (trimmed.startsWith('*') || trimmed.startsWith('"') || trimmed.startsWith('>')) {
-            // Bersihkan simbol awalan (*, ", >) dan akhiran (*, ")
-            const cleanQuote = trimmed
-                .replace(/^[\*">]+\s*/, '')
-                .replace(/[\*"]+$/, '');
+                // Deteksi jika diawali bintang (*), tanda petik ("), atau simbol >
+                if (trimmed.startsWith('*') || trimmed.startsWith('"') || trimmed.startsWith('>')) {
+                    const cleanQuote = trimmed
+                        .replace(/^[\*">]+\s*/, '')
+                        .replace(/[\*"]+$/, '');
 
-            return `
-                <blockquote class="p-4 my-4 bg-purple-50 border-l-4 border-purple-600 text-purple-900 italic font-medium rounded-r-2xl shadow-sm">
-                    "${cleanQuote}"
-                </blockquote>
-            `;
+                    return `
+                        <blockquote class="p-4 my-4 bg-purple-50 border-l-4 border-purple-600 text-purple-900 italic font-medium rounded-r-2xl shadow-sm">
+                            "${cleanQuote}"
+                        </blockquote>
+                    `;
+                }
+
+                // Paragraf biasa
+                return `<p class="mb-4 leading-relaxed text-justify">${trimmed}</p>`;
+            }).join('');
         }
-
-        // Paragraf biasa
-        return `<p class="mb-4 leading-relaxed text-justify">${trimmed}</p>`;
-    }).join('');
-}
 
         // 7 ARTIKEL LAMA LENGKAP 100% NASKAH ASLI
         const staticArticles = [
