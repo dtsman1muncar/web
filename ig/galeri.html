@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Instagram - Double Track SMAN 1 Muncar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { blue: '#0052D4', navy: '#0F172A' } },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Navbar Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="images/logo-doubletrack.webp" alt="Logo" class="h-10 sm:h-12 w-auto">
+                    <div class="border-l border-slate-300 pl-2.5">
+                        <span class="text-xs sm:text-base font-extrabold text-slate-900 block leading-none">SMAN 1 MUNCAR</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold text-blue-600 tracking-widest uppercase block mt-0.5">Galeri Instagram</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                    <a href="index.html" class="hover:text-blue-600 transition">Beranda</a>
+                    <a href="cerita-baik.html" class="hover:text-blue-600 transition">Cerita Baik</a>
+                    <a href="galeri.html" class="text-blue-600 font-extrabold border-b-2 border-blue-600 pb-1">Galeri IG</a>
+                    <a href="index.html#katalog" class="hover:text-blue-600 transition">Katalog Karya</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container Ala Instagram Grid -->
+    <main class="pt-20 sm:pt-28 pb-16 max-w-4xl mx-auto px-2 sm:px-6">
+
+        <!-- IG Profile Header (Sangat Ringkas di HP) -->
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 shadow-sm mb-4 sm:mb-8 flex items-center gap-4 sm:gap-10">
+            <!-- Profil Avatar -->
+            <div class="w-16 h-16 sm:w-28 sm:h-28 rounded-full p-0.5 sm:p-1 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 shrink-0">
+                <img src="images/logo-doubletrack.webp" alt="Profile" class="w-full h-full object-cover rounded-full bg-white p-0.5">
+            </div>
+
+            <!-- Detail Profil -->
+            <div class="space-y-1 sm:space-y-3 flex-1">
+                <div class="flex items-center gap-2">
+                    <h1 class="text-base sm:text-xl font-bold text-slate-900">dtsman1muncar</h1>
+                    <i class="fa-solid fa-circle-check text-blue-500 text-xs sm:text-sm"></i>
+                </div>
+                
+                <!-- Statistik Post -->
+                <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm text-slate-600">
+                    <div><strong class="text-slate-900" id="post-count">0</strong> Kiriman</div>
+                    <div><strong class="text-slate-900">Program</strong> Double Track</div>
+                </div>
+
+                <p class="text-[11px] sm:text-sm text-slate-600 leading-tight hidden sm:block">
+                    📸 Galeri Resmi Kegiatan Vokasi, Pelatihan, & Hasil Karya Siswa SMAN 1 Muncar.
+                </p>
+            </div>
+        </div>
+
+        <!-- Grid Postingan (3 Kolom Presisi Square 1:1) -->
+        <div id="ig-grid" class="grid grid-cols-3 gap-1 sm:gap-4">
+            <!-- Item dimuat otomatis via Javascript -->
+        </div>
+
+    </main>
+
+    <!-- Modal Detail Pop-Up (Slide Multi-Media di Smartphone) -->
+    <div id="ig-modal" class="fixed inset-0 z-50 hidden bg-slate-900/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-white max-w-2xl w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative flex flex-col max-h-[92vh]">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-20 text-white bg-black/60 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">✕</button>
+
+            <!-- Slider Container (Swipeable Multi Media) -->
+            <div class="relative bg-black w-full aspect-square flex items-center justify-center overflow-hidden">
+                <div id="slider-content" class="w-full h-full flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth">
+                    <!-- Foto/Video akan disuntikkan ke sini -->
+                </div>
+
+                <!-- Indicator Multi-Item Icon -->
+                <div id="carousel-indicator" class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 text-white text-[10px] px-2.5 py-0.5 rounded-full hidden">
+                    <span id="current-slide">1</span>/<span id="total-slide">1</span>
+                </div>
+            </div>
+
+            <!-- Description / Caption -->
+            <div class="p-4 sm:p-6 flex flex-col justify-between space-y-3 bg-white overflow-y-auto">
+                <div class="flex items-center space-x-2 border-b pb-2">
+                    <div class="w-6 h-6 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 to-purple-600">
+                        <img src="images/logo-doubletrack.webp" class="w-full h-full rounded-full bg-white">
+                    </div>
+                    <span class="text-xs font-bold text-slate-900">dtsman1muncar</span>
+                </div>
+
+                <p id="modal-caption" class="text-xs sm:text-sm text-slate-700 leading-relaxed max-h-32 overflow-y-auto"></p>
+
+                <div class="text-[10px] text-slate-400 border-t pt-2 flex justify-between items-center">
+                    <span id="modal-date">SMAN 1 Muncar</span>
+                    <div class="flex gap-3 text-sm text-slate-600">
+                        <i class="fa-regular fa-heart hover:text-rose-500 transition cursor-pointer"></i>
+                        <i class="fa-regular fa-paper-plane hover:text-blue-500 transition cursor-pointer"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Data Postingan Galeri (Format WEBPRingan + Multi Slide Foto/Video)
+        const galleryData = [
+            {
+                // Contoh Postingan Multiple Foto (Carousel Swipe)
+                media: [
+                    { type: 'image', url: 'images/cerita-melati.webp' },
+                    { type: 'image', url: 'images/cerita-mewiru-jarit.webp' }
+                ],
+                caption: "Suasana pelatihan meronce melati & melestarikan tradisi mewiru kain jarit bersama para siswi KUS Tata Rias 🌸✨ #DoubleTrack #SMAN1Muncar",
+                date: "Terbaru"
+            },
+            {
+                // Contoh Postingan Video
+                media: [
+                    { type: 'video', url: 'images/kegiatan-vokasi.mp4' } // Dukungan Video MP4
+                ],
+                caption: "DOKUMENTASI VIDEO: Sesi praktik langsung siswa Tata Boga & Tata Rias Double Track SMAN 1 Muncar 📹🔥",
+                date: "Video Kegiatan"
+            },
+            {
+                media: [{ type: 'image', url: 'images/cerita-ridho-pisang.webp' }],
+                caption: "Kedai Mr-A buatan Mohammad Ridho, alumni Double Track yang sukses berwirausaha kuliner 🍌🍹 #WirausahaSiswa",
+                date: "Kisah Alumni"
+            },
+            {
+                media: [{ type: 'image', url: 'images/cerita-cindy-mua.webp' }],
+                caption: "Keterampilan Tata Rias Pengantin Berhijab membawa Cindy Aisyah meraih peluang usaha MUA 💄✨ #MakeUpArtist",
+                date: "Kisah Inspiratif"
+            },
+            {
+                media: [{ type: 'image', url: 'images/cerita-nail-art.webp' }],
+                caption: "Pelatihan Nail Art bersama praktisi kecantikan DUDI Afifah Irsha 💅✨ #NailArt #TataRias",
+                date: "Pelatihan Vokasi"
+            },
+            {
+                media: [{ type: 'image', url: 'images/cerita-amelia-bucket.webp' }],
+                caption: "Kreasi bucket kreatif karya Amelia Tri Lestari, produk unik bernilai jual tinggi 💐🎁 #BucketKreatif",
+                date: "Karya Siswa"
+            }
+        ];
+
+        const grid = document.getElementById('ig-grid');
+        document.getElementById('post-count').innerText = galleryData.length;
+
+        // Render Grid Ala Instagram presisi Square
+        galleryData.forEach((post, index) => {
+            const firstMedia = post.media[0];
+            const isMultiple = post.media.length > 1;
+            const isVideo = firstMedia.type === 'video';
+
+            grid.innerHTML += `
+                <div onclick="openModal(${index})" class="relative group aspect-square bg-slate-200 overflow-hidden cursor-pointer rounded-lg sm:rounded-xl">
+                    ${isVideo ? `
+                        <video src="${firstMedia.url}" class="w-full h-full object-cover"></video>
+                        <span class="absolute top-2 right-2 text-white text-xs bg-black/50 p-1 rounded-md"><i class="fa-solid fa-play"></i></span>
+                    ` : `
+                        <img src="${firstMedia.url}" alt="Post" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+                    `}
+
+                    ${isMultiple ? `
+                        <span class="absolute top-2 right-2 text-white text-xs bg-black/50 p-1 rounded-md"><i class="fa-solid fa-clone"></i></span>
+                    ` : ''}
+
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-3 text-white text-xs sm:text-sm font-bold">
+                        <span><i class="fa-solid fa-heart mr-1"></i> 24</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        function openModal(index) {
+            const post = galleryData[index];
+            const slider = document.getElementById('slider-content');
+            const indicator = document.getElementById('carousel-indicator');
+            slider.innerHTML = '';
+
+            // Render Multi Media (Slide / Swipe)
+            post.media.forEach((item) => {
+                if (item.type === 'video') {
+                    slider.innerHTML += `
+                        <div class="w-full h-full shrink-0 snap-center flex items-center justify-center bg-black">
+                            <video src="${item.url}" controls class="max-w-full max-h-full object-contain"></video>
+                        </div>
+                    `;
+                } else {
+                    slider.innerHTML += `
+                        <div class="w-full h-full shrink-0 snap-center flex items-center justify-center bg-black">
+                            <img src="${item.url}" class="max-w-full max-h-full object-contain" loading="lazy">
+                        </div>
+                    `;
+                }
+            });
+
+            // Set Indicator Slide
+            if (post.media.length > 1) {
+                indicator.classList.remove('hidden');
+                document.getElementById('current-slide').innerText = 1;
+                document.getElementById('total-slide').innerText = post.media.length;
+            } else {
+                indicator.classList.add('hidden');
+            }
+
+            document.getElementById('modal-caption').innerText = post.caption;
+            document.getElementById('modal-date').innerText = post.date;
+            document.getElementById('ig-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('ig-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
