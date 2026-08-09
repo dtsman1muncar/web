@@ -136,7 +136,7 @@
             if (modal) modal.classList.toggle('hidden');
         }
 
-        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box)
+        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box Tanpa Double Petik)
         function formatParagraphs(text) {
             if (!text) return '';
             if (text.includes('<p>') || text.includes('<blockquote')) return text;
@@ -147,6 +147,7 @@
 
                 // Deteksi jika diawali bintang (*), tanda petik ("), atau simbol >
                 if (trimmed.startsWith('*') || trimmed.startsWith('"') || trimmed.startsWith('>')) {
+                    // Bersihkan simbol awalan & akhiran (*, ", >) agar tidak terjadi double tanda petik
                     const cleanQuote = trimmed
                         .replace(/^[\*">]+\s*/, '')
                         .replace(/[\*"]+$/, '');
@@ -163,7 +164,7 @@
             }).join('');
         }
 
-        // 7 ARTIKEL LAMA LENGKAP 100% NASKAH ASLI
+        // 7 ARTIKEL LAMA LENGKAP 100% NASKAH ASLI (TANPA DIPOTONG)
         const staticArticles = [
             {
                 id: 'static-1',
