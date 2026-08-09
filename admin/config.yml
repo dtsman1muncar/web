@@ -2,8 +2,6 @@ backend:
   name: github
   repo: dtsman1muncar/web
   branch: main
-  base_url: https://decap-cms-oauth-provider.slik.dev # Gateway OAuth Gratis
-  auth_endpoint: /auth
 
 media_folder: "images"
 public_folder: "images"
