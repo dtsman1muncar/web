@@ -56,28 +56,46 @@
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Header / Navbar -->
+    <!-- Header / Navbar Rapi Tanpa Berjejal -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo Double Track Official -->
                 <a href="#beranda" class="flex items-center space-x-3 group py-1">
-                    <img src="images/logo-doubletrack.png" alt="Logo SMA Double Track Jatim & ITS" class="h-12 w-auto object-contain group-hover:scale-105 transition duration-300">
+                    <img src="images/logo-doubletrack.webp" alt="Logo SMA Double Track Jatim & ITS" class="h-12 w-auto object-contain group-hover:scale-105 transition duration-300">
                     <div class="border-l border-slate-300 pl-3">
                         <span class="text-base font-extrabold text-slate-900 tracking-tight block leading-none">SMAN 1 MUNCAR</span>
                         <span class="text-[10px] font-bold text-blue-600 tracking-widest uppercase block mt-1">Kab. Banyuwangi</span>
                     </div>
                 </a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                <!-- Desktop Navigation Menu ringkas dengan Dropdown Publikasi -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-600">
                     <a href="#beranda" class="hover:text-blue-600 transition">Beranda</a>
                     <a href="#tentang" class="hover:text-blue-600 transition">Tentang</a>
-                    <a href="#keahlian" class="hover:text-blue-600 transition">Bidang Keterampilan</a>
+                    <a href="#keahlian" class="hover:text-blue-600 transition">Keahlian</a>
                     <a href="#katalog" class="hover:text-blue-600 transition">Katalog Karya</a>
-                    <a href="cerita-baik.html" class="text-blue-600 font-bold hover:text-blue-700 transition">Cerita Baik</a>
-                    <a href="#alur" class="hover:text-blue-600 transition">Alur Program</a>
-                    <a href="#testimoni" class="hover:text-blue-600 transition">Testimoni</a>
+                    
+                    <!-- Dropdown Menu Publikasi (Menghemat tempat di Navbar) -->
+                    <div class="relative group py-2">
+                        <button class="flex items-center gap-1 text-blue-600 font-bold hover:text-blue-700 transition">
+                            <span>Publikasi & Media</span>
+                            <i class="fa-solid fa-chevron-down text-xs transition duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 hidden group-hover:block transition duration-200">
+                            <a href="cerita-baik.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-blue-600 text-xs font-bold transition">
+                                <i class="fa-solid fa-newspaper text-blue-500 w-4"></i> Cerita Baik DT
+                            </a>
+                            <a href="ig/" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-rose-50 text-slate-700 hover:text-rose-600 text-xs font-bold transition">
+                                <i class="fa-brands fa-instagram text-rose-500 w-4"></i> Galeri IG
+                            </a>
+                            <a href="jobsheet/" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-amber-50 text-slate-700 hover:text-amber-600 text-xs font-bold transition">
+                                <i class="fa-solid fa-file-lines text-amber-500 w-4"></i> Jobsheet Praktikum
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#testimoni" class="hover:text-blue-600 transition">Testimoni Video</a>
                     <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
                 </nav>
 
@@ -98,14 +116,26 @@
 
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
-            <a href="#beranda" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Beranda</a>
-            <a href="#tentang" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Tentang</a>
-            <a href="#keahlian" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Bidang Keterampilan</a>
-            <a href="#katalog" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Katalog Karya</a>
-            <a href="cerita-baik.html" class="block px-4 py-2.5 rounded-xl bg-blue-50 text-blue-600 text-sm font-bold">Cerita Baik</a>
-            <a href="#alur" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Alur Program</a>
-            <a href="#testimoni" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">Testimoni</a>
-            <a href="#faq" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 hover:text-blue-600 text-sm font-semibold">FAQ</a>
+            <a href="#beranda" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 text-sm font-semibold">Beranda</a>
+            <a href="#tentang" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 text-sm font-semibold">Tentang</a>
+            <a href="#keahlian" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 text-sm font-semibold">Bidang Keterampilan</a>
+            <a href="#katalog" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 text-sm font-semibold">Katalog Karya</a>
+            
+            <div class="pt-2 border-t border-slate-100 space-y-1">
+                <span class="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Publikasi & Media</span>
+                <a href="cerita-baik.html" class="block px-4 py-2 rounded-xl bg-blue-50 text-blue-600 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-newspaper"></i> Cerita Baik DT
+                </a>
+                <a href="ig/" class="block px-4 py-2 rounded-xl hover:bg-rose-50 text-slate-700 hover:text-rose-600 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-rose-500"></i> Galeri IG
+                </a>
+                <a href="jobsheet/" class="block px-4 py-2 rounded-xl hover:bg-amber-50 text-slate-700 hover:text-amber-600 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-file-lines text-amber-500"></i> Jobsheet Praktikum
+                </a>
+            </div>
+
+            <a href="#testimoni" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 text-sm font-semibold">Testimoni Video</a>
+            <a href="#faq" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-blue-50 text-sm font-semibold">FAQ</a>
             <a href="https://wa.me/6282143393357" target="_blank" class="block text-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md mt-4">Hubungi Pengelola</a>
         </div>
     </header>
@@ -494,7 +524,7 @@
         </div>
     </section>
 
-    <!-- Testimoni Siswa Section -->
+    <!-- Testimoni Siswa & Pemutar Video Testimoni -->
     <section id="testimoni" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -504,7 +534,8 @@
                 <h2 class="text-3xl font-extrabold text-slate-900">Apa Kata Alumni & Peserta?</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Testimoni Teks Ringkas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
                 <div class="bg-white p-8 rounded-3xl shadow-md border border-slate-200/80 space-y-4">
                     <div class="flex items-center space-x-1 text-amber-400 text-sm">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -537,6 +568,57 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Area Video Testimoni YouTube & MP4 -->
+            <div class="pt-8 border-t border-slate-200">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Video Dokumentasi</span>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-1">Saksikan Liputan & Testimoni Video</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Video 1: YouTube Embed -->
+                    <div class="bg-white rounded-3xl p-4 border border-slate-200 shadow-lg flex flex-col justify-between">
+                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 mb-4">
+                            <!-- Ganti VIDEO_ID_YOUTUBE dengan ID video YouTube Anda -->
+                            <iframe 
+                                class="w-full h-full object-cover"
+                                src="https://www.youtube.com/embed/VIDEO_ID_YOUTUBE" 
+                                title="Testimoni Alumni Double Track" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="px-2 pb-2">
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Video Testimoni Alumni</span>
+                            <h4 class="font-bold text-base text-slate-900 mt-1">Perjalanan Membangun Usaha Kedai Mr-A</h4>
+                            <p class="text-xs text-slate-500 mt-0.5">Mohammad Ridho As'ari — Alumni KUS Kuliner</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2: MP4 Langsung dari folder images/ -->
+                    <div class="bg-white rounded-3xl p-4 border border-slate-200 shadow-lg flex flex-col justify-between">
+                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 mb-4">
+                            <!-- Ganti testimoni-alumni.mp4 dengan file video Anda -->
+                            <video 
+                                class="w-full h-full object-cover" 
+                                controls 
+                                preload="metadata"
+                                poster="images/cerita-cindy-mua.jpg">
+                                <source src="images/testimoni-alumni.mp4" type="video/mp4">
+                                Browser Anda tidak mendukung pemutaran video.
+                            </video>
+                        </div>
+                        <div class="px-2 pb-2">
+                            <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Video Pengalaman Siswa</span>
+                            <h4 class="font-bold text-base text-slate-900 mt-1">Peluang Bisnis Jasa Tata Rias MUA</h4>
+                            <p class="text-xs text-slate-500 mt-0.5">Cindy Aisyah — KUS Tata Rias Pengantin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
