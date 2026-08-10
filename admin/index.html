@@ -33,7 +33,7 @@
         </form>
     </div>
 
-    <!-- ================= DASHBOARD ADMIN (TERSEMBUNYI) ================= -->
+    <!-- ================= DASHBOARD ADMIN ================= -->
     <div id="admin-dashboard" class="hidden w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
         <!-- Header -->
         <div class="flex items-center justify-between border-b pb-4 mb-6">
@@ -81,9 +81,11 @@
                 </div>
             </div>
 
+            <!-- DUKUNGAN UNGGAN FOTO / GAMBAR LANGSUNG -->
             <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama File Gambar (di folder images/)</label>
-                <input type="text" id="image-name" required placeholder="contoh: cerita-baru.jpg" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm font-mono">
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Unggah Foto / Gambar Sampul</label>
+                <input type="file" id="image-file" accept="image/*" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                <p class="text-[10px] text-slate-400 mt-1">*Gambar akan otomatis diunggah ke folder images/ di GitHub.</p>
             </div>
 
             <div>
@@ -106,14 +108,12 @@
     </div>
 
     <script>
-        // ================= PASSCODE ADMIN =================
-        const ADMIN_PASSCODE = "doubletrack1muncar"; // SILAKAN GANTI PASSWORD ANDA DI SINI
+        const ADMIN_PASSCODE = "doubletrack1muncar";
 
         const loginScreen = document.getElementById('login-screen');
         const adminDashboard = document.getElementById('admin-dashboard');
         const loginError = document.getElementById('login-error');
 
-        // Cek Sesi Login
         if (sessionStorage.getItem('dt_admin_logged') === 'true') {
             showDashboard();
         }
@@ -146,7 +146,17 @@
             alert('Token berhasil disimpan!');
         }
 
-        // Handle Submit Form Artikel
+        // Helper untuk Konversi File ke Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // Handle Submit Form Artikel & Upload Gambar
         document.getElementById('article-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const token = localStorage.getItem('dt_gh_token');
@@ -159,30 +169,55 @@
             }
 
             submitBtn.disabled = true;
-            submitBtn.innerText = 'Mengirim ke GitHub...';
+            submitBtn.innerText = 'Mengunggah Gambar & Artikel...';
             statusDiv.classList.add('hidden');
 
             const title = document.getElementById('title').value;
             const category = document.getElementById('category').value;
             const author = document.getElementById('author').value;
-            const imageName = document.getElementById('image-name').value;
+            const fileInput = document.getElementById('image-file');
             const excerpt = document.getElementById('excerpt').value;
             const content = document.getElementById('content').value;
 
-            const fileName = `article-${Date.now()}.json`;
-            const fileData = {
-                title, category, author,
-                image: `images/${imageName}`,
-                excerpt, content,
-                date: new Date().toISOString()
-            };
-
             const repo = 'dtsman1muncar/web';
-            const path = `content/cerita/${fileName}`;
-            const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+            const timestamp = Date.now();
 
             try {
-                const response = await fetch(url, {
+                // 1. Upload File Gambar ke Folder images/
+                const imageFile = fileInput.files[0];
+                const fileExt = imageFile.name.split('.').pop();
+                const imageFileName = `cerita-${timestamp}.${fileExt}`;
+                const imageBase64 = await fileToBase64(imageFile);
+
+                const imgUrl = `https://api.github.com/repos/${repo}/contents/images/${imageFileName}`;
+                const imgResponse = await fetch(imgUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `Upload foto artikel: ${imageFileName}`,
+                        content: imageBase64,
+                        branch: 'main'
+                    })
+                });
+
+                if (!imgResponse.ok) {
+                    throw new Error('Gagal mengunggah foto gambar ke GitHub');
+                }
+
+                // 2. Upload File JSON Artikel ke Folder content/cerita/
+                const articleFileName = `article-${timestamp}.json`;
+                const articleData = {
+                    title, category, author,
+                    image: `images/${imageFileName}`,
+                    excerpt, content,
+                    date: new Date().toISOString()
+                };
+
+                const articleUrl = `https://api.github.com/repos/${repo}/contents/content/cerita/${articleFileName}`;
+                const articleResponse = await fetch(articleUrl, {
                     method: 'PUT',
                     headers: {
                         'Authorization': `token ${token}`,
@@ -190,22 +225,23 @@
                     },
                     body: JSON.stringify({
                         message: `Tambah artikel: ${title}`,
-                        content: btoa(unescape(encodeURIComponent(JSON.stringify(fileData, null, 2)))),
+                        content: btoa(unescape(encodeURIComponent(JSON.stringify(articleData, null, 2)))),
                         branch: 'main'
                     })
                 });
 
-                if (response.ok) {
+                if (articleResponse.ok) {
                     statusDiv.className = 'mt-4 p-4 rounded-xl text-xs text-center font-bold bg-emerald-100 text-emerald-800 block';
-                    statusDiv.innerText = 'BERHASIL! Artikel baru telah diterbitkan ke GitHub.';
+                    statusDiv.innerText = 'BERHASIL! Foto dan artikel baru telah diterbitkan ke GitHub.';
                     document.getElementById('article-form').reset();
                 } else {
-                    const err = await response.json();
-                    throw new Error(err.message || 'Gagal menyimpan');
+                    const err = await articleResponse.json();
+                    throw new Error(err.message || 'Gagal menyimpan artikel');
                 }
+
             } catch (err) {
                 statusDiv.className = 'mt-4 p-4 rounded-xl text-xs text-center font-bold bg-rose-100 text-rose-800 block';
-                statusDiv.innerText = 'GAGAL: ' + err.message + ' (Pastikan token benar dan memiliki akses repo)';
+                statusDiv.innerText = 'GAGAL: ' + err.message;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Terbitkan Artikel Ke GitHub';
