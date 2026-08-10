@@ -97,71 +97,8 @@
 
     <!-- Grid Kartu Jobsheet -->
     <main class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Card 1: Henna Art -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-paintbrush"></i>
-                    </div>
-                    <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-[10px] font-extrabold rounded-md uppercase tracking-wider">Tata Rias / Kecantikan</span>
-                    <h2 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">Jobsheet 1: Henna Art</h2>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Lembar kerja praktikum seni melukis tangan menggunakan henna (Henna Art), pengenalan bahan alami, hingga kontrol kerapian garis <em>cone</em>.
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                    <span class="text-[11px] text-slate-400"><i class="fa-regular fa-clock mr-1"></i> 4 x 45 Menit</span>
-                    <a href="henna.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center gap-1.5">
-                        <span>Buka / Cetak</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Card 2: Rias Hijab -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-[10px] font-extrabold rounded-md uppercase tracking-wider">Tata Rias / MUA</span>
-                    <h2 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">Jobsheet 2: Rias Hijab</h2>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Panduan praktikum kreasi Hijab Do, kreasi veil pengantin modern, pemasangan aksesoris, dan rias wajah flawless.
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                    <span class="text-[11px] text-slate-400"><i class="fa-regular fa-clock mr-1"></i> 4 x 45 Menit</span>
-                    <a href="rias-hijab.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center gap-1.5">
-                        <span>Buka / Cetak</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Card 3: Tata Boga Kuliner -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
-                        <i class="fa-solid fa-utensils"></i>
-                    </div>
-                    <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[10px] font-extrabold rounded-md uppercase tracking-wider">Tata Boga / Kuliner</span>
-                    <h2 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">Jobsheet 3: Tata Boga</h2>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Modul praktikum pengolahan kuliner khas Nusantara, higienitas pangan, resep kreasi bumbu, serta pengemasan kemasan produk.
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                    <span class="text-[11px] text-slate-400"><i class="fa-regular fa-clock mr-1"></i> 4 x 45 Menit</span>
-                    <a href="tata-boga.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center gap-1.5">
-                        <span>Buka / Cetak</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
+        <div id="jobsheet-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Jobsheet akan dirender otomatis lewat JavaScript -->
         </div>
     </main>
 
@@ -174,13 +111,96 @@
         </div>
     </footer>
 
-    <!-- Script Drawer Navigation Mobile -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // Data Jobsheet Statis Utama
+        const staticJobsheets = [
+            {
+                title: "Jobsheet 1: Henna Art",
+                category: "Tata Rias / Kecantikan",
+                icon: "fa-paintbrush",
+                color: "rose",
+                time: "4 x 45 Menit",
+                excerpt: "Lembar kerja praktikum seni melukis tangan menggunakan henna (Henna Art), pengenalan bahan alami, hingga kontrol kerapian garis cone.",
+                link: "henna.html"
+            },
+            {
+                title: "Jobsheet 2: Rias Hijab",
+                category: "Tata Rias / MUA",
+                icon: "fa-wand-magic-sparkles",
+                color: "purple",
+                time: "4 x 45 Menit",
+                excerpt: "Panduan praktikum kreasi Hijab Do, kreasi veil pengantin modern, pemasangan aksesoris, dan rias wajah flawless.",
+                link: "rias-hijab.html"
+            },
+            {
+                title: "Jobsheet 3: Tata Boga",
+                category: "Tata Boga / Kuliner",
+                icon: "fa-utensils",
+                color: "amber",
+                time: "4 x 45 Menit",
+                excerpt: "Modul praktikum pengolahan kuliner khas Nusantara, higienitas pangan, resep kreasi bumbu, serta pengemasan kemasan produk.",
+                link: "tata-boga.html"
+            }
+        ];
+
+        async function loadJobsheets() {
+            const grid = document.getElementById('jobsheet-grid');
+            let allJobsheets = [...staticJobsheets];
+
+            try {
+                // Mengambil jobsheet dinamis dari folder content/jobsheet/ di GitHub
+                const repo = 'dtsman1muncar/web';
+                const res = await fetch(`https://api.github.com/repos/${repo}/contents/content/jobsheet`);
+                
+                if (res.ok) {
+                    const files = await res.json();
+                    for (let file of files) {
+                        if (file.name.endsWith('.json')) {
+                            const dataRes = await fetch(file.download_url);
+                            if (dataRes.ok) {
+                                const json = await dataRes.json();
+                                allJobsheets.push(json);
+                            }
+                        }
+                    }
+                }
+            } catch (err) {
+                console.log("Menggunakan data jobsheet statis dasar.", err);
+            }
+
+            // Render ke tampilan HTML
+            grid.innerHTML = '';
+            allJobsheets.forEach(item => {
+                const colorScheme = item.color || 'blue';
+                grid.innerHTML += `
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-${colorScheme}-100 text-${colorScheme}-600 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
+                                <i class="fa-solid ${item.icon || 'fa-file-lines'}"></i>
+                            </div>
+                            <span class="px-2.5 py-1 bg-${colorScheme}-50 text-${colorScheme}-700 text-[10px] font-extrabold rounded-md uppercase tracking-wider">${item.category || 'Vokasi'}</span>
+                            <h2 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">${item.title}</h2>
+                            <p class="text-xs text-slate-600 leading-relaxed">${item.excerpt}</p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-[11px] text-slate-400"><i class="fa-regular fa-clock mr-1"></i> ${item.time || '4 x 45 Menit'}</span>
+                            <a href="${item.link}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center gap-1.5">
+                                <span>Buka / Cetak</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        loadJobsheets();
     </script>
 </body>
 </html>
