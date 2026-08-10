@@ -86,17 +86,17 @@
             <!-- Detail Profil -->
             <div class="space-y-1 sm:space-y-2 flex-1">
                 <div class="flex items-center gap-2">
-                    <h1 class="text-base sm:text-xl font-bold text-slate-900">dtsman1muncar</h1>
-                    <i class="fa-solid fa-circle-check text-blue-500 text-xs sm:text-sm"></i>
+                    <h1 class="text-lg sm:text-2xl font-bold text-slate-900">dtsman1muncar</h1>
+                    <i class="fa-solid fa-circle-check text-blue-500 text-sm sm:text-base"></i>
                 </div>
                 
                 <!-- Statistik Kiriman -->
-                <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm text-slate-600">
+                <div class="flex gap-4 sm:gap-6 text-sm sm:text-base text-slate-600">
                     <div><strong class="text-slate-900" id="post-count">0</strong> Kiriman</div>
                     <div><strong class="text-slate-900">Program</strong> Double Track</div>
                 </div>
 
-                <p class="text-[11px] sm:text-sm text-slate-600 leading-tight hidden sm:block">
+                <p class="text-xs sm:text-base text-slate-600 leading-snug hidden sm:block">
                     📸 Dokumentasi Momen, Pelatihan Vokasi, & Hasil Karya Siswa Double Track SMAN 1 Muncar.
                 </p>
             </div>
@@ -109,39 +109,40 @@
 
     </main>
 
-    <!-- Modal Pop-Up Pop-Up Carousel Multi-Slide/Video -->
+    <!-- Modal Pop-Up Pop-Up Carousel (TEKS CAPTION LEBIH BESAR & JELAS) -->
     <div id="ig-modal" class="fixed inset-0 z-50 hidden bg-slate-900/90 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
         <div class="bg-white max-w-2xl w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative flex flex-col max-h-[92vh]">
             
             <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-3 right-3 z-20 text-white bg-black/60 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">✕</button>
+            <button onclick="closeModal()" class="absolute top-3 right-3 z-20 text-white bg-black/60 rounded-full w-9 h-9 flex items-center justify-center font-bold text-base">✕</button>
 
-            <!-- Slider Container (Swipeable Multi Media) -->
+            <!-- Slider Container -->
             <div class="relative bg-black w-full aspect-square flex items-center justify-center overflow-hidden">
                 <div id="slider-content" class="w-full h-full flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth">
                     <!-- Foto/Video disuntikkan ke sini -->
                 </div>
 
                 <!-- Indicator Slide -->
-                <div id="carousel-indicator" class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 text-white text-[10px] px-2.5 py-0.5 rounded-full hidden">
+                <div id="carousel-indicator" class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-3 py-1 rounded-full font-semibold hidden">
                     <span id="current-slide">1</span>/<span id="total-slide">1</span>
                 </div>
             </div>
 
-            <!-- Description / Caption -->
-            <div class="p-4 sm:p-6 flex flex-col justify-between space-y-3 bg-white overflow-y-auto">
-                <div class="flex items-center space-x-2 border-b pb-2">
-                    <div class="w-6 h-6 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 to-purple-600">
+            <!-- Description / Caption (Ukuran Teks Diperbesar) -->
+            <div class="p-5 sm:p-6 flex flex-col justify-between space-y-4 bg-white overflow-y-auto">
+                <div class="flex items-center space-x-3 border-b pb-3">
+                    <div class="w-8 h-8 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 to-purple-600 shrink-0">
                         <img src="../images/logo-doubletrack.webp" class="w-full h-full rounded-full bg-white">
                     </div>
-                    <span class="text-xs font-bold text-slate-900">dtsman1muncar</span>
+                    <span class="text-sm sm:text-base font-bold text-slate-900">dtsman1muncar</span>
                 </div>
 
-                <p id="modal-caption" class="text-xs sm:text-sm text-slate-700 leading-relaxed max-h-32 overflow-y-auto"></p>
+                <!-- Caption Utama Diperbesar (text-base / sm:text-lg) -->
+                <p id="modal-caption" class="text-sm sm:text-base text-slate-800 font-medium leading-relaxed max-h-40 overflow-y-auto"></p>
 
-                <div class="text-[10px] text-slate-400 border-t pt-2 flex justify-between items-center">
+                <div class="text-xs sm:text-sm text-slate-500 border-t pt-3 flex justify-between items-center font-medium">
                     <span id="modal-date">SMAN 1 Muncar</span>
-                    <div class="flex gap-3 text-sm text-slate-600">
+                    <div class="flex gap-4 text-lg text-slate-700">
                         <i class="fa-regular fa-heart hover:text-rose-500 transition cursor-pointer"></i>
                         <i class="fa-regular fa-paper-plane hover:text-blue-500 transition cursor-pointer"></i>
                     </div>
@@ -206,7 +207,6 @@
 
         async function fetchIGPosts() {
             try {
-                // Membaca postingan galeri dinamis dari folder content/ig/ jika ada
                 const repo = 'dtsman1muncar/web';
                 const res = await fetch(`https://api.github.com/repos/${repo}/contents/content/ig`);
                 if (res.ok) {
