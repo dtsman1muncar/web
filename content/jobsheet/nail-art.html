@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobsheet Praktikum Nail Art & Care - Program Double Track SMAN 1 Muncar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0052D4',
+                            navy: '#0F172A',
+                            maroon: '#6b1d2f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+
+        /* STYLING KHUSUS CETAK & CETAK PDF A4 */
+        @page {
+            size: A4;
+            margin: 15mm 12mm 15mm 12mm;
+            @bottom-right {
+                content: "Halaman " counter(page) " dari " counter(pages);
+                font-family: 'Poppins', sans-serif;
+                font-size: 8pt;
+                color: #718096;
+            }
+            @bottom-left {
+                content: "JOBSHEET PRAKTIKUM — TATA KECANTIKAN / NAIL ART";
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                font-size: 8pt;
+                color: #718096;
+            }
+        }
+
+        /* Elemen Cetak Murni */
+        .kop-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+            border: 2px solid #6b1d2f;
+        }
+
+        .kop-table td {
+            border: 1px solid #9b2c39;
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+
+        .kop-logo {
+            width: 18%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 9pt;
+            background-color: #fcf4f5;
+            color: #6b1d2f;
+        }
+
+        .kop-logo-img {
+            max-height: 50px;
+            width: auto;
+            display: block;
+            margin: 0 auto 4px auto;
+        }
+
+        .kop-title {
+            width: 52%;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .kop-title h1 {
+            margin: 0;
+            font-size: 11pt;
+            font-weight: 700;
+            color: #6b1d2f;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kop-title h2 {
+            margin: 4px 0 0 0;
+            font-size: 9pt;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .kop-info {
+            width: 30%;
+            font-size: 8pt;
+            background-color: #fcf4f5;
+        }
+
+        .kop-info table { width: 100%; border-collapse: collapse; }
+        .kop-info td { border: none; padding: 1.5px 0; color: #2d3748; }
+        .kop-info td strong { color: #6b1d2f; }
+
+        .section-header {
+            background: linear-gradient(90deg, #6b1d2f 0%, #8c263e 100%);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 9.5pt;
+            padding: 6px 12px;
+            margin-top: 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            page-break-after: avoid;
+            border-left: 4px solid #4a121f;
+        }
+
+        .tools-materials-table, .steps-table, .eval-table, .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+        }
+
+        .tools-materials-table th, .steps-table th, .eval-table th {
+            background-color: #6b1d2f;
+            color: white;
+            padding: 6px 10px;
+            font-size: 8.5pt;
+            font-weight: 600;
+            border: 1px solid #6b1d2f;
+        }
+
+        .tools-materials-table td, .steps-table td, .eval-table td {
+            border: 1px solid #cbd5e0;
+            padding: 6px 10px;
+            font-size: 8.5pt;
+            vertical-align: top;
+        }
+
+        .steps-table tr:nth-child(even) { background-color: #fcf8f8; }
+        .steps-table td.num { text-align: center; font-weight: 700; color: #6b1d2f; background-color: #f7fafc; width: 5%; }
+        .steps-table td.step-title { font-weight: 600; width: 28%; color: #1a202c; }
+
+        .image-box {
+            width: 100%;
+            border: 1.5px dashed #cbd5e0;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            margin: 12px 0;
+            page-break-inside: avoid;
+        }
+
+        .info-box {
+            background-color: #fff5f5;
+            border-left: 4px solid #6b1d2f;
+            border-radius: 0 4px 4px 0;
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-size: 8.5pt;
+            page-break-inside: avoid;
+        }
+
+        .signature-table { margin-top: 20px; page-break-inside: avoid; }
+        .signature-table td { width: 50%; text-align: center; border: none; font-size: 8.5pt; }
+
+        /* ATURAN MEDIA PRINT / PDF EXPORT */
+        @media print {
+            .no-print { display: none !important; }
+            body { background-color: #ffffff !important; padding: 0 !important; }
+            .print-container {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            tr, .image-box, .info-box, .signature-table { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-100 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Header / Navbar Website (Akan tersembunyi otomatis saat dicetak) -->
+    <header class="no-print fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Official -->
+                <a href="../index.html" class="flex items-center space-x-3 group py-1">
+                    <img src="../images/logo-doubletrack.webp" alt="Logo SMA Double Track" class="h-12 w-auto object-contain group-hover:scale-105 transition duration-300">
+                    <div class="border-l border-slate-300 pl-3">
+                        <span class="text-base font-extrabold text-slate-900 tracking-tight block leading-none">SMAN 1 MUNCAR</span>
+                        <span class="text-[10px] font-bold text-blue-600 tracking-widest uppercase block mt-1">Jobsheet Praktikum</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-600">
+                    <a href="../index.html" class="hover:text-blue-600 transition">Beranda</a>
+                    <a href="index.html" class="text-blue-600 font-extrabold border-b-2 border-blue-600 pb-1">Daftar Jobsheet</a>
+                    <a href="../cerita-baik.html" class="hover:text-blue-600 transition">Cerita Baik</a>
+                    <a href="../ig/" class="hover:text-blue-600 transition">Galeri IG</a>
+                </nav>
+
+                <!-- Action Button Print -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="window.print()" class="px-5 py-2.5 bg-gradient-to-r from-red-700 to-rose-900 hover:opacity-90 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-2 transition cursor-pointer">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Cetak / Simpan PDF</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="lg:hidden text-slate-700 p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="../index.html" class="block px-4 py-2 rounded-xl text-slate-700 font-semibold">Beranda</a>
+            <a href="index.html" class="block px-4 py-2 rounded-xl bg-blue-50 text-blue-600 font-bold">Daftar Jobsheet</a>
+            <button onclick="window.print()" class="w-full text-center px-4 py-3 bg-red-800 text-white font-bold rounded-xl text-sm shadow-md mt-4 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-print"></i> Cetak Dokumen PDF
+            </button>
+        </div>
+    </header>
+
+    <!-- Sub-Banner Web Bar (no-print) -->
+    <section class="no-print pt-28 pb-8 bg-slate-900 text-white">
+        <div class="max-w-5xl mx-auto px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <span class="px-2.5 py-1 bg-rose-500/20 text-rose-300 text-[10px] font-extrabold rounded uppercase tracking-wider">Modul Praktikum Tata Rias</span>
+                <h1 class="text-xl sm:text-2xl font-bold mt-1">Jobsheet: Seni Menghias Kuku (Nail Art & Care)</h1>
+                <p class="text-xs text-slate-400 mt-1">Gunakan tombol cetak untuk mengunduh dokumen A4 siap cetak.</p>
+            </div>
+            <button onclick="window.print()" class="px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white font-bold rounded-xl text-xs shadow-lg flex items-center gap-2 transition shrink-0">
+                <i class="fa-solid fa-file-pdf text-sm"></i>
+                <span>Cetak Lembar A4</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- MAIN DOKUMEN JOBSHEET (Tampilan Kertas Digital / Format Cetak A4) -->
+    <main class="py-6 sm:py-10 max-w-4xl mx-auto px-2 sm:px-4">
+        
+        <div class="print-container bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200">
+            
+            <!-- KOP / HEADER JOBSHEET -->
+            <table class="kop-table">
+                <tr>
+                    <td class="kop-logo">
+                        <img src="../images/logo-doubletrack.webp" alt="Logo Double Track" class="kop-logo-img">
+                        SMAN 1 MUNCAR
+                    </td>
+                    <td class="kop-title">
+                        <h1>LEMBAR KERJA PRAKTIKUM (JOBSHEET)</h1>
+                        <h2>SENI MENGHIAS KUKU (NAIL ART & CARE)</h2>
+                    </td>
+                    <td class="kop-info">
+                        <table>
+                            <tr><td><strong>Keterampilan</strong></td><td>: Tata Rias</td></tr>
+                            <tr><td><strong>Topik</strong></td><td>: Nail Art & Care</td></tr>
+                            <tr><td><strong>Alokasi Waktu</strong></td><td>: 4 x 60 Menit</td></tr>
+                            <tr><td><strong>Nama Siswa</strong></td><td>: ........................</td></tr>
+                            <tr><td><strong>Kelompok/KUS</strong></td><td>: ........................</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- 1.1 TUJUAN PEMBELAJARAN -->
+            <div class="section-header">1.1. TUJUAN PEMBELAJARAN</div>
+            <ul class="list-disc pl-5 text-xs sm:text-sm space-y-1 mb-3 text-justify">
+                <li>Peserta mampu memahami anatomi dasar kuku, prosedur higienitas, dan sanitasi alat dalam perawatan kuku (manicure dasar).</li>
+                <li>Peserta mampu mengidentifikasi dan memilih jenis kuteks (base coat, gel/regular polish, top coat) serta alat hias kuku secara tepat.</li>
+                <li>Peserta mampu mempraktikkan teknik persiapan lempeng kuku (nail prepping, shaping, & cuticle care) secara aman.</li>
+                <li>Peserta mampu mengaplikasikan teknik lukis kuku dasar (dotting, striping, ombre/gradasi, atau stiker/rhinestone) dengan rapi dan presisi.</li>
+                <li>Peserta memahami prosedur pengeringan (UV/LED lamp) serta perawatan pasca-aplikasi agar hiasan kuku tahan lama.</li>
+            </ul>
+
+            <!-- 1.2 DASAR TEORI -->
+            <div class="section-header">1.2. DASAR TEORI</div>
+            <p class="text-xs sm:text-sm text-justify mb-2 leading-relaxed">
+                <em>Nail Art</em> adalah seni menghias, mempercantik, dan memperindah tampilan kuku menggunakan berbagai media warna, tekstur, dan ornamen dekoratif. Dalam industri tata rias modern dan kecantikan pengantin, seni hias kuku telah menjadi elemen penting untuk melengkapi penampilan estetis secara menyeluruh.
+            </p>
+            <p class="text-xs sm:text-sm text-justify mb-2 leading-relaxed">
+                Kunci keberhasilan <em>Nail Art</em> yang tahan lama terletak pada tahapan persiapan lempeng kuku (<em>nail prepping</em>). Pembersihan minyak alami kulit, pembentukan ujung kuku yang simetris, dan penggunaan lapisan pelindung dasar (<em>base coat</em>) berfungsi mencegah pigmen warna merusak matriks kuku sekaligus merekatkan lapisan pewarna secara optimal.
+            </p>
+
+            <p class="text-xs sm:text-sm font-bold mt-3 mb-1">Teknik & Jenis Pewarna Kuku:</p>
+            <ol class="list-decimal pl-5 text-xs sm:text-sm space-y-1 mb-3 text-justify">
+                <li>
+                    <strong>Kuteks Reguler (Regular Polish)</strong><br>
+                    Pewarna berbasis pelarut organik yang mengering secara alami lewat udara. Mudah diaplikasikan untuk latihan sketsa dan dapat dibersihkan secara praktis menggunakan <em>nail polish remover</em> (aseton).
+                </li>
+                <li>
+                    <strong>Kuteks Gel (Gel Polish)</strong><br>
+                    Pewarna berbasis oligomer yang membutuhkan penyinaran lampu UV/LED khusus untuk proses polimerisasi (pengeringan). Menghasilkan kilau tinggi, tahan gores, dan mampu bertahan hingga 3–4 minggu pada lempeng kuku.
+                </li>
+            </ol>
+
+            <!-- 1.3 ALAT & BAHAN -->
+            <div class="section-header">1.3. ALAT & BAHAN</div>
+            <table class="tools-materials-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">BAHAN (MATERIALS)</th>
+                        <th style="width: 50%;">ALAT (TOOLS)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul class="list-disc pl-4 space-y-1">
+                                <li>Kuteks Gel / Reguler (Base, Color, Top Coat)</li>
+                                <li>Nail Dehydrator & Primer</li>
+                                <li>Cuticle Softener / Cuticle Oil</li>
+                                <li>Aseton / Nail Polish Remover Bebas Aseton</li>
+                                <li>Kapas Bebas Serat (Lint-free wipes)</li>
+                                <li>Ornamen hias (Rhinestones, Glitters, Foil)</li>
+                                <li>Alkohol 70% (Sanitasi)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="list-disc pl-4 space-y-1">
+                                <li>Lampu Pengering UV/LED (UV Lamp)</li>
+                                <li>Kikir Kuku (Nail File 100/180) & Buffer</li>
+                                <li>Pendorong Kutikula (Cuticle Pusher)</li>
+                                <li>Gunting / Tang Kutikula (Cuticle Nipper)</li>
+                                <li>Kuis Nail Art (Detailer brush, Striping brush)</li>
+                                <li>Dotting Tools (Pena Penitik Motif)</li>
+                                <li>Kuku Palsu Latihan (Practice Nail Tips)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- AREA FOTO / ILUSTRASI PROSES -->
+            <div class="image-box">
+                <div class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">LAMPIRAN ILUSTRASI / GAMBAR KERJA PROSES NAIL ART</div>
+                
+                <!-- Grid Murni 2 Kolom (Selalu Kiri & Kanan di Web dan PDF Cetak) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px;">
+                    <div style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 6px; background-color: #ffffff;">
+                        <img src="../images/praktikum-nailart-1.webp" alt="Persiapan Kuku" style="width: 100%; height: 160px; object-fit: contain; border-radius: 4px; display: block;">
+                        <p style="font-size: 8pt; color: #4a5568; margin-top: 6px; text-align: center; font-weight: 600;">Gambar 1.1: Tahap Persiapan & Shaping Kuku</p>
+                    </div>
+                    <div style="border: 1px solid #cbd5e0; border-radius: 8px; padding: 6px; background-color: #ffffff;">
+                        <img src="../images/praktikum-nailart-2.webp" alt="Aplikasi Nail Art" style="width: 100%; height: 160px; object-fit: contain; border-radius: 4px; display: block;">
+                        <p style="font-size: 8pt; color: #4a5568; margin-top: 6px; text-align: center; font-weight: 600;">Gambar 1.2: Pengaplikasian Motif & Top Coat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.4 LANGKAH KERJA -->
+            <div class="section-header">1.4. LANGKAH KERJA</div>
+            <table class="steps-table">
+                <thead>
+                    <tr>
+                        <th style="width: 6%;">No.</th>
+                        <th style="width: 28%;">Tahapan Kerja</th>
+                        <th>Deskripsi & Instruksi Pengerjaan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="num">1</td>
+                        <td class="step-title">Sanitasi Alat & Tangan</td>
+                        <td>Semprotkan alkohol 70% pada tangan praktikan dan jari model. Pastikan seluruh peralatan telah steril sebelum digunakan.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">2</td>
+                        <td class="step-title">Perawatan Kutikula & shaping</td>
+                        <td>Oleskan <em>cuticle softener</em>, dorong kutikula perlahan. Bentuk ujung kuku (oval/square) menggunakan kikir kuku secara searah.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">3</td>
+                        <td class="step-title">Nail Buffing & Dehydrating</td>
+                        <td>Buff permukaan kuku perlahan untuk menghilangkan kilau minyak. Bersihkan sisa debu dengan alkohol atau dehydrator.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">4</td>
+                        <td class="step-title">Aplikasi Base Coat</td>
+                        <td>Oleskan <em>Base Coat</em> tipis dan merata. Keringkan di bawah lampu UV/LED selama 30–60 detik.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">5</td>
+                        <td class="step-title">Aplikasi Warna Dasar & Motif</td>
+                        <td>Oleskan warna dasar (2 lapis), cure tiap lapisan. Buat motif hias (polka, floral, garis, foil) mengunakan kuas detailer / dotting tool.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">6</td>
+                        <td class="step-title">Pemasangan Ornamen (Opsional)</td>
+                        <td>Tempelkan rhinestone atau foil dekoratif menggunakan sedikit gel perekat pada posisi fokal yang diinginkan.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">7</td>
+                        <td class="step-title">Sealing dengan Top Coat</td>
+                        <td>Melindungi motif dengan mengoleskan <em>Top Coat</em> (glossy/matte) menutup hingga ujung tepi kuku. Cure selama 60 detik.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">8</td>
+                        <td class="step-title">Finishing & Cuticle Nourishing</td>
+                        <td>Bersihkan lapisan lengket (bila ada) dengan alkohol wipe. Usapkan <em>cuticle oil</em> di sekitar area kulit kuku sambil dipijat lembut.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 1.5 HASIL & EVALUASI -->
+            <div class="section-header">1.5. HASIL & EVALUASI</div>
+            <p class="text-xs sm:text-sm font-bold mb-1">Hasil Akhir Praktikum:</p>
+            <ul class="list-disc pl-5 text-xs sm:text-sm space-y-1 mb-3">
+                <li>Hasil hiasan kuku (<em>Nail Art</em>) yang rapi, simetris, berkilau, dan bebas dari gelembung/noda kuteks di kulit sekitar kuku.</li>
+                <li>Dokumentasi/foto portofolio hasil praktikum kuku tangan sebelum dan sesudah diaplikasikan.</li>
+            </ul>
+
+            <div class="info-box">
+                <strong class="text-slate-800">Kriteria Evaluasi Kualitas Karya Nail Art:</strong>
+                <ol class="list-decimal pl-4 mt-1 space-y-0.5 text-slate-700">
+                    <li>Kerapian pembersihan kutikula dan presisi bentuk kuku (<em>nail shaping</em>).</li>
+                    <li>Rataan sapuan warna dasar dan kerapian detail lukisan motif (bebas garis menggumpal).</li>
+                    <li>Kebersihan tepi kulit kuku (bebas dari lelehan kuteks) dan ketahanan sealing <em>top coat</em>.</li>
+                </ol>
+            </div>
+
+            <!-- TABLE PENILAIAN -->
+            <table class="eval-table">
+                <thead>
+                    <tr>
+                        <th style="width: 6%;">No</th>
+                        <th style="width: 38%;">Aspek Penilaian</th>
+                        <th style="width: 12%;">Skor Max</th>
+                        <th style="width: 14%;">Skor Siswa</th>
+                        <th style="width: 30%;">Catatan / Masukan Instruktur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">1</td>
+                        <td>Persiapan Sanitasi, Nail Prepping & Shaping</td>
+                        <td style="text-align: center;">20</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">2</td>
+                        <td>Teknik Aplikasi Warna Dasar & Pengeringan UV</td>
+                        <td style="text-align: center;">25</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">3</td>
+                        <td>Kreativitas Motif, Kerapian Lukisan & Ornamen</td>
+                        <td style="text-align: center;">40</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">4</td>
+                        <td>Kebersihan Area Kerja & Aplikasi Cuticle Care</td>
+                        <td style="text-align: center;">15</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right; font-weight: bold;">TOTAL SKOR</td>
+                        <td style="text-align: center; font-weight: bold;">100</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- TANDA TANGAN -->
+            <table class="signature-table">
+                <tr>
+                    <td>
+                        <p>Pengajar / Instruktur,</p>
+                        <br><br><br>
+                        <p class="font-bold">( _______________________ )</p>
+                    </td>
+                    <td>
+                        <p>Siswa / Peserta Praktikum,</p>
+                        <br><br><br>
+                        <p class="font-bold">( _______________________ )</p>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Resmi (no-print) -->
+    <footer class="no-print bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p class="font-bold text-white text-sm">Program Double Track SMAN 1 Muncar Banyuwangi</p>
+            <p>Jl. Raya Tapan No.1, Tapanrejo, Kec. Muncar, Kabupaten Banyuwangi, Jawa Timur 68472.</p>
+            <p>&copy; 2026 SMAN 1 Muncar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script Navbar Mobile -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
