@@ -36,15 +36,56 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
         }
+
+        /* CSS Khusus Format Cetak PDF */
+        @media print {
+            /* Sembunyikan semua elemen halaman utama */
+            body * {
+                visibility: hidden;
+            }
+            /* Tampilkan hanya area modal yang sedang aktif */
+            .printable-modal, .printable-modal * {
+                visibility: visible;
+            }
+            .printable-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                overflow: visible !important;
+            }
+            /* Sembunyikan tombol aksi (Cetak PDF & Close) saat dicetak */
+            .no-print {
+                display: none !important;
+            }
+            /* Pengaturan halaman & margin PDF */
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+            p, blockquote {
+                orphans: 3;
+                widows: 3;
+            }
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Header / Navbar Disamakan dengan Halaman Jobsheet -->
+    <!-- Header / Navbar -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-slate-200/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo Official Identik dengan Jobsheet -->
+                <!-- Logo Official -->
                 <a href="index.html" class="flex items-center space-x-3 group py-1">
                     <img src="images/logo-doubletrack.webp" alt="Logo SMA Double Track" class="h-12 w-auto object-contain group-hover:scale-105 transition duration-300">
                     <div class="border-l border-slate-300 pl-3">
@@ -61,7 +102,7 @@
                     <a href="jobsheet/" class="hover:text-blue-600 transition">Jobsheet</a>
                 </nav>
 
-                <!-- CTA Button Identik dengan Jobsheet -->
+                <!-- CTA Button -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <a href="https://wa.me/6282143393357?text=Halo%20Admin,%20saya%20ingin%20bertanya%20mengenai%20Program%20Double%20Track" target="_blank" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-2 hover:opacity-90 transition">
                         <i class="fa-brands fa-whatsapp text-base"></i>
@@ -123,7 +164,7 @@
         </div>
     </footer>
 
-    <!-- Script Pemanggil Artikel Otomatis dari GitHub API -->
+    <!-- Script Pemanggil Artikel -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -134,7 +175,7 @@
             if (modal) modal.classList.toggle('hidden');
         }
 
-        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box Tanpa Double Petik)
+        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan
         function formatParagraphs(text) {
             if (!text) return '';
             if (text.includes('<p>') || text.includes('<blockquote')) return text;
@@ -143,9 +184,7 @@
                 const trimmed = p.trim();
                 if (!trimmed) return '';
 
-                // Deteksi jika diawali bintang (*), tanda petik ("), atau simbol >
                 if (trimmed.startsWith('*') || trimmed.startsWith('"') || trimmed.startsWith('>')) {
-                    // Bersihkan simbol awalan & akhiran (*, ", >) agar tidak terjadi double tanda petik
                     const cleanQuote = trimmed
                         .replace(/^[\*">]+\s*/, '')
                         .replace(/[\*"]+$/, '');
@@ -157,12 +196,11 @@
                     `;
                 }
 
-                // Paragraf biasa
                 return `<p class="mb-4 leading-relaxed text-justify">${trimmed}</p>`;
             }).join('');
         }
 
-        // 7 ARTIKEL LAMA LENGKAP 100% NASKAH ASLI (TANPA DIPOTONG)
+        // ARTIKEL LAMA LENGKAP 100% NASKAH ASLI
         const staticArticles = [
             {
                 id: 'static-1',
@@ -176,7 +214,7 @@
                 <p class="mb-4 leading-relaxed text-justify">Sebelum memulai usaha, Ridho melakukan pengamatan terhadap tren kuliner yang sedang diminati. Dari hasil pengamatannya, ia melihat bahwa jajanan ringan dengan cita rasa unik memiliki peluang besar untuk berkembang. Dengan modal yang terbatas, ia kemudian membuka sebuah kedai kecil di pinggir jalan dan menamainya Mr-A.</p>
                 <p class="mb-4 leading-relaxed text-justify">Perjalanan membangun usaha tentu tidak selalu mudah. Pada awalnya, Ridho harus berjuang dengan segala keterbatasan yang dimiliki. Namun, kondisi tersebut tidak menyurutkan semangatnya. Ia terus bereksperimen menciptakan produk yang berbeda dari pesaing dengan memadukan cita rasa tradisional dan sentuhan modern.</p>
                 <p class="mb-4 leading-relaxed text-justify">Inovasi tersebut akhirnya menjadi kekuatan utama Kedai Mr-A. Menu andalan seperti <strong>pisang aroma, sosis kriuk, dan pisang gendut</strong> berhasil menarik perhatian pelanggan, khususnya kalangan anak muda. Tidak hanya menyediakan makanan ringan, Ridho juga menghadirkan berbagai minuman kekinian seperti Pisang Susu Keju (PSK), cokelat, matcha, taro, dan cookies and cream. Salah satu ciri khas yang membuat usahanya berbeda adalah penggunaan pisang kriuk sebagai topping minuman yang memberikan sensasi rasa unik bagi para pelanggan.</p>
-                <p class="mb-4 leading-relaxed text-justify">Menurut Ridho, inspirasi pengembangan menu berasal dari tren yang sedang berkembang dan masukan dari teman-teman maupun pelanggan. Baginya, mendengarkan kebutuhan konsumen merupakan salah satu cara terbaik untuk menjaga kualitas dan keberlangsungan usaha. Ia juga aktif memanfaatkan media sosial sebagai sarana promosi serta membangun komunikasi yang baik dengan pelanggan.</p>
+                <p class="mb-4 leading-relaxed text-justify">Menurut Ridho, inspirasi pengembangan menu berasal dari tren yang sedang berkembang dan masukan dari teman-teman maupun pelanggan. Baginya, mendengarkan kebutuhan konsumen merupakan salah satu cara terbaik untuk menjaga kualitas dan keberlangsungannya usaha. Ia juga aktif memanfaatkan media sosial sebagai sarana promosi serta membangun komunikasi yang baik dengan pelanggan.</p>
                 <p class="mb-4 leading-relaxed text-justify">Kerja keras tersebut membuahkan hasil yang membanggakan. Dalam waktu relatif singkat, Kedai Mr-A mulai dikenal masyarakat sekitar. Kelezatan menu, harga yang terjangkau, dan pelayanan yang ramah membuat pelanggan terus berdatangan. Usaha yang dirintis dari modal sederhana itu kini mampu menghasilkan <strong>omzet sekitar Rp1,5 juta hingga Rp2 juta per bulan</strong>.</p>
                 <p class="mb-4 leading-relaxed text-justify">Meski telah meraih hasil yang menggembirakan, Ridho tidak ingin berpuas diri. Ia terus berupaya mengembangkan usahanya dengan menghadirkan varian menu baru dan mempertimbangkan pembukaan cabang di lokasi yang lebih strategis. Ke depan, ia juga berencana menambah pilihan makanan berat dan dessert agar Kedai Mr-A dapat menjadi tempat yang nyaman bagi masyarakat untuk berkumpul dan menikmati sajian yang berkualitas.</p>
                 <blockquote class="p-4 bg-amber-50 border-l-4 border-amber-500 text-amber-900 italic font-medium rounded-r-xl my-4">
@@ -328,7 +366,7 @@
                             if (resData.ok) {
                                 const articleData = await resData.json();
                                 articleData.id = 'dyn-' + file.name.replace('.json', '');
-                                allArticles.unshift(articleData); // Tampilkan artikel baru di urutan paling atas
+                                allArticles.unshift(articleData);
                             }
                         }
                     }
@@ -373,15 +411,29 @@
                         </article>
                     `;
 
-                    // Render Dynamic Modal Pop-up (Tampilan Rapi & Berparagraf)
+                    // Render Dynamic Modal Pop-up
                     modals.innerHTML += `
                         <div id="modal-${art.id}" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                            <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl my-auto">
-                                <button onclick="toggleModal('modal-${art.id}')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2 z-10">✕</button>
-                                <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">${art.category || 'Berita DT'}</span>
+                            <div class="printable-modal bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl my-auto">
+                                
+                                <!-- Tombol Aksi Top-Right -->
+                                <div class="absolute top-6 right-6 flex items-center gap-2 z-10 no-print">
+                                    <button onclick="window.print()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-md transition cursor-pointer">
+                                        <i class="fa-solid fa-file-pdf text-sm"></i>
+                                        <span>Cetak PDF</span>
+                                    </button>
+                                    <button onclick="toggleModal('modal-${art.id}')" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1 transition">✕</button>
+                                </div>
+
+                                <!-- Header & Meta Info Artikel -->
+                                <span class="text-xs font-extrabold text-blue-600 uppercase tracking-wider block pt-2 sm:pt-0">${art.category || 'Berita DT'}</span>
                                 <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">${art.title}</h2>
                                 <p class="text-xs text-slate-400 border-b border-slate-100 pb-3">Oleh: ${art.author || 'Agus Suyatno, S.Kom'} | SMAN 1 Muncar</p>
+                                
+                                <!-- Gambar Utama -->
                                 <img src="${artImg}" alt="${art.title}" class="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-sm">
+                                
+                                <!-- Konten Isi Cerita -->
                                 <div class="text-xs sm:text-sm text-slate-600 leading-relaxed pt-2">
                                     ${artContent}
                                 </div>
