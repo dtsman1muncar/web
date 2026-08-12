@@ -6,40 +6,51 @@
   <title>Cerita Baik & Kisah Inspiratif</title>
   <style>
     /* ===================================================
-       1. TAMPILAN UMUM (LAYAR / DEKSTOP)
+       1. TAMPILAN HALAMAN UTAMA
        =================================================== */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #f4f6f8;
-      color: #333;
+      background-color: #f1f5f9;
+      color: #1e293b;
       line-height: 1.6;
     }
 
     .container {
       max-width: 800px;
       margin: 0 auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    h1, h2 {
-      color: #1a365d;
+    .header-title {
+      text-align: center;
+      color: #0f172a;
+      margin-bottom: 30px;
+    }
+
+    /* Kartu Artikel di Halaman Utama */
+    .article-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-card h2 {
+      margin-top: 0;
+      color: #1e3a8a;
     }
 
     .btn {
       background-color: #2563eb;
       color: white;
       border: none;
-      padding: 10px 18px;
+      padding: 10px 20px;
       font-size: 14px;
-      border-radius: 5px;
+      font-weight: 600;
+      border-radius: 6px;
       cursor: pointer;
-      margin-right: 8px;
-      margin-top: 10px;
       transition: background 0.2s;
     }
 
@@ -55,7 +66,7 @@
     }
 
     /* ===================================================
-       2. STYLE POP-UP / MODAL
+       2. TAMPILAN POP-UP / MODAL
        =================================================== */
     .modal-overlay {
       position: fixed;
@@ -63,11 +74,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(15, 23, 42, 0.65);
       display: none; /* Tersembunyi secara default */
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .modal-overlay.active {
@@ -75,147 +88,181 @@
     }
 
     .modal-content {
-      background: white;
+      background: #ffffff;
       padding: 30px;
-      border-radius: 8px;
-      max-width: 650px;
-      width: 90%;
-      max-height: 80vh;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
     }
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 10px;
-      margin-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
     }
 
     .close-btn {
       background: none;
       border: none;
-      font-size: 24px;
+      font-size: 28px;
       cursor: pointer;
       color: #64748b;
+      line-height: 1;
+    }
+
+    .modal-footer {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
     }
 
     /* ===================================================
-       3. ATURAN CETAK / PRINT (@media print)
-          *Inilah yang membenahi masalah halaman kosong*
+       3. ATURAN KHUSUS CETAK PDF (@media print)
+          *Memastikan hanya isi Pop-Up yang dicetak*
        =================================================== */
     @media print {
-      /* Reset elemen utama agar tidak memotong / menyembunyikan isi */
-      html, body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        height: auto !important;
-        min-height: auto !important;
-        overflow: visible !important;
-        margin: 0 !important;
-        padding: 0 !important;
+      /* Sembunyikan halaman utama dan seluruh kontrol UI */
+      body * {
+        visibility: hidden !important;
       }
 
-      /* Sembunyikan semua tombol dan kontrol navigasi */
-      .no-print, .btn, .close-btn {
-        display: none !important;
+      /* Tampilkan hanya area Pop-Up yang aktif */
+      .modal-overlay.active,
+      .modal-overlay.active .modal-content,
+      .modal-overlay.active .modal-content * {
+        visibility: visible !important;
       }
 
-      /* Jika cetak dipanggil dari Pop-up Modal */
+      /* Atur Ulang Posisi Pop-Up agar pas di cetakan kertas A4 / PDF */
       .modal-overlay {
-        position: static !important;
-        display: block !important;
-        background: transparent !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
         width: 100% !important;
         height: auto !important;
+        background: transparent !important;
+        padding: 0 !important;
+        display: block !important;
       }
 
       .modal-content {
-        position: static !important;
-        box-shadow: none !important;
-        border: none !important;
-        max-width: 100% !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
         width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
         max-height: none !important;
         overflow: visible !important;
-        padding: 0 !important;
-      }
-
-      /* Pastikan kontainer teks dapat dicetak utuh */
-      .container, .article-content {
         box-shadow: none !important;
         border: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
         padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* Sembunyikan tombol-tombol di dalam Pop-Up saat dicetak */
+      .no-print {
+        display: none !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Halaman Utama Artikel -->
+  <!-- HALAMAN UTAMA (Daftar Ringkasan Artikel) -->
   <div class="container">
-    <h1>Cerita Baik & Kisah Inspiratif</h1>
-    <p class="no-print">Klik tombol di bawah ini untuk melihat artikel di dalam pop-up modal atau mencetaknya secara langsung.</p>
-    
-    <button class="btn no-print" onclick="openModal()">Buka Pop-up Artikel</button>
-    <button class="btn btn-secondary no-print" onclick="window.print()">Cetak Halaman Ini</button>
+    <h1 class="header-title">Cerita Baik & Kisah Inspiratif</h1>
 
-    <hr class="no-print" style="margin: 20px 0; border: 0; border-top: 1px solid #e2e8f0;">
-
-    <!-- Konten Artikel Utama -->
-    <div class="article-content">
+    <!-- Kartu Artikel 1 -->
+    <div class="article-card">
       <h2>Menebar Kebaikan Kecil Setiap Hari</h2>
-      <p>Kebaikan tidak selalu harus berupa hal-hal besar yang mengguncang dunia. Tindakan kecil seperti tersenyum kepada sesama, membantu menyeberangkan jalan, atau mendengarkan teman yang sedang butuh teman bicara adalah bentuk kebaikan yang bermakna tinggi.</p>
-      <p>Ketika kita konsisten melakukan hal-hal baik kecil, dampak positifnya akan berantai dan menciptakan lingkungan yang lebih hangat di sekitar kita.</p>
+      <p>Kebaikan tidak selalu harus berupa hal-hal besar yang mengguncang dunia. Tindakan kecil seperti tersenyum kepada sesama...</p>
+      <button class="btn" onclick="bukaArtikel('artikel-1')">Selanjutnya &raquo;</button>
+    </div>
+
+    <!-- Kartu Artikel 2 -->
+    <div class="article-card">
+      <h2>Belajar Dari Bangkitnya Kegagalan</h2>
+      <p>Setiap kegagalan yang kita alami membawa pelajaran berharga. Jangan biarkan rasa takut menghambat potensi Anda...</p>
+      <button class="btn" onclick="bukaArtikel('artikel-2')">Selanjutnya &raquo;</button>
     </div>
   </div>
 
-  <!-- Pop-up Modal Artikel -->
-  <div class="modal-overlay" id="articleModal">
+
+  <!-- POP-UP MODAL (Berisi Artikel Utuh) -->
+  <div class="modal-overlay" id="popupModal">
     <div class="modal-content">
+      
       <div class="modal-header">
-        <h2 style="margin: 0;">Artikel Pop-up</h2>
-        <button class="close-btn no-print" onclick="closeModal()">&times;</button>
+        <h2 id="modalTitle" style="margin: 0; color: #1e3a8a;">Judul Artikel</h2>
+        <button class="close-btn no-print" onclick="tutupPopup()">&times;</button>
       </div>
-      <div class="modal-body">
-        <p><strong>Judul:</strong> Belajar Dari Kegagalan</p>
-        <p>Setiap kegagalan yang kita alami membawa pelajaran berharga. Jangan biarkan kegagalan menghentikan langkah Anda, melainkan jadikan itu sebagai pijakan untuk melompat lebih tinggi.</p>
-        <p>Banyak tokoh sukses dunia yang pernah mengalami kegagalan berkali-kali sebelum akhirnya mencapai impian mereka.</p>
+
+      <!-- Tempat Isi Artikel Utuh Ditampilkan -->
+      <div id="modalBody" class="modal-body">
+        <!-- Isi artikel dipanggil lewat JavaScript -->
       </div>
-      <div style="margin-top: 20px; text-align: right;" class="no-print">
-        <button class="btn btn-secondary" onclick="closeModal()">Tutup</button>
-        <button class="btn" onclick="cetakPopup()">Cetak PDF Artikel Ini</button>
+
+      <div class="modal-footer no-print">
+        <button class="btn btn-secondary" onclick="tutupPopup()">Tutup</button>
+        <button class="btn" onclick="window.print()">Cetak PDF</button>
       </div>
+
     </div>
   </div>
 
-  <!-- JavaScript -->
+
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Fungsi Membuka Pop-up
-    function openModal() {
-      document.getElementById('articleModal').classList.add('active');
+    // Database Data Artikel Utuh
+    const dataArtikel = {
+      'artikel-1': {
+        judul: 'Menebar Kebaikan Kecil Setiap Hari',
+        isi: `
+          <p>Kebaikan tidak selalu harus berupa hal-hal besar yang mengguncang dunia. Tindakan kecil seperti tersenyum kepada sesama, membantu menyeberangkan jalan, atau mendengarkan teman yang sedang butuh teman bicara adalah bentuk kebaikan yang bermakna tinggi.</p>
+          <p>Ketika kita konsisten melakukan hal-hal baik kecil, dampak positifnya akan berantai dan menciptakan lingkungan yang lebih hangat di sekitar kita.</p>
+          <p>Mari mulai dari hal terkecil di sekitar kita hari ini!</p>
+        `
+      },
+      'artikel-2': {
+        judul: 'Belajar Dari Bangkitnya Kegagalan',
+        isi: `
+          <p>Setiap kegagalan yang kita alami membawa pelajaran berharga. Jangan biarkan rasa takut menghambat potensi diri Anda untuk maju.</p>
+          <p>Banyak tokoh sukses dunia yang pernah mengalami kegagalan berkali-kali sebelum akhirnya mencapai impian terbesar mereka. Kuncinya adalah konsistensi dan pantang menyerah.</p>
+          <p>Ingatlah bahwa kegagalan bukanlah akhir, melainkan awal dari proses pematangan diri.</p>
+        `
+      }
+    };
+
+    // Fungsi Membuka Pop-Up dengan Artikel Utuh
+    function bukaArtikel(idArtikel) {
+      const artikel = dataArtikel[idArtikel];
+      if (artikel) {
+        document.getElementById('modalTitle').innerText = artikel.judul;
+        document.getElementById('modalBody').innerHTML = artikel.isi;
+        document.getElementById('popupModal').classList.add('active');
+      }
     }
 
-    // Fungsi Menutup Pop-up
-    function closeModal() {
-      document.getElementById('articleModal').classList.remove('active');
+    // Fungsi Menutup Pop-Up
+    function tutupPopup() {
+      document.getElementById('popupModal').classList.remove('active');
     }
 
-    // Fungsi Cetak Khusus dari Pop-up
-    function cetakPopup() {
-      window.print();
-    }
-
-    // Menutup modal jika pengguna mengklik area luar modal
+    // Menutup Pop-Up jika area luar diklik
     window.onclick = function(event) {
-      const modal = document.getElementById('articleModal');
+      const modal = document.getElementById('popupModal');
       if (event.target === modal) {
-        closeModal();
+        tutupPopup();
       }
     };
   </script>
