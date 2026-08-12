@@ -7,7 +7,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -26,6 +26,7 @@
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
                     }
                 }
             }
@@ -35,6 +36,124 @@
         .glass-header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
+        }
+
+        /* STYLES KHUSUS MENTETAK / PRINT PDF PROFESIONAL */
+        @media print {
+            /* Sembunyikan elemen non-cetak */
+            body * {
+                visibility: hidden;
+            }
+
+            /* Sembunyikan header, footer, background blur, overlay modal, dan tombol cetak */
+            header, footer, section, #loading, #articles-grid, .no-print, .modal-close-btn, .modal-backdrop {
+                display: none !important;
+            }
+
+            /* Tampilkan hanya modal aktif atau elemen cetak yang dipilih */
+            body.printing .printable-modal,
+            body.printing .printable-modal * {
+                visibility: visible;
+            }
+
+            /* Format Kontainer Modal khusus Print */
+            body.printing .printable-modal {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: white !important;
+                box-shadow: none !important;
+                border: none !important;
+                overflow: visible !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 18mm 15mm 18mm 15mm;
+            }
+
+            /* Styling Dokumen Cetak Publikasi Resmi */
+            .print-header-cop {
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                border-b: 2px solid #0f172a;
+                padding-bottom: 12px;
+                margin-bottom: 20px;
+            }
+
+            .print-header-title {
+                font-family: 'Poppins', sans-serif;
+                font-size: 20pt;
+                font-weight: 800;
+                color: #0f172a;
+                line-height: 1.2;
+                margin-top: 10px;
+                margin-bottom: 8px;
+            }
+
+            .print-meta-box {
+                background-color: #f8fafc !important;
+                border-left: 4px solid #2563eb !important;
+                padding: 10px 14px !important;
+                margin-bottom: 18px !important;
+                font-size: 9pt !important;
+                color: #475569 !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .print-featured-img {
+                width: 100% !important;
+                max-height: 320px !important;
+                object-fit: cover !important;
+                border-radius: 8px !important;
+                margin-bottom: 20px !important;
+                page-break-inside: avoid;
+            }
+
+            .print-body-content {
+                font-family: 'Merriweather', Georgia, serif !important;
+                font-size: 10.5pt !important;
+                line-height: 1.75 !important;
+                color: #1e293b !important;
+                text-align: justify !important;
+            }
+
+            .print-body-content p {
+                margin-bottom: 12pt !important;
+            }
+
+            .print-body-content blockquote {
+                background-color: #f1f5f9 !important;
+                border-left: 4px solid #9333ea !important;
+                padding: 12px 16px !important;
+                margin: 16pt 0 !important;
+                font-style: italic !important;
+                color: #334155 !important;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .print-footer-cop {
+                display: block !important;
+                margin-top: 30px;
+                padding-top: 12px;
+                border-top: 1px solid #e2e8f0;
+                text-align: center;
+                font-size: 8pt;
+                color: #64748b;
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
@@ -123,7 +242,7 @@
         </div>
     </footer>
 
-    <!-- Script Pemanggil Artikel Otomatis dari GitHub API -->
+    <!-- Script Pemanggil Artikel & Fungsi Cetak PDF -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -134,7 +253,24 @@
             if (modal) modal.classList.toggle('hidden');
         }
 
-        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan (Quote Box Tanpa Double Petik)
+        // Fungsi Cetak PDF Profesional
+        function printArticlePdf(modalId) {
+            const modalContent = document.querySelector(`#${modalId} .printable-modal`);
+            if (!modalContent) return;
+
+            // Tambahkan class khusus ke body untuk menargetkan pencetakan
+            document.body.classList.add('printing');
+            
+            // Panggil browser print window
+            window.print();
+
+            // Hapus class setelah pencetakan selesai/dibatalkan
+            setTimeout(() => {
+                document.body.classList.remove('printing');
+            }, 500);
+        }
+
+        // Fungsi Pemformat Otomatis Paragraf & Kotak Kutipan
         function formatParagraphs(text) {
             if (!text) return '';
             if (text.includes('<p>') || text.includes('<blockquote')) return text;
@@ -143,9 +279,7 @@
                 const trimmed = p.trim();
                 if (!trimmed) return '';
 
-                // Deteksi jika diawali bintang (*), tanda petik ("), atau simbol >
                 if (trimmed.startsWith('*') || trimmed.startsWith('"') || trimmed.startsWith('>')) {
-                    // Bersihkan simbol awalan & akhiran (*, ", >) agar tidak terjadi double tanda petik
                     const cleanQuote = trimmed
                         .replace(/^[\*">]+\s*/, '')
                         .replace(/[\*"]+$/, '');
@@ -157,7 +291,6 @@
                     `;
                 }
 
-                // Paragraf biasa
                 return `<p class="mb-4 leading-relaxed text-justify">${trimmed}</p>`;
             }).join('');
         }
@@ -328,7 +461,7 @@
                             if (resData.ok) {
                                 const articleData = await resData.json();
                                 articleData.id = 'dyn-' + file.name.replace('.json', '');
-                                allArticles.unshift(articleData); // Tampilkan artikel baru di urutan paling atas
+                                allArticles.unshift(articleData);
                             }
                         }
                     }
@@ -344,13 +477,13 @@
                     const artImg = art.image || art.thumbnail || 'images/gambardepan.jpg';
                     const artContent = formatParagraphs(art.content || art.body || art.excerpt);
 
-                    // Render Card
+                    // Render Card dengan Akses Pop-up
                     grid.innerHTML += `
                         <article class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
                             <div>
                                 <div class="relative h-56 overflow-hidden">
                                     <img src="${artImg}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                                    <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase">${art.category || 'Berita DT'}</span>
+                                    <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm">${art.category || 'Berita DT'}</span>
                                 </div>
                                 <div class="p-6 space-y-3">
                                     <div class="flex items-center justify-between text-xs text-slate-400">
@@ -365,26 +498,74 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="p-6 pt-0">
+                            <div class="p-6 pt-0 flex items-center justify-between">
                                 <button onclick="toggleModal('modal-${art.id}')" class="text-xs font-bold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition cursor-pointer">
                                     Baca Kisah Lengkap <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <button onclick="toggleModal('modal-${art.id}')" class="p-2 rounded-lg bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-600 transition" title="Cetak / Simpan PDF">
+                                    <i class="fa-solid fa-file-pdf text-sm"></i>
                                 </button>
                             </div>
                         </article>
                     `;
 
-                    // Render Dynamic Modal Pop-up (Tampilan Rapi & Berparagraf)
+                    // Render Dynamic Modal Pop-up + Fitur Cetak PDF Profesional
                     modals.innerHTML += `
-                        <div id="modal-${art.id}" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                            <div class="bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl my-auto">
-                                <button onclick="toggleModal('modal-${art.id}')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 text-xl font-bold p-2 z-10">✕</button>
-                                <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">${art.category || 'Berita DT'}</span>
-                                <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">${art.title}</h2>
-                                <p class="text-xs text-slate-400 border-b border-slate-100 pb-3">Oleh: ${art.author || 'Agus Suyatno, S.Kom'} | SMAN 1 Muncar</p>
-                                <img src="${artImg}" alt="${art.title}" class="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-sm">
-                                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed pt-2">
+                        <div id="modal-${art.id}" class="modal-backdrop fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+                            <div class="printable-modal bg-white max-w-3xl w-full rounded-3xl p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto relative shadow-2xl my-auto">
+                                
+                                <!-- Tombol Aksi Kanan Atas Modal (Tidak Tercetak saat PDF) -->
+                                <div class="no-print absolute top-6 right-6 flex items-center gap-2 z-10">
+                                    <button onclick="printArticlePdf('modal-${art.id}')" class="px-3.5 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs rounded-xl flex items-center gap-1.5 transition shadow-sm cursor-pointer" title="Cetak Artikel ke PDF">
+                                        <i class="fa-solid fa-file-pdf text-sm"></i>
+                                        <span>Cetak PDF</span>
+                                    </button>
+                                    <button onclick="toggleModal('modal-${art.id}')" class="modal-close-btn text-slate-400 hover:text-slate-700 text-xl font-bold p-1.5 rounded-xl hover:bg-slate-100 transition">✕</button>
+                                </div>
+
+                                <!-- HEADER DOKUMEN CETAK (Hanya Muncul Saat Cetak PDF) -->
+                                <div class="hidden print-header-cop">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="images/logo-doubletrack.webp" alt="Logo Double Track" class="h-10 w-auto">
+                                        <div>
+                                            <h4 class="font-extrabold text-slate-900 text-sm tracking-tight leading-tight">SMAN 1 MUNCAR BANYUWANGI</h4>
+                                            <p class="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Program Vokasi Double Track - Publikasi Resmi</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right text-[9pt] text-slate-500">
+                                        <span>Dokumen Cerita Baik</span>
+                                    </div>
+                                </div>
+
+                                <!-- META INFORMASI ARTIKEL -->
+                                <div>
+                                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">${art.category || 'Berita DT'}</span>
+                                    <h2 class="print-header-title text-xl sm:text-2xl font-bold text-slate-900 leading-snug mt-1">${art.title}</h2>
+                                    
+                                    <div class="print-meta-box flex items-center justify-between text-xs text-slate-500 border-b border-slate-100 pb-3 mt-2">
+                                        <div class="flex items-center gap-3">
+                                            <span><i class="fa-regular fa-user text-blue-500 mr-1 no-print"></i> Penulis: <strong>${art.author || 'Agus Suyatno, S.Kom'}</strong></span>
+                                            <span>•</span>
+                                            <span><i class="fa-regular fa-building text-emerald-500 mr-1 no-print"></i> SMAN 1 Muncar</span>
+                                        </div>
+                                        <span class="hidden sm:inline-block text-slate-400">Publikasi Resmi</span>
+                                    </div>
+                                </div>
+
+                                <!-- GAMBAR UTAMA ARTIKEL -->
+                                <img src="${artImg}" alt="${art.title}" class="print-featured-img w-full h-64 sm:h-80 object-cover rounded-2xl shadow-sm">
+                                
+                                <!-- KONTEN ISI ARTIKEL -->
+                                <div class="print-body-content text-xs sm:text-sm text-slate-600 leading-relaxed pt-2">
                                     ${artContent}
                                 </div>
+
+                                <!-- FOOTER DOKUMEN CETAK (Hanya Muncul Saat Cetak PDF) -->
+                                <div class="hidden print-footer-cop">
+                                    <p><strong>Program Double Track SMAN 1 Muncar Banyuwangi</strong></p>
+                                    <p>Jl. Raya Tapan No.1, Tapanrejo, Kec. Muncar, Kabupaten Banyuwangi, Jawa Timur 68472 | Email: info@sman1muncar.sch.id</p>
+                                </div>
+
                             </div>
                         </div>
                     `;
