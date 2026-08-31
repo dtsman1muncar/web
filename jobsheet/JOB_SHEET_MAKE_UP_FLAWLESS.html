@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB SHEET - TATA KECANTIKAN: MAKE UP MINIMALIS / FLAWLESS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff0f5;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 1350px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            position: relative;
+        }
+
+        /* HEADER SECTION */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #fce4ec 100%);
+            padding: 25px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #d81b60;
+            position: relative;
+        }
+
+        .header-left {
+            flex: 1.2;
+        }
+
+        .job-sheet-badge {
+            background-color: #c2185b;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 5px 22px;
+            border-radius: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(194, 24, 91, 0.3);
+        }
+
+        .main-title {
+            color: #880e4f;
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-title {
+            color: #c2185b;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .materi-banner {
+            background-color: #d81b60;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .tagline {
+            color: #ad1457;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .header-center {
+            flex: 0.9;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-img-placeholder {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.25);
+            background: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+            margin: 0 auto;
+        }
+
+        .header-right {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .logos-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-box {
+            text-align: center;
+            font-size: 9px;
+            font-weight: bold;
+            color: #1a237e;
+            line-height: 1.2;
+        }
+
+        .logo-box img {
+            height: 48px;
+            margin-bottom: 3px;
+        }
+
+        .meta-info-header {
+            background: #fff;
+            border: 1.5px solid #f8bbd0;
+            border-radius: 8px;
+            padding: 8px 15px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #880e4f;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        /* GRID CONTENT */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 310px 1fr 310px;
+            gap: 15px;
+            padding: 18px;
+            background-color: #fff9fb;
+        }
+
+        /* SECTION CARDS */
+        .card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #f48fb1;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #c2185b;
+            color: white;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-body {
+            padding: 10px;
+            font-size: 10.5px;
+            color: #333;
+        }
+
+        /* TABLE STYLING */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+
+        table th {
+            background-color: #fce4ec;
+            color: #880e4f;
+            font-weight: 700;
+            padding: 5px 6px;
+            text-align: left;
+            border: 1px solid #f8bbd0;
+        }
+
+        table td {
+            padding: 5px 6px;
+            border: 1px solid #f8bbd0;
+            vertical-align: top;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff5f8;
+        }
+
+        /* IDENTITAS TABLE */
+        .table-identitas td {
+            border: none;
+            padding: 3.5px 2px;
+        }
+        .table-identitas td:first-child {
+            font-weight: 700;
+            width: 105px;
+            color: #444;
+        }
+
+        /* STEPS / LANGKAH KERJA */
+        .step-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+            background: #fff5f8;
+            padding: 8px;
+            border-radius: 6px;
+            border-left: 3px solid #c2185b;
+        }
+
+        .step-num {
+            background: #c2185b;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 800;
+            color: #c2185b;
+            font-size: 11.5px;
+            margin-bottom: 2px;
+        }
+
+        .step-desc {
+            font-size: 10px;
+            line-height: 1.35;
+            color: #444;
+        }
+
+        /* DIAGRAM ALUR */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 0;
+        }
+
+        .flow-box {
+            background: #fff;
+            border: 1.5px solid #c2185b;
+            border-radius: 6px;
+            padding: 6px 10px;
+            width: 95%;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #880e4f;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .flow-arrow {
+            color: #c2185b;
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        /* FOOTER BANNER */
+        .footer-banner {
+            background-color: #880e4f;
+            color: white;
+            padding: 10px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-k3 {
+            background: #c2185b;
+            padding: 4px 14px;
+            border-radius: 12px;
+            border: 1.5px solid #f48fb1;
+            font-weight: 800;
+        }
+
+        .slogan-section {
+            background: linear-gradient(180deg, #ffffff 0%, #fce4ec 100%);
+            text-align: center;
+            padding: 15px;
+            border-top: 2px dashed #f48fb1;
+            position: relative;
+        }
+
+        .slogan-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 24px;
+            font-weight: 700;
+            color: #c2185b;
+            line-height: 1.25;
+        }
+
+        /* TIPS & CATATAN */
+        .info-box {
+            background: #fff5f8;
+            border: 1px solid #f48fb1;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 9.5px;
+        }
+
+        .info-title {
+            font-weight: 800;
+            color: #c2185b;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10.5px;
+        }
+
+        .tools-materials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <div class="job-sheet-badge">JOB SHEET</div>
+            <h1 class="main-title">TATA KECANTIKAN</h1>
+            <h2 class="sub-title">TATA RIAS PENGANTIN BERHIJAB</h2>
+            <div class="materi-banner">MATERI : MEMBUAT MAKE UP MINIMALIS/FLAWLESS</div>
+            <div class="tagline">NATURAL, ELEGAN, DAN TAHAN LAMA</div>
+        </div>
+        
+        <div class="header-center">
+            <div class="header-img-placeholder"></div>
+        </div>
+
+        <div class="header-right">
+            <div class="logos-container">
+                <div class="logo-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lambang_Jawa_Timur.png/400px-Lambang_Jawa_Timur.png" alt="Dinas Pendidikan Jatim">
+                    <div>DINAS PENDIDIKAN<br>PROVINSI JAWA TIMUR</div>
+                </div>
+                <div class="logo-box">
+                    <div style="font-size: 15px; font-weight: 900; color: #c2185b; line-height: 1.1; margin-bottom: 2px;">SMA<br>DOUBLE<br>TRACK</div>
+                </div>
+                <div class="logo-box">
+                    <div style="border: 2px solid #0d47a1; border-radius: 50%; width: 42px; height: 42px; line-height: 38px; margin: 0 auto 3px; font-weight: 900; color: #0d47a1; font-size: 11px;">SMAN 1</div>
+                    <div>SMA NEGERI 1 MUNCAR</div>
+                </div>
+            </div>
+            <div class="meta-info-header">
+                MATA PELATIHAN : TATA RIAS PENGANTIN BERHIJAB &nbsp;|&nbsp; MATERI PRAKTEK : MAKE UP MINIMALIS/FLAWLESS
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="content-grid">
+        
+        <!-- LEFT COLUMN -->
+        <div class="col-left">
+            <!-- A. IDENTITAS JOB SHEET -->
+            <div class="card">
+                <div class="card-header">📋 A. IDENTITAS JOB SHEET</div>
+                <div class="card-body">
+                    <table class="table-identitas">
+                        <tr><td>Program Keahlian</td><td>: Tata Kecantikan</td></tr>
+                        <tr><td>Mata Pelatihan</td><td>: Tata Rias Pengantin Berhijab</td></tr>
+                        <tr><td>Materi Praktek</td><td>: Make Up Minimalis/Flawless</td></tr>
+                        <tr><td>Waktu</td><td>: 8 JP (360 Menit)</td></tr>
+                        <tr><td>Tingkat</td><td>: Dasar</td></tr>
+                        <tr><td>Metode</td><td>: Demonstrasi, Praktik dan Penilaian Produk</td></tr>
+                        <tr>
+                            <td>Kompetensi</td>
+                            <td>: Mampu membuat tata rias pengantin berhijab dengan teknik make up minimalis/flawless yang natural, elegan, dan tahan lama.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- B. TUJUAN PEMBELAJARAN -->
+            <div class="card">
+                <div class="card-header">🎯 B. TUJUAN PEMBELAJARAN</div>
+                <div class="card-body">
+                    <ol style="padding-left: 15px; font-size: 10px; line-height: 1.45;">
+                        <li>Menyiapkan alat, bahan, dan kosmetik yang digunakan.</li>
+                        <li>Menganalisis karakter wajah dan kebutuhan rias pengantin berhijab.</li>
+                        <li>Menyiapkan wajah (skincare dan base makeup) dengan teknik yang tepat.</li>
+                        <li>Membuat make up minimalis/flawless pada pengantin berhijab.</li>
+                        <li>Merapikan hijab dan memastikan hasil rias tahan lama.</li>
+                        <li>Menampilkan hasil akhir dengan rapi, bersih, dan elegan.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- G. ALAT & H. BAHAN -->
+            <div class="tools-materials-grid">
+                <!-- G. ALAT -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header" style="background-color: #c2185b;">✂️ G. ALAT</div>
+                    <div class="card-body" style="padding: 4px;">
+                        <table>
+                            <thead>
+                                <tr><th>No.</th><th>Nama Alat</th><th style="text-align:center;">Jumlah</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Kuas Make Up Set</td><td style="text-align:center;">1 Set</td></tr>
+                                <tr><td>2</td><td>Spons Make Up</td><td style="text-align:center;">2 Buah</td></tr>
+                                <tr><td>3</td><td>Beauty Blender</td><td style="text-align:center;">1 Buah</td></tr>
+                                <tr><td>4</td><td>Penjepit Bulu Mata</td><td style="text-align:center;">1 Buah</td></tr>
+                                <tr><td>5</td><td>Sisir Alis</td><td style="text-align:center;">1 Buah</td></tr>
+                                <tr><td>6</td><td>Cermin</td><td style="text-align:center;">1 Buah</td></tr>
+                                <tr><td>7</td><td>Hairclip / Jepit Rambut</td><td style="text-align:center;">4 Buah</td></tr>
+                                <tr><td>8</td><td>Pinset</td><td style="text-align:center;">1 Buah</td></tr>
+                                <tr><td>9</td><td>Cotton Bud</td><td style="text-align:center;">1 Pack</td></tr>
+                                <tr><td>10</td><td>Tisu Wajah</td><td style="text-align:center;">1 Pack</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- H. BAHAN -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header" style="background-color: #c2185b;">🌿 H. BAHAN</div>
+                    <div class="card-body" style="padding: 4px;">
+                        <table>
+                            <thead>
+                                <tr><th>No.</th><th>Bahan</th><th style="text-align:center;">Jumlah</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Cleanser</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>2</td><td>Toner</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>3</td><td>Moisturizer</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>4</td><td>Primer</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>5</td><td>Foundation</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>6</td><td>Concealer</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>7</td><td>Loose Powder</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>8</td><td>Blush On</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>9</td><td>Eyeshadow</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>10</td><td>Lipstik (Soft/Nude)</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>11</td><td>Setting Spray</td><td style="text-align:center;">1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="col-center">
+            <!-- C. LANGKAH KERJA -->
+            <div class="card">
+                <div class="card-header">⚙️ C. LANGKAH KERJA</div>
+                <div class="card-body">
+                    
+                    <!-- Step 1 -->
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Persiapan</div>
+                            <div class="step-desc">Siapkan alat, bahan, kosmetik, dan model. Pastikan kebersihan alat dan area kerja.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Skincare & Base</div>
+                            <div class="step-desc">Bersihkan wajah, aplikasikan toner, moisturizer, primer, sunscreen. Lanjutkan dengan foundation & concealer.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Rias Wajah</div>
+                            <div class="step-desc">Aplikasikan bedak, contour ringan, blush on, highlighter untuk hasil flawless natural.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Rias Mata</div>
+                            <div class="step-desc">Buat alis natural, eyeshadow soft, eyeliner tipis, pasang bulu mata, dan maskara.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step-item">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <div class="step-title">Rias Bibir</div>
+                            <div class="step-desc">Aplikasikan lipstik soft/nude, tambahkan lip gloss tipis untuk kesan segar.</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="step-item">
+                        <div class="step-num">6</div>
+                        <div class="step-content">
+                            <div class="step-title">Finishing & Hijab</div>
+                            <div class="step-desc">Semprot setting spray agar tahan lama. Rapikan dan tata hijab dengan gaya pengantin minimalis.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CATATAN & TIPS SUKSES -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div class="info-box">
+                    <div class="info-title">📋 CATATAN</div>
+                    <ul style="padding-left: 14px; font-size: 9px; line-height: 1.45;">
+                        <li>Pastikan model dalam keadaan bersih, lembah, dan kering.</li>
+                        <li>Gunakan kosmetik yang sesuai dengan jenis kulit model.</li>
+                    </ul>
+                </div>
+                <div class="info-box" style="background-color: #fce4ec;">
+                    <div class="info-title">💡 TIPS SUKSES</div>
+                    <ul style="padding-left: 14px; font-size: 9px; line-height: 1.45;">
+                        <li>Gunakan skincare dengan tepat sebelum make up.</li>
+                        <li>Pilih warna soft agar terlihat natural dan elegan.</li>
+                        <li>Hindari penggunaan bedak berlebihan.</li>
+                        <li>Pastikan setiap layer menyatu dengan baik.</li>
+                        <li>Finishing spray adalah kunci ketahanan make up.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-right">
+            <!-- D. DIAGRAM ALUR -->
+            <div class="card">
+                <div class="card-header">🔄 D. DIAGRAM ALUR</div>
+                <div class="card-body">
+                    <div class="flowchart">
+                        <div class="flow-box">Persiapan Alat & Bahan</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Menyiapkan Model</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Skincare & Base</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Rias Wajah</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Rias Mata</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Rias Bibir</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Finishing</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Hijab & Finishing Spray</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Evaluasi Produk</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E. STANDAR HASIL PRODUK -->
+            <div class="card">
+                <div class="card-header">✨ E. STANDAR HASIL PRODUK</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Aspek</th><th>Standar</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><b>Warna</b></td><td>Natural, sesuai warna kulit</td></tr>
+                            <tr><td><b>Rias Mata</b></td><td>Soft, seimbang, tidak menor</td></tr>
+                            <tr><td><b>Alis</b></td><td>Rapi, natural, simetris</td></tr>
+                            <tr><td><b>Kulit</b></td><td>Flawless, halus, tidak patchy</td></tr>
+                            <tr><td><b>Bibir</b></td><td>Warna soft, rapi</td></tr>
+                            <tr><td><b>Hijab</b></td><td>Rapi, simetris, sesuai tema</td></tr>
+                            <tr><td><b>Ketahanan</b></td><td>Tahan minimal 6–8 jam</td></tr>
+                            <tr><td><b>Kebersihan</b></td><td>Bersih, rapi, higienis</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- F. TROUBLESHOOTING -->
+            <div class="card">
+                <div class="card-header" style="background-color: #c2185b;">🛠️ F. TROUBLESHOOTING</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Permasalahan</th><th>Penyebab</th><th>Solusi</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Make up cepat luntur</td>
+                                <td>Kulit berminyak, tidak memakai primer</td>
+                                <td>Gunakan primer & setting spray</td>
+                            </tr>
+                            <tr>
+                                <td>Foundation patchy</td>
+                                <td>Kulit kering, tidak lembab</td>
+                                <td>Gunakan moisturizer & teknik aplikasi tipis</td>
+                            </tr>
+                            <tr>
+                                <td>Rias mata medok</td>
+                                <td>Pemilihan warna gelap berlebihan</td>
+                                <td>Gunakan warna soft & blending</td>
+                            </tr>
+                            <tr>
+                                <td>Bibir pecah-pecah</td>
+                                <td>Bibir kering</td>
+                                <td>Eksfoliasi bibir & gunakan lip balm</td>
+                            </tr>
+                            <tr>
+                                <td>Hijab mudah geser</td>
+                                <td>Peniti kurang kuat</td>
+                                <td>Gunakan peniti model U & jarum pentul</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- I. PENILAIAN PRAKTIK -->
+            <div class="card">
+                <div class="card-header" style="background-color: #c2185b;">📊 I. PENILAIAN PRAKTIK</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Aspek</th><th style="width: 50px; text-align: center;">Bobot</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Persiapan alat & bahan</td><td style="text-align: center;">10</td></tr>
+                            <tr><td>Kebersihan kerja</td><td style="text-align: center;">10</td></tr>
+                            <tr><td>Kerapian hijab</td><td style="text-align: center;">10</td></tr>
+                            <tr><td>Teknik make up (flawless)</td><td style="text-align: center;">20</td></tr>
+                            <tr><td>Keserasian rias</td><td style="text-align: center;">20</td></tr>
+                            <tr><td>Ketahanan make up</td><td style="text-align: center;">20</td></tr>
+                            <tr><td>Kualitas produk akhir</td><td style="text-align: center;">10</td></tr>
+                            <tr style="background-color: #fce4ec; font-weight: 800; color: #880e4f;">
+                                <td>TOTAL</td>
+                                <td style="text-align: center;">100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SLOGAN & FOOTER -->
+    <div class="slogan-section">
+        <div class="slogan-text">
+            Berkompeten, Berkarakter,<br>
+            Siap Kerja, Siap Wirausaha
+        </div>
+    </div>
+
+    <div class="footer-banner">
+        <div class="footer-item">
+            <span>🧼</span> HIGIENE & SANITASI
+        </div>
+        <div class="footer-item badge-k3">
+            <span>🛡️</span> K3 - KESELAMATAN KERJA
+        </div>
+        <div class="footer-item">
+            <span>💖</span> COOK WITH PASSION, BAKE WITH HEART
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
