@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB SHEET - SAMBAL MATAH</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f6f8;
+            color: #2b2b2b;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 1400px;
+            background: #fffdfa;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            border: 1px solid #e2d8cd;
+        }
+
+        /* HEADER SECTION */
+        .header {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff0e0 100%);
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #b71c1c;
+            position: relative;
+        }
+
+        .header-left {
+            flex: 1.2;
+        }
+
+        .job-sheet-badge {
+            background-color: #b71c1c;
+            color: white;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 18px;
+            border-radius: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            box-shadow: 0 2px 6px rgba(183, 28, 28, 0.3);
+        }
+
+        .main-title {
+            color: #b71c1c;
+            font-size: 38px;
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tagline-banner {
+            background-color: #2e7d32;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 800;
+            font-size: 11.5px;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            font-weight: 700;
+            color: #d84315;
+            margin-top: 4px;
+        }
+
+        .header-center {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-img-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(183, 28, 28, 0.25);
+            background: url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+            margin: 0 auto;
+        }
+
+        .header-bubble {
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            background: #b71c1c;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: 800;
+            line-height: 1.2;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .header-right {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .logos-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-box {
+            text-align: center;
+            font-size: 8.5px;
+            font-weight: bold;
+            color: #1a237e;
+            line-height: 1.2;
+        }
+
+        .logo-box img {
+            height: 44px;
+            margin-bottom: 2px;
+        }
+
+        .meta-info-header {
+            background: #fff;
+            border: 1.5px solid #ffcdd2;
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #b71c1c;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        /* GRID CONTENT LAYOUT */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 300px;
+            gap: 14px;
+            padding: 16px;
+            background-color: #fffdfa;
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #f0e0d0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #b71c1c;
+            color: white;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header.orange {
+            background-color: #d84315;
+        }
+
+        .card-header.green {
+            background-color: #2e7d32;
+        }
+
+        .card-body {
+            padding: 8px 10px;
+            font-size: 10px;
+            color: #333;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.5px;
+        }
+
+        table th {
+            background-color: #ffebee;
+            color: #b71c1c;
+            font-weight: 700;
+            padding: 4px 5px;
+            text-align: left;
+            border: 1px solid #ffcdd2;
+        }
+
+        table td {
+            padding: 4px 5px;
+            border: 1px solid #ffe0b2;
+            vertical-align: top;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fffde7;
+        }
+
+        /* IDENTITAS TABLE */
+        .table-identitas td {
+            border: none;
+            padding: 3px 2px;
+        }
+        .table-identitas td:first-child {
+            font-weight: 700;
+            width: 95px;
+            color: #444;
+        }
+
+        /* STEP CARDS IN CENTER */
+        .steps-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .step-box {
+            background: #fff8f0;
+            border: 1px solid #ffe0b2;
+            border-radius: 6px;
+            padding: 8px;
+        }
+
+        .step-box-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .step-badge {
+            background: #b71c1c;
+            color: white;
+            font-size: 9.5px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 10px;
+        }
+
+        .step-title {
+            font-weight: 800;
+            color: #b71c1c;
+            font-size: 11px;
+        }
+
+        .step-list {
+            padding-left: 12px;
+            font-size: 9.5px;
+            line-height: 1.4;
+        }
+
+        .step-list li {
+            margin-bottom: 3px;
+        }
+
+        /* K3 LIST */
+        .k3-list {
+            padding-left: 14px;
+            font-size: 9.2px;
+            line-height: 1.35;
+        }
+
+        .k3-list li {
+            margin-bottom: 3px;
+        }
+
+        /* TIPS BOX */
+        .tips-box {
+            background: #fff3e0;
+            border: 1px dashed #ff9800;
+            border-radius: 6px;
+            padding: 7px;
+            font-size: 9px;
+            margin-top: 6px;
+            color: #e65100;
+            font-weight: 600;
+        }
+
+        /* BOTTOM SECTION (J, K, L, M) */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.1fr 1fr 0.8fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* FOOTER BANNER */
+        .footer-banner {
+            background-color: #b71c1c;
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tools-materials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <div class="job-sheet-badge">JOB SHEET</div>
+            <h1 class="main-title">SAMBAL MATAH</h1>
+            <div class="tagline-banner">SEGAR, PEDAS, AROMATIK</div>
+            <div class="sub-tagline">~ Khas Bali ~</div>
+        </div>
+        
+        <div class="header-center">
+            <div class="header-img-placeholder"></div>
+            <div class="header-bubble">Pedasnya Nendang<br>Segarnya<br>Bikin Ketagihan!</div>
+        </div>
+
+        <div class="header-right">
+            <div class="logos-container">
+                <div class="logo-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lambang_Jawa_Timur.png/400px-Lambang_Jawa_Timur.png" alt="Dinas Pendidikan Jatim">
+                    <div>DINAS PENDIDIKAN<br>PROVINSI JAWA TIMUR</div>
+                </div>
+                <div class="logo-box">
+                    <div style="font-size: 14px; font-weight: 900; color: #0d47a1; line-height: 1.1; margin-bottom: 2px;">SMA<br>DOUBLE<br>TRACK</div>
+                </div>
+                <div class="logo-box">
+                    <div style="border: 2px solid #0d47a1; border-radius: 50%; width: 40px; height: 40px; line-height: 36px; margin: 0 auto 2px; font-weight: 900; color: #0d47a1; font-size: 10px;">SMAN 1</div>
+                    <div>SMAN 1 MUNCAR</div>
+                </div>
+            </div>
+            <div class="meta-info-header">
+                MATA PELATIHAN : MASAKAN INDONESIA &nbsp;|&nbsp; MATERI PRAKTEK : SAMBAL MATAH
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="content-grid">
+        
+        <!-- LEFT COLUMN -->
+        <div class="col-left">
+            <!-- A. IDENTITAS JOB SHEET -->
+            <div class="card">
+                <div class="card-header">📋 A. IDENTITAS JOB SHEET</div>
+                <div class="card-body">
+                    <table class="table-identitas">
+                        <tr><td>Program Keahlian</td><td>: Tata Boga</td></tr>
+                        <tr><td>Mata Pelatihan</td><td>: Masakan Indonesia</td></tr>
+                        <tr><td>Materi Praktek</td><td>: Sambal Matah</td></tr>
+                        <tr><td>Waktu</td><td>: 8 JP (360 Menit)</td></tr>
+                        <tr><td>Tingkat</td><td>: Dasar</td></tr>
+                        <tr><td>Metode</td><td>: Demonstrasi, Praktik dan Penilaian Produk</td></tr>
+                        <tr>
+                            <td>Kompetensi</td>
+                            <td>: Mengolah hidangan nasi tradisional Indonesia dengan menerapkan teknik memasak tradisional yang benar.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- D. ALAT & E. BAHAN -->
+            <div class="tools-materials-grid">
+                <!-- D. ALAT -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header orange">🍳 D. ALAT</div>
+                    <div class="card-body" style="padding: 3px;">
+                        <table>
+                            <thead>
+                                <tr><th>No.</th><th>Nama Alat</th><th style="text-align:center;">Jumlah</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Talenan</td><td style="text-align:center;">1 buah</td></tr>
+                                <tr><td>2</td><td>Pisau dapur</td><td style="text-align:center;">1 buah</td></tr>
+                                <tr><td>3</td><td>Mangkuk/bowl</td><td style="text-align:center;">1 buah</td></tr>
+                                <tr><td>4</td><td>Sendok</td><td style="text-align:center;">1 buah</td></tr>
+                                <tr><td>5</td><td>Piring saji</td><td style="text-align:center;">1 buah</td></tr>
+                                <tr><td>6</td><td>Kompor</td><td style="text-align:center;">1 unit</td></tr>
+                                <tr><td>7</td><td>Wajan kecil</td><td style="text-align:center;">1 buah</td></tr>
+                                <tr><td>8</td><td>Sarung tangan (food grade)</td><td style="text-align:center;">Secukupnya</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- E. BAHAN -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header green">🥗 E. BAHAN (± 4 PORSI)</div>
+                    <div class="card-body" style="padding: 3px;">
+                        <table>
+                            <thead>
+                                <tr><th>No.</th><th>Bahan</th><th style="text-align:center;">Jumlah</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Bawang merah</td><td style="text-align:center;">10 butir</td></tr>
+                                <tr><td>2</td><td>Cabai rawit merah</td><td style="text-align:center;">8-10 buah</td></tr>
+                                <tr><td>3</td><td>Serai (bagian putih)</td><td style="text-align:center;">2 batang</td></tr>
+                                <tr><td>4</td><td>Daun jeruk</td><td style="text-align:center;">4 lembar</td></tr>
+                                <tr><td>5</td><td>Jeruk limau</td><td style="text-align:center;">2 buah</td></tr>
+                                <tr><td>6</td><td>Terasi bakar</td><td style="text-align:center;">½ sdt</td></tr>
+                                <tr><td>7</td><td>Minyak kelapa / goreng</td><td style="text-align:center;">4 sdm</td></tr>
+                                <tr><td>8</td><td>Garam</td><td style="text-align:center;">½ sdt</td></tr>
+                                <tr><td>9</td><td>Gula pasir</td><td style="text-align:center;">¼ sdt</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                💡 <b>Tips!</b> Gunakan minyak kelapa untuk aroma yang khas dan rasa yang lebih otentik.
+            </div>
+
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="col-center">
+            <!-- B. TUJUAN PEMBELAJARAN -->
+            <div class="card">
+                <div class="card-header orange">🎯 B. TUJUAN PEMBELAJARAN</div>
+                <div class="card-body">
+                    <p style="font-weight: 700; margin-bottom: 4px; font-size: 9.5px;">Setelah melakukan praktik, peserta didik diharapkan mampu:</p>
+                    <ol style="padding-left: 14px; font-size: 9.2px; line-height: 1.4;">
+                        <li>Menjelaskan pengertian dan karakteristik sambal matah.</li>
+                        <li>Menyiapkan alat dan bahan pembuatan sambal matah dengan benar.</li>
+                        <li>Menerapkan teknik memotong, mengiris, dan mencampur bahan sesuai prosedur.</li>
+                        <li>Membuat sambal matah dengan memperhatikan kebersihan, keamanan, dan keselamatan kerja.</li>
+                        <li>Menghasilkan sambal matah dengan rasa, aroma, tekstur, warna, dan penyajian yang baik.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- C. KOMPETENSI YANG DICAPAI -->
+            <div class="card">
+                <div class="card-header green">🏆 C. KOMPETENSI YANG DICAPAI</div>
+                <div class="card-body">
+                    <ol start="6" style="padding-left: 14px; font-size: 9.2px; line-height: 1.4;">
+                        <li>Menerapkan Higiene dan sanitasi kerja.</li>
+                        <li>Mengolah produk dengan benar.</li>
+                        <li>Menghitung modal awal, biaya operasional, dan menetapkan harga jual.</li>
+                        <li>Menciptakan variasi rasa, kemasan yang menarik, serta topping yang kreatif.</li>
+                        <li>Menjual produk secara langsung maupun melalui platform digital.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- F. LANGKAH KERJA -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header">👨‍🍳 F. LANGKAH KERJA</div>
+                <div class="card-body">
+                    <div class="steps-container">
+                        <!-- PERSIAPAN -->
+                        <div class="step-box">
+                            <div class="step-box-header">
+                                <span class="step-badge">20</span>
+                                <span class="step-title">PERSIAPAN</span>
+                            </div>
+                            <ul class="step-list" style="list-style-type: disc;">
+                                <li>Siapkan alat dan bahan sesuai resep.</li>
+                                <li>Cuci bersih bawang merah, cabai, serai, dan daun jeruk.</li>
+                                <li>Tiriskan seluruh bahan hingga tidak terlalu basah.</li>
+                                <li>Siapkan area kerja dalam keadaan bersih.</li>
+                            </ul>
+                        </div>
+
+                        <!-- PENGOLAHAN -->
+                        <div class="step-box">
+                            <div class="step-box-header">
+                                <span class="step-badge" style="background: #2e7d32;">21</span>
+                                <span class="step-title" style="color: #2e7d32;">PENGOLAHAN</span>
+                            </div>
+                            <ol start="22" class="step-list">
+                                <li>Iris tipis bawang merah.</li>
+                                <li>Iris tipis cabai rawit secara menyerong.</li>
+                                <li>Ambil bagian putih serai, kemudian iris sangat tipis.</li>
+                                <li>Buang tulang daun jeruk, kemudian iris tipis memanjang.</li>
+                                <li>Bakar terasi sebentar hingga harum.</li>
+                                <li>Campurkan bawang merah, cabai, serai, daun jeruk, dan terasi dalam mangkuk.</li>
+                                <li>Tambahkan garam dan gula.</li>
+                                <li>Panaskan minyak kelapa/goreng hingga cukup panas.</li>
+                                <li>Tuangkan minyak panas ke dalam campuran bahan.</li>
+                                <li>Aduk perlahan hingga semua bahan tercampur rata.</li>
+                                <li>Tambahkan perasan jeruk limau.</li>
+                                <li>Koreksi rasa.</li>
+                                <li>Tata sambal matah pada piring saji.</li>
+                                <li>Sajikan segera.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-right">
+            <!-- H. KESELAMATAN DAN KESEHATAN KERJA (K3) -->
+            <div class="card">
+                <div class="card-header orange">🛡️ H. KESELAMATAN DAN KESEHATAN KERJA (K3)</div>
+                <div class="card-body">
+                    <ol start="11" class="k3-list">
+                        <li>Cuci tangan sebelum dan sesudah melakukan praktik.</li>
+                        <li>Gunakan pakaian kerja dan celemek yang bersih.</li>
+                        <li>Gunakan pisau dengan posisi dan teknik memotong yang benar.</li>
+                        <li>Berhati-hati saat mengolah cabai agar tidak mengenai mata.</li>
+                        <li>Pastikan alat dan bahan dalam keadaan bersih.</li>
+                        <li>Gunakan kompor dengan hati-hati.</li>
+                        <li>Jangan menyentuh wajah atau mata setelah memegang cabai.</li>
+                        <li>Bersihkan area kerja setelah praktik selesai.</li>
+                        <li>Simpan dan gunakan pisau sesuai prosedur keselamatan kerja.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- I. STANDAR HASIL PRODUK -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header green">✨ I. STANDAR HASIL PRODUK</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Aspek</th><th>Standar</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><b>Warna</b></td><td>Segar, cerah, menarik</td></tr>
+                            <tr><td><b>Aroma</b></td><td>Harum bawang, serai, daun jeruk, jeruk limau</td></tr>
+                            <tr><td><b>Rasa</b></td><td>Pedas, segar, gurih, asam</td></tr>
+                            <tr><td><b>Tekstur</b></td><td>Bahan segar, renyah</td></tr>
+                            <tr><td><b>Potongan</b></td><td>Irisan tipis, rapi, seragam</td></tr>
+                            <tr><td><b>Penyajian</b></td><td>Bersih, rapi, menarik</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM ROW (J, K, L, M) -->
+    <div style="padding: 0 16px 16px 16px;">
+        <div class="bottom-grid">
+            
+            <!-- J. PENILAIAN PRAKTIK -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header">📊 J. PENILAIAN PRAKTIK</div>
+                <div class="card-body" style="padding: 4px;">
+                    <div style="display: flex; gap: 4px; font-size: 8.5px;">
+                        <table style="flex: 1.2;">
+                            <thead>
+                                <tr><th colspan="2">Penilaian Proses (70)</th></tr>
+                                <tr><th>Aspek</th><th>Bobot</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Persiapan kerja</td><td>15</td></tr>
+                                <tr><td>Kebersihan & sanitasi</td><td>15</td></tr>
+                                <tr><td>Penggunaan alat</td><td>10</td></tr>
+                                <tr><td>Teknik pengolahan</td><td>20</td></tr>
+                                <tr><td>Kerja sama & sikap kerja</td><td>10</td></tr>
+                                <tr style="font-weight:bold; background:#ffebee;"><td>Jumlah</td><td>70</td></tr>
+                            </tbody>
+                        </table>
+
+                        <table style="flex: 1;">
+                            <thead>
+                                <tr><th colspan="2">Penilaian Produk (30)</th></tr>
+                                <tr><th>Aspek</th><th>Bobot</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Warna</td><td>5</td></tr>
+                                <tr><td>Aroma</td><td>5</td></tr>
+                                <tr><td>Rasa</td><td>10</td></tr>
+                                <tr><td>Tekstur</td><td>5</td></tr>
+                                <tr><td>Penyajian</td><td>5</td></tr>
+                                <tr style="font-weight:bold; background:#ffebee;"><td>Jumlah</td><td>30</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 4px; background: #b71c1c; color: white; text-align: center; font-weight: 800; padding: 3px; border-radius: 4px; font-size: 9px;">
+                        TOTAL NILAI: 100
+                    </div>
+                </div>
+            </div>
+
+            <!-- K. CATATAN BIAYA (SIMULASI) -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header green">💰 K. CATATAN BIAYA (SIMULASI)</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Uraian</th><th>Estimasi Biaya (Rp)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Modal Awal (Bahan)</td><td>Rp ........................</td></tr>
+                            <tr><td>Biaya Operasional (Gas, listrik, dll)</td><td>Rp ........................</td></tr>
+                            <tr><td>Total Biaya</td><td>Rp ........................</td></tr>
+                            <tr><td>Harga Jual</td><td>Rp ........................</td></tr>
+                            <tr style="font-weight:bold; background:#e8f5e9;"><td>Keuntungan (Estimasi)</td><td>Rp ........................</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- L. PELUANG USAHA -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header orange">🚀 L. PELUANG USAHA</div>
+                <div class="card-body" style="font-size: 8.8px; line-height: 1.4;">
+                    <p style="margin-bottom: 3px;">✔️ <b>Varian rasa:</b> original, pedas ekstra, jeruk nipis, terasi bakar.</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Kemasan menarik:</b> (cup, jar, pouch).</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Tambah topping:</b> ikan teri, kacang, ebi goreng.</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Jual langsung:</b> di sekolah, kantin, event.</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Jual online:</b> Instagram, WhatsApp, Marketplace.</p>
+                </div>
+            </div>
+
+            <!-- M. CATATAN REFLEKSI -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header">📝 M. CATATAN REFLEKSI</div>
+                <div class="card-body" style="font-size: 8.5px; line-height: 1.35;">
+                    <ol style="padding-left: 12px;">
+                        <li>Apa yang sudah kamu pelajari hari ini?</li>
+                        <li>Kesulitan apa yang kamu temui?</li>
+                        <li>Bagaimana cara mengatasinya?</li>
+                        <li>Hal apa yang perlu diperbaiki untuk praktik berikutnya?</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER BANNER -->
+    <div class="footer-banner">
+        <div class="footer-item">
+            <span>🧼</span> HYGIENE & SANITASI
+        </div>
+        <div class="footer-item">
+            <span>❤️</span> BEKERJA DENGAN HATI
+        </div>
+        <div class="footer-item">
+            <span>⭐</span> BERKARYA UNTUK NEGERI
+        </div>
+        <div class="footer-item">
+            <span>🍳</span> COOK WITH PASSION, BAKE WITH HEART
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
