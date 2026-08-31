@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB SHEET - TATA BOGA MILK TEA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f6f8;
+            color: #2b2b2b;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 1400px;
+            background: #fffdfa;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            border: 1px solid #e2d8cd;
+        }
+
+        /* HEADER SECTION */
+        .header {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff0e0 100%);
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #8d4925;
+            position: relative;
+        }
+
+        .header-left {
+            flex: 1.2;
+        }
+
+        .job-sheet-badge {
+            background-color: #000;
+            color: white;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 18px;
+            border-radius: 20px;
+            display: inline-block;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .main-title {
+            color: #c6531e;
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sub-title {
+            color: #000;
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tagline-banner {
+            background-color: #d84315;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 800;
+            font-size: 11.5px;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-center {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-img-placeholder {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(141, 73, 37, 0.25);
+            background: url('https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+            margin: 0 auto;
+        }
+
+        .header-bubble {
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            background: #5d4037;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: 800;
+            line-height: 1.2;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .header-right {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .logos-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-box {
+            text-align: center;
+            font-size: 8.5px;
+            font-weight: bold;
+            color: #1a237e;
+            line-height: 1.2;
+        }
+
+        .logo-box img {
+            height: 44px;
+            margin-bottom: 2px;
+        }
+
+        .meta-info-header {
+            background: #fff;
+            border: 1.5px solid #d7ccc8;
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #5d4037;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        /* GRID CONTENT LAYOUT */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 340px;
+            gap: 14px;
+            padding: 16px;
+            background-color: #fffdfa;
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #f0e0d0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #5d4037;
+            color: white;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header.orange {
+            background-color: #d84315;
+        }
+
+        .card-header.brown-dark {
+            background-color: #3e2723;
+        }
+
+        .card-header.green {
+            background-color: #2e7d32;
+        }
+
+        .card-body {
+            padding: 8px 10px;
+            font-size: 10px;
+            color: #333;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.5px;
+        }
+
+        table th {
+            background-color: #efebe9;
+            color: #4e342e;
+            font-weight: 700;
+            padding: 4px 5px;
+            text-align: left;
+            border: 1px solid #d7ccc8;
+        }
+
+        table td {
+            padding: 4px 5px;
+            border: 1px solid #ffe0b2;
+            vertical-align: top;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fffde7;
+        }
+
+        /* IDENTITAS TABLE */
+        .table-identitas td {
+            border: none;
+            padding: 3px 2px;
+        }
+        .table-identitas td:first-child {
+            font-weight: 700;
+            width: 95px;
+            color: #444;
+        }
+
+        /* STEP CARDS IN CENTER */
+        .steps-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: #fff8f0;
+            border: 1px solid #ffe0b2;
+            border-radius: 6px;
+            padding: 6px 8px;
+        }
+
+        .step-number {
+            background: #5d4037;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-content {
+            font-size: 9.5px;
+            line-height: 1.35;
+        }
+
+        .step-content b {
+            color: #5d4037;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* DIAGRAM ALUR */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 9px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .flow-box {
+            background: #fff3e0;
+            border: 1px solid #ffcc80;
+            border-radius: 5px;
+            padding: 4px 8px;
+            width: 100%;
+        }
+
+        .flow-arrow {
+            color: #d84315;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        /* K3 LIST */
+        .k3-list {
+            padding-left: 14px;
+            font-size: 9.2px;
+            line-height: 1.35;
+        }
+
+        .k3-list li {
+            margin-bottom: 3px;
+        }
+
+        /* BOTTOM SECTION (K, L, M, N) */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.1fr 1fr 0.8fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* FOOTER BANNER */
+        .footer-banner {
+            background-color: #4e342e;
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tools-materials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 8px;
+        }
+
+        .detail-steps {
+            padding-left: 14px;
+            font-size: 9.2px;
+            line-height: 1.4;
+        }
+
+        .detail-steps li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <div class="job-sheet-badge">JOB SHEET</div>
+            <h1 class="main-title">TATA BOGA</h1>
+            <h2 class="sub-title">MILK TEA</h2>
+            <div class="tagline-banner">LEMBUT & MANIS, SAJIAN ISTIMEWA</div>
+        </div>
+        
+        <div class="header-center">
+            <div class="header-img-placeholder"></div>
+            <div class="header-bubble">Nikmatnya<br>Teh & Susu<br>dalam Setiap<br>Tegukan!</div>
+        </div>
+
+        <div class="header-right">
+            <div class="logos-container">
+                <div class="logo-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lambang_Jawa_Timur.png/400px-Lambang_Jawa_Timur.png" alt="Dinas Pendidikan Jatim">
+                    <div>DINAS PENDIDIKAN<br>PROVINSI JAWA TIMUR</div>
+                </div>
+                <div class="logo-box">
+                    <div style="font-size: 14px; font-weight: 900; color: #0d47a1; line-height: 1.1; margin-bottom: 2px;">SMA<br>DOUBLE<br>TRACK</div>
+                </div>
+                <div class="logo-box">
+                    <div style="border: 2px solid #0d47a1; border-radius: 50%; width: 40px; height: 40px; line-height: 36px; margin: 0 auto 2px; font-weight: 900; color: #0d47a1; font-size: 10px;">SMAN 1</div>
+                    <div>SMAN 1 MUNCAR</div>
+                </div>
+            </div>
+            <div class="meta-info-header">
+                MATA PELATIHAN : MASAKAN INDONESIA &nbsp;|&nbsp; MATERI PRAKTEK : MILK TEA
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="content-grid">
+        
+        <!-- LEFT COLUMN -->
+        <div class="col-left">
+            <!-- A. IDENTITAS JOB SHEET -->
+            <div class="card">
+                <div class="card-header">📋 A. IDENTITAS JOB SHEET</div>
+                <div class="card-body">
+                    <table class="table-identitas">
+                        <tr><td>Program Keahlian</td><td>: Tata Boga</td></tr>
+                        <tr><td>Mata Pelatihan</td><td>: Masakan Indonesia</td></tr>
+                        <tr><td>Materi Praktek</td><td>: Milk Tea</td></tr>
+                        <tr><td>Waktu</td><td>: 8 JP (360 Menit)</td></tr>
+                        <tr><td>Tingkat</td><td>: Dasar</td></tr>
+                        <tr><td>Metode</td><td>: Demonstrasi, Praktik dan Penilaian Produk</td></tr>
+                        <tr>
+                            <td>Kompetensi</td>
+                            <td>: Mengelola hidangan minuman berbasis teh dengan menerapkan teknik pembuatan minuman yang benar dan menarik.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- G. ALAT & H. BAHAN -->
+            <div class="tools-materials-grid">
+                <!-- G. ALAT -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header orange">🍳 G. ALAT</div>
+                    <div class="card-body" style="padding: 3px;">
+                        <table>
+                            <thead>
+                                <tr><th>No.</th><th>Nama Alat</th><th style="text-align:center;">Jumlah</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Panci kecil</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>2</td><td>Teko</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>3</td><td>Saringan teh</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>4</td><td>Sendok</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>5</td><td>Gelas saji</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>6</td><td>Gelas ukur</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>7</td><td>Timbangan</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>8</td><td>Pengaduk</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>9</td><td>Kompor</td><td style="text-align:center;">1</td></tr>
+                                <tr><td>10</td><td>Serbet</td><td style="text-align:center;">1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- H. BAHAN -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div class="card-header green">🍵 H. BAHAN (1 PORSI)</div>
+                    <div class="card-body" style="padding: 3px;">
+                        <table>
+                            <thead>
+                                <tr><th>No.</th><th>Bahan</th><th style="text-align:center;">Jumlah</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Teh hitam (celup)</td><td style="text-align:center;">1 kantong</td></tr>
+                                <tr><td>2</td><td>Air panas</td><td style="text-align:center;">100 ml</td></tr>
+                                <tr><td>3</td><td>Susu cair</td><td style="text-align:center;">100 ml</td></tr>
+                                <tr><td>4</td><td>Susu evaporated</td><td style="text-align:center;">20 ml</td></tr>
+                                <tr><td>5</td><td>Gula pasir</td><td style="text-align:center;">15-20 g</td></tr>
+                                <tr><td>6</td><td>Es batu</td><td style="text-align:center;">Secukupnya</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="col-center">
+            <!-- B. TUJUAN PEMBELAJARAN -->
+            <div class="card">
+                <div class="card-header orange">🎯 B. TUJUAN PEMBELAJARAN</div>
+                <div class="card-body">
+                    <ol style="padding-left: 14px; font-size: 9.2px; line-height: 1.4;">
+                        <li>Menjelaskan pengertian dan karakteristik milk tea.</li>
+                        <li>Menyiapkan alat dan bahan pembuatan milk tea dengan benar.</li>
+                        <li>Menerapkan teknik menyeduh teh, mencampur, dan menyajikan milk tea sesuai prosedur.</li>
+                        <li>Membuat milk tea dengan memperhatikan kebersihan, keamanan, dan keselamatan kerja.</li>
+                        <li>Menghasilkan milk tea dengan rasa, aroma, tekstur, warna, dan penyajian yang baik.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- C. LANGKAH KERJA -->
+            <div class="card">
+                <div class="card-header">⚙️ C. LANGKAH KERJA</div>
+                <div class="card-body">
+                    <div class="steps-container">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <b>Persiapan</b>
+                                Siapkan alat dan bahan, cuci tangan, dan pastikan area kerja bersih.
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <b>Menyeduh Teh</b>
+                                Seduh teh dengan air panas selama 3–5 menit, kemudian saring.
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <b>Pencampuran</b>
+                                Campurkan teh dengan susu, gula, dan evaporated milk. Aduk rata.
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <b>Penyajian</b>
+                                Tambahkan es batu, aduk perlahan, lalu sajikan dalam gelas.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- I. TAHAPAN DETAIL -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header brown-dark">📌 I. TAHAPAN DETAIL</div>
+                <div class="card-body">
+                    <ol class="detail-steps">
+                        <li>Rebus air hingga mendidih, matikan api.</li>
+                        <li>Seduh teh celup dengan air panas 100 ml selama 3–5 menit.</li>
+                        <li>Angkat teh celup, peras perlahan, lalu buang.</li>
+                        <li>Dalam gelas, campurkan gula, susu cair, dan susu evaporated.</li>
+                        <li>Tambahkan teh seduhan, aduk hingga gula larut.</li>
+                        <li>Masukkan es batu secukupnya.</li>
+                        <li>Aduk perlahan agar tercampur rata.</li>
+                        <li>Sajikan milk tea segera.</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-right">
+            <!-- D. DIAGRAM ALUR & E. STANDAR HASIL PRODUK -->
+            <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 8px;">
+                <!-- D. DIAGRAM ALUR -->
+                <div class="card">
+                    <div class="card-header green" style="font-size: 9px; padding: 4px 6px;">🔄 D. DIAGRAM ALUR</div>
+                    <div class="card-body" style="padding: 6px 4px;">
+                        <div class="flow-container">
+                            <div class="flow-box">Siapkan Alat & Bahan</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">Menyeduh Teh</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">Menyiapkan Campuran Susu & Gula</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">Mencampur Teh & Susu</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">Menambahkan Es Batu</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">Penyajian</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="flow-box">Evaluasi Produk</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E. STANDAR HASIL PRODUK -->
+                <div class="card">
+                    <div class="card-header" style="font-size: 9px; padding: 4px 6px;">✨ E. STANDAR HASIL PRODUK</div>
+                    <div class="card-body" style="padding: 4px;">
+                        <table>
+                            <tbody>
+                                <tr><td><b>Warna</b></td><td>Cokelat muda merata</td></tr>
+                                <tr><td><b>Aroma</b></td><td>Harum teh, susu, dan manis</td></tr>
+                                <tr><td><b>Rasa</b></td><td>Manis, lembut, seimbang</td></tr>
+                                <tr><td><b>Tekstur</b></td><td>Lembut, tidak bergerindil</td></tr>
+                                <tr><td><b>Penyajian</b></td><td>Menarik, bersih, rapi</td></tr>
+                                <tr><td><b>Suhu</b></td><td>Dingin / sejuk</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- F. TROUBLESHOOTING -->
+            <div class="card">
+                <div class="card-header orange">⚠️ F. TROUBLESHOOTING</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Permasalahan</th><th>Penyebab</th><th>Solusi</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Rasa pahit</td><td>Teh terlalu lama diseduh</td><td>Seduh 3–5 menit saja</td></tr>
+                            <tr><td>Rasa hambar</td><td>Takaran gula/susu kurang</td><td>Sesuaikan takaran bahan</td></tr>
+                            <tr><td>Susu pecah</td><td>Suhu air terlalu panas saat mencampur</td><td>Gunakan teh hangat, bukan mendidih</td></tr>
+                            <tr><td>Warna tidak menarik</td><td>Teh terlalu sedikit atau terlalu encer</td><td>Gunakan takaran teh sesuai resep</td></tr>
+                            <tr><td>Minuman terlalu manis</td><td>Gula berlebihan</td><td>Kurangi gula, tes rasa</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- J. KESELAMATAN DAN KESEHATAN KERJA (K3) -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header orange">🛡️ J. KESELAMATAN DAN KESEHATAN KERJA (K3)</div>
+                <div class="card-body">
+                    <ol class="k3-list">
+                        <li>Cuci tangan sebelum dan sesudah melakukan praktik.</li>
+                        <li>Gunakan pakaian kerja dan celemek yang bersih.</li>
+                        <li>Gunakan peralatan sesuai fungsinya.</li>
+                        <li>Hati-hati saat menggunakan kompor dan air panas.</li>
+                        <li>Pastikan bahan makanan dalam keadaan bersih dan layak.</li>
+                        <li>Jangan menyentuh wajah setelah memegang bahan.</li>
+                        <li>Bersihkan area kerja setelah praktik selesai.</li>
+                        <li>Buang limbah pada tempatnya.</li>
+                        <li>Simpan peralatan sesuai prosedur keselamatan kerja.</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BOTTOM ROW (K, L, M, N) -->
+    <div style="padding: 0 16px 16px 16px;">
+        <div class="bottom-grid">
+            
+            <!-- K. PENILAIAN PRAKTIK -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header">📊 K. PENILAIAN PRAKTIK</div>
+                <div class="card-body" style="padding: 4px;">
+                    <div style="display: flex; gap: 4px; font-size: 8.5px;">
+                        <table style="flex: 1.2;">
+                            <thead>
+                                <tr><th colspan="2">Penilaian Proses (70)</th></tr>
+                                <tr><th>Aspek</th><th>Bobot</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Persiapan kerja</td><td>15</td></tr>
+                                <tr><td>Kebersihan & sanitasi</td><td>15</td></tr>
+                                <tr><td>Teknik pengolahan</td><td>20</td></tr>
+                                <tr><td>Kerja sama & sikap kerja</td><td>10</td></tr>
+                                <tr><td>Waktu kerja</td><td>10</td></tr>
+                                <tr style="font-weight:bold; background:#efebe9;"><td>Jumlah</td><td>70</td></tr>
+                            </tbody>
+                        </table>
+
+                        <table style="flex: 1;">
+                            <thead>
+                                <tr><th colspan="2">Penilaian Produk (30)</th></tr>
+                                <tr><th>Aspek</th><th>Bobot</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Warna</td><td>5</td></tr>
+                                <tr><td>Aroma</td><td>5</td></tr>
+                                <tr><td>Rasa</td><td>10</td></tr>
+                                <tr><td>Tekstur</td><td>5</td></tr>
+                                <tr><td>Penyajian</td><td>5</td></tr>
+                                <tr style="font-weight:bold; background:#efebe9;"><td>Jumlah</td><td>30</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 4px; background: #5d4037; color: white; text-align: center; font-weight: 800; padding: 3px; border-radius: 4px; font-size: 9px;">
+                        TOTAL NILAI: 100
+                    </div>
+                </div>
+            </div>
+
+            <!-- L. CATATAN BIAYA (SIMULASI) -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header green">💰 L. CATATAN BIAYA (SIMULASI)</div>
+                <div class="card-body" style="padding: 4px;">
+                    <table>
+                        <thead>
+                            <tr><th>Uraian</th><th>Estimasi Biaya (Rp)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Modal Awal (Bahan)</td><td>Rp ........................</td></tr>
+                            <tr><td>Biaya Operasional (Gas, listrik, kemasan)</td><td>Rp ........................</td></tr>
+                            <tr><td>Total Biaya</td><td>Rp ........................</td></tr>
+                            <tr><td>Harga Jual</td><td>Rp ........................</td></tr>
+                            <tr style="font-weight:bold; background:#e8f5e9;"><td>Keuntungan (Estimasi)</td><td>Rp ........................</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- M. PELUANG USAHA -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header orange">🚀 M. PELUANG USAHA</div>
+                <div class="card-body" style="font-size: 8.8px; line-height: 1.4;">
+                    <p style="margin-bottom: 3px;">✔️ <b>Varian rasa:</b> original, taro, matcha, caramel, thai tea.</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Kemasan menarik:</b> (cup, botol, pouch).</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Tambah topping:</b> boba, jelly, pudding, cheese foam.</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Jual di:</b> kantin sekolah, event, cafe, atau online.</p>
+                    <p style="margin-bottom: 3px;">✔️ <b>Promosi:</b> lewat media sosial & marketplace.</p>
+                </div>
+            </div>
+
+            <!-- N. CATATAN REFLEKSI -->
+            <div class="card" style="margin: 0;">
+                <div class="card-header">📝 N. CATATAN REFLEKSI</div>
+                <div class="card-body" style="font-size: 8.5px; line-height: 1.35;">
+                    <ol style="padding-left: 12px;">
+                        <li>Apa yang sudah kamu pelajari hari ini?</li>
+                        <li>Kesulitan apa yang kamu temui?</li>
+                        <li>Bagaimana cara mengatasinya?</li>
+                        <li>Hal apa yang perlu diperbaiki untuk praktik berikutnya?</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER BANNER -->
+    <div class="footer-banner">
+        <div class="footer-item">
+            <span>🧼</span> HYGIENE & SANITASI
+        </div>
+        <div class="footer-item">
+            <span>🛡️</span> KESELAMATAN KERJA
+        </div>
+        <div class="footer-item">
+            <span>❤️</span> BEKERJA DENGAN HATI
+        </div>
+        <div class="footer-item">
+            <span>⭐</span> BERKARYA UNTUK NEGERI
+        </div>
+        <div class="footer-item">
+            <span>🍳</span> COOK WITH PASSION, BAKE WITH HEART
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
